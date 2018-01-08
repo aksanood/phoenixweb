@@ -19,10 +19,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(private productService: ProductService) {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10
-    };
+
     this.subscription = this.productService.getAll()
       .subscribe(products => {
         this.filteredProducts = this.products = products;
@@ -41,6 +38,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10
+    };
   }
 
 }
