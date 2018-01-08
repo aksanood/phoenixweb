@@ -1,0 +1,44 @@
+
+<div mat-dialog-content class="container-fluid" style="margin: 0px;">
+  <div class="container-fluid">
+    <h3><strong>Log In to your Phoenix Account!</strong></h3>
+  </div>
+  <hr>
+  <div class="container-fluid">
+    <button mat-raised-button class="sm-buttons btn-success sm-fb"><i class="fa fa-media fa-facebook lg-icn"></i><strong>Log In with Facebook</strong></button>
+    <br>
+    <button mat-raised-button (click)="loginWithGoogle()" class="sm-buttons btn-success sm-g"><i class="fa fa-media fa-google lg-icn"></i><strong>Log In with Google</strong></button>
+
+    <div class="or container-fluid">Or</div>
+
+    <form class="example-form">
+      <mat-form-field class="login-form">
+        <mat-hint align="start">Enter your username</mat-hint>
+        <input ngModel #username="ngModel" name="username" matInput placeholder="Email" required>
+        <mat-icon matSuffix><i class="fa fa-envelope"></i></mat-icon>
+        <mat-error *ngIf="username.invalid && username.errors.required">Enter a valid email</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="login-form">
+        <mat-hint align="start">Enter your password</mat-hint>
+        <input ngModel #password="ngModel" name="password" matInput placeholder="Password" [type]="hide ? 'password' : 'text'" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="password.invalid && password.errors.required">Password required</mat-error>
+      </mat-form-field>
+      <br>
+
+      <button mat-raised-button class="sm-buttons btn btn-success btn-login">Log In</button>
+    </form>
+
+    <div style="text-align: center; margin-top: 5px;">
+      Or <a href="#" class="color-blue">Forgot Password ?</a>
+      <br>
+      <p style="font-size:x-small">By signing up, you agree to our <a href="#" class="color-blue">Terms of Use</a> and <a href="#" class="color-blue">Privacy Policy</a>.</p>
+    </div>
+    <hr>
+
+    <div style="text-align: center;">
+      Don't have an account ? <a style="cursor: pointer;" (click)="openSignup()"><strong class="color-blue">Sign Up</strong></a>
+    </div>
+  </div>
+</div>

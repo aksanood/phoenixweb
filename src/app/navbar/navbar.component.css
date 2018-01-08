@@ -1,0 +1,48 @@
+.dropdown-toggle{ cursor: pointer; }
+/*REMOVE CARET*/
+.dropdown-toggle::after { display:none }
+
+.sm-icon{width: 100%; height: 100%; border-radius: 2px; display: inline-block; float: none;}
+.sm-icon > i {padding-top: 5px;}
+
+/* User Button */
+.btn-user{background-color: blue;background-repeat: no-repeat;background-size: cover;background-position: center center;}
+
+
+/*========= Desktop ========*/
+@media (min-width: 768px){
+  .mr-auto{margin-left: 30px;}
+  .sidebar-toggle{display: inline; margin-right: 10px;}
+
+  /*All dropdown menus*/
+  .dropdown-menu { display: none;}
+  .dropdown:hover .dropdown-menu{display: block;}
+  .dropdown-menu{border-radius: 2px; width: 250px; top: 45px !important;}
+  .dropdown-menu:after{position: absolute;left: 5%;top: -10px;content: '';border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 10px solid #ffffff;}
+  /*Right dropdown menus*/
+  .dropdown-menu-right {right: 0; left: auto !important; top: 50px !important;}
+  .dropdown-menu-right:after{position: absolute;left: 88%;top: -10px;content: '';border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 10px solid #ffffff;}
+
+  /*Signup buttons*/
+  .btn-signup{border-radius: 2px; margin-left: 5px; margin-top: 5px; padding: 5px; cursor: pointer;}
+  /*User Button*/
+  .btn-user{margin-left: 5px; margin-top: 3px;}
+
+  /* Search Menu */
+  .form-control{margin-right: 0px !important;}
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+  .sidebar-toggle{margin-right: 0px;}
+  .ml-auto .btn-signup{margin-top: 10px;}
+  .dropdown-menu{border-radius: 3px;}
+  .navbar-collapse{overflow-y: scroll;}
+
+  /* Search Menu */
+  .input-group{width: 100%; resize: none; align-items: center;}
+  .form-control{margin-right: 0px !important;}
+
+}
+
+

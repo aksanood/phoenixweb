@@ -1,0 +1,40 @@
+
+<div class="container-fluid sticky-top">
+
+  <div class="list-group">
+    <a
+      class="list-group-item list-group-item-action"
+      [class.active]="!category"
+      routerLink="/marketplace/"
+    >All Categories</a>
+    <a
+      *ngFor="let c of categories$ | async"
+      routerLink="/marketplace/"
+      [queryParams]="{category: c.$key}"
+      class="list-group-item list-group-item-action"
+      [class.active]="category === c.$key"
+    >
+      {{c.name}}
+    </a>
+  </div>
+
+  <hr>
+
+  <div class="container-fluid sticky-top" style="background-color: #aaaaaa">
+    <div class="header"><h3>Sort by price</h3></div>
+    <div>
+        <mat-checkbox [(ngModel)]="checked">Free</mat-checkbox>
+        <mat-form-field class="input-text">
+          <input matInput placeholder="Min price">
+        </mat-form-field>
+        <mat-form-field class="input-text">
+          <input matInput placeholder="Max price">
+        </mat-form-field>
+      <button mat-raised-button (click)="isChecked()">Go</button>
+    </div>
+  </div>
+
+</div>
+
+
+
