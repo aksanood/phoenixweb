@@ -1,17 +1,44 @@
 
 .card{
   margin-bottom: 30px;
+  border: solid 1px #2C3033;
+  border-radius: 2px;
 }
-.card-footer{
-  padding: 0;
-}
-
-img {
+.card-img-top {
   max-width: 100%;
   height: 150px;
+  -moz-border-radius-topright: 2px;
+  -moz-border-radius-topleft: 2px;
 }
-
 .item {
   width: 100%;
   height: auto;
+}
+.card-body{
+  height: auto;
+}
+h3{
+  margin-top: 15px;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+h3 > a{
+  color: #FEFEFE;
+}
+h3 > a:hover{
+  text-decoration: none;
+}
+.card-price{
+  font-weight: 600;
+  color: #09AEEE;
+}
+
+/*========= Desktop ========*/
+@media (min-width: 768px){
+
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+
 }

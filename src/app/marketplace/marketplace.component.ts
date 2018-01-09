@@ -15,7 +15,6 @@ export class MarketplaceComponent implements OnDestroy{
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string;
-
   subscription: Subscription;
 
   constructor(
@@ -36,6 +35,7 @@ export class MarketplaceComponent implements OnDestroy{
         this.filteredProducts = (this.category) ?
           this.products.filter(p => p.category === this.category) :
           this.products;
+        // this.blablabla(this.products, this.category);
       });
   }
 
@@ -45,9 +45,11 @@ export class MarketplaceComponent implements OnDestroy{
       this.products;
   }
 
-  filterFreeProducts (query: number) {
-    return this.filteredProducts = (query === 0) ?
-      this.products.filter(p => p.price.toString() === query.toString()) :
+  filterFreeProducts (c: string) {
+    console.log(c);
+
+    return this.filteredProducts = (0 === 0) ?
+      this.filteredProducts.filter(p => p.price.toString() === '0') :
       this.products;
   }
 

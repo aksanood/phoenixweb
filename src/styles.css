@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 /*COLORS*/
@@ -17,7 +16,6 @@
 .color-instagram{color:#e95950;}
 .color-github{color:#323232;}
 .color-pinterest{color:#BC091B;}
-
 
 /*========= Desktop ========*/
 @media (min-width: 768px){

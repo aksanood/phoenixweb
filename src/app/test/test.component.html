@@ -50,16 +50,18 @@
   <mat-datepicker #picker touchUi="true"></mat-datepicker>
 </mat-form-field>
 <hr>
+<div class="alternative">
+  <button mat-button>Click</button>
+  <button color="primary" mat-raised-button>Primary</button>
+  <button color="accent" mat-raised-button>Accent</button>
+  <button color="warn" mat-raised-button>Warn</button>
+  <button mat-fab><mat-icon>check</mat-icon></button>
+  <button mat-mini-fab><mat-icon>add_alert</mat-icon></button>
+</div>
 
-<button mat-button>Click</button>
-<button color="primary" mat-raised-button>Primary</button>
-<button color="accent" mat-raised-button>Accent</button>
-<button color="warn" mat-raised-button>Warn</button>
-<button mat-fab><mat-icon>check</mat-icon></button>
-<button mat-mini-fab><mat-icon>add_alert</mat-icon></button>
 <hr>
 
-<mat-chip-list>
+<mat-chip-list class="alternative">
   <mat-chip *ngFor="let category of categories"
   (click)="selectCategory(category)"
             [selected]="category.selected"

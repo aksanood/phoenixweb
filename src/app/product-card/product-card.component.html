@@ -1,5 +1,5 @@
 
-<div *ngIf="product.title" class="card">
+<div *ngIf="product.title" class="card panel-color">
   <div class="item">
     <img class="card-img-top" [src]="product.imageUrl" alt="{{product.title}}" *ngIf="product.imageUrl">
   </div>
@@ -13,7 +13,7 @@
 
     <p *ngIf="product.price === 0; else display_price" class="card-text">Free</p>
     <ng-template #display_price>
-      <p class="card-text">{{product.price | currency: 'USD':"symbol-narrow"}}</p>
+      <p class="card-text card-price">{{product.price | currency: 'USD':"symbol-narrow"}}</p>
     </ng-template>
 
     <p *ngIf="showDescription" class="card-text">{{product.description}}</p>

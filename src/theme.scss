@@ -4,14 +4,24 @@
 
 @include mat-core();
 
+/*========= Main Theme ========*/
 $app-primary: mat-palette($mat-blue-grey, 600);
 $app-accent: mat-palette($mat-cyan, 700);
 $app-warn: mat-palette($mat-red);
-
-$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
-
+$app-background: mat-palette($mat-red);
+$app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 @include angular-material-theme($app-theme);
+.mat-app-background{
+  background-color: #151A1D;
+}
 
+/*========= Alternative Theme ========*/
+$alt-primary: mat-palette($mat-yellow);
+$alt-accent:  mat-palette($mat-light-blue, 200);
+$alt-theme: mat-light-theme($alt-primary, $alt-accent);
+.alternative {
+  @include angular-material-theme($alt-theme);
+}
 
 /*========= Angular Star Rating Styles ========*/
 .rating{
@@ -23,3 +33,9 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 .rating:focus{
   outline: none;
 }
+
+/*========= Background Color of Panels ========*/
+.panel-color{
+  background-color: #212629;
+}
+

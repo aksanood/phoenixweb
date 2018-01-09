@@ -1,4 +1,28 @@
 
+.container-fluid{
+  padding: 0px;
+}
+
+.filter-component{
+  padding: 10px;
+  margin: 0px;
+  border-radius: 2px;
+  background-color: #212629;
+}
+.list-group-item {
+  background-color: #212629;
+  color: #FEFEFE;
+  border-radius: 2px;
+  border: none;
+}
+.list-group-item:hover{
+  background-color: #353a3d;
+}
+
+.list-group-item:focus{
+  background-color: #2C3033;
+  border: none;
+}
 .input-text{
   width: 100%;
   margin-top: -10px;
