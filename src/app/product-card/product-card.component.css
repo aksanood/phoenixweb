@@ -1,7 +1,7 @@
 
 .card{
   margin-bottom: 30px;
-  border: solid 1px #2C3033;
+  border: none;
   border-radius: 2px;
 }
 .card-img-top {

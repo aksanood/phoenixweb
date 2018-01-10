@@ -7,10 +7,12 @@
         class="list-group-item list-group-item-action"
         [class.active]="!category"
         routerLink="/marketplace/"
+        fragment="info"
       >All Categories</a>
       <a
         *ngFor="let c of categories$ | async"
         routerLink="/marketplace/"
+        fragment="info"
         [queryParams]="{category: c.$key}"
         class="list-group-item list-group-item-action"
         [class.active]="category === c.$key"
@@ -21,11 +23,12 @@
   </div>
 
 
-  <hr>
+
 
   <div class="filter-component">
-    <div class="header"><h3>Sort by price</h3></div>
-    <div>
+    <div class="sort-by-price">
+      <div class="header"><h3>Price</h3></div>
+      <div>
         <mat-checkbox [(ngModel)]="checked">Free</mat-checkbox>
         <mat-form-field class="input-text">
           <input matInput placeholder="Min price">
@@ -33,7 +36,24 @@
         <mat-form-field class="input-text">
           <input matInput placeholder="Max price">
         </mat-form-field>
-      <button mat-raised-button (click)="isChecked()">Go</button>
+        <button mat-raised-button (click)="isChecked()">Go</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-component">
+    <div class="sort-by-rating">
+      <div class="header"><h3>Rating</h3></div>
+      <div>
+        <mat-radio-button>All</mat-radio-button>
+        <br>
+        <mat-radio-button><star-rating-comp [disabled]="true"  [starType]="'svg'" [rating]="1"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="2"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="3"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="4"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="5"></star-rating-comp></mat-radio-button>
+        <mat-radio-button>Unrated</mat-radio-button>
+      </div>
     </div>
   </div>
 

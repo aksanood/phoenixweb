@@ -4,8 +4,8 @@
 }
 
 .filter-component{
-  padding: 10px;
-  margin: 0px;
+  padding: 0px;
+  margin: 0px 0px 20px 0px;
   border-radius: 2px;
   background-color: #212629;
 }
@@ -23,6 +23,24 @@
   background-color: #2C3033;
   border: none;
 }
+
+.sort-by-price{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.sort-by-rating{
+  margin-left: 20px;
+  margin-right: 120px;
+  padding-bottom: 15px;
+  display: block;
+}
+
+button {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 .input-text{
   width: 100%;
   margin-top: -10px;

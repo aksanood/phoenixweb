@@ -1,5 +1,5 @@
 
-  <div class="container">
+  <div class="container main-container">
     <div class="container-fluid" >
 
       <div class="row">
@@ -14,7 +14,7 @@
             <input
               #query
               (keyup)="searchProducts(query.value)"
-              class="form-control" type="text" placeholder="Search Marketplace" aria-label="Search">
+              class="form-control" type="text" placeholder="Search marketplace..." aria-label="Search">
             <div class="input-group-btn">
               <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
             </div>
@@ -23,9 +23,24 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12 col-xs-1">
-          <h3 *ngIf="!category">ALL ASSETS</h3>
-          <h3 style="text-transform: uppercase">{{category}}</h3>
+        <div class="col-md-6 col-xs-1">
+          <h3><strong>ASSETS &#160; / &#160;
+            <p *ngIf="!category"> All assets</p>
+              <p style="text-transform: capitalize"> {{category}}</p>
+          </strong>
+          </h3>
+        </div>
+        <div class="col-md-6 col-xs-1">
+          <div ngbDropdown class="dropdown float-right">
+            <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort :
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Recently added</a>
+              <a class="dropdown-item">Price - highest first</a>
+              <a class="dropdown-item">Price - lowest first</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -38,7 +53,7 @@
           <app-product-filter (change)="filterFreeProducts(category)" [category]="category"></app-product-filter>
         </div>
 
-        <div class="col-md-9 col-xs-1">
+        <div class="col-md-9 col-xs-1" id="info">
           <div class="row">
             <ng-container *ngFor="let p of filteredProducts; let i = index">
               <div class="col-md-4 col-xs-1">

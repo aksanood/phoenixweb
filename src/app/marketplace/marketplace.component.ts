@@ -3,7 +3,8 @@ import {ProductService} from '../product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../models/products';
 import 'rxjs/add/operator/switchMap';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
+import {CategoryService} from '../category.service';
 
 @Component({
   selector: 'app-marketplace',
@@ -15,11 +16,17 @@ export class MarketplaceComponent implements OnDestroy{
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string;
+  categories$;
+  catName: string;
   subscription: Subscription;
 
   constructor(
     route: ActivatedRoute,
-    productService: ProductService) {
+    productService: ProductService,
+    categoryService: CategoryService) {
+
+    this.categories$ = categoryService.getAll();
+
 
      this.subscription = productService
       .getAll()
@@ -35,8 +42,9 @@ export class MarketplaceComponent implements OnDestroy{
         this.filteredProducts = (this.category) ?
           this.products.filter(p => p.category === this.category) :
           this.products;
-        // this.blablabla(this.products, this.category);
       });
+
+
   }
 
   searchProducts (query: string) {
