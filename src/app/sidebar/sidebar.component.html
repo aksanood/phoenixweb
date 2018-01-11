@@ -1,10 +1,8 @@
-
+<header>
+  <app-navbar (navToggle)="sidenav.toggle()"></app-navbar>
+</header>
 
 <mat-sidenav-container class="sidebar-container mat-app-background mat-typography">
-
-  <header>
-    <app-navbar (navToggle)="sidenav.toggle()"></app-navbar>
-  </header>
 
   <mat-sidenav #sidenav mode="push" class="sidebar">
     <ul class="sidebar-nav">

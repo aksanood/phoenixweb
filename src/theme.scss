@@ -38,3 +38,7 @@ $alt-theme: mat-light-theme($alt-primary, $alt-accent);
   background-color: #212629;
 }
 
+.mat-tooltip{
+  background-color: #313131;
+  margin-top: -10px !important;
+}

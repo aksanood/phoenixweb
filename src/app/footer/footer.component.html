@@ -2,25 +2,38 @@
   <div class="footer">
     <div id="button"></div>
     <div id="container">
-      <div id="cont">
-        <div class="container footer_content">
+
+        <div class="container-fluid footer_content">
 
           <div class="row">
             <div class="col-md-12 col-xs-1">
-              <nav class="navbar navbar-expand-lg navbar-dark">
+              <nav class="navbar navbar-expand-md navbar-dark">
                 <ul class="navbar-nav mr-auto">
-                  <li><a routerLink="'test/'">Home</a> </li>
-                  <li><a routerLink="'test/'">Explore</a> </li>
-                  <li><a routerLink="'test/'">Marketplace</a> </li>
-                  <li><a routerLink="'test/'">Learn</a> </li>
-                  <li><a routerLink="'test/'">About</a> </li>
+                  <li ngbDropdown class="nav-item"><a ngbDropdownToggle class="nav-link">Explore</a>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                      <a class="dropdown-item" routerLink="">Overview</a>
+                      <a class="dropdown-item" routerLink="">Showcase</a>
+                      <a class="dropdown-item" routerLink="">Versions</a>
+                      <a class="dropdown-item" routerLink="">FAQ</a>
+                    </div>
+                  </li>
+                  <li class="nav-item"><a class="nav-link" routerLink="/marketplace">Marketplace</a> </li>
+                  <li ngbDropdown class="nav-item"><a ngbDropdownToggle class="nav-link">Learn</a>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown03">
+                      <a class="dropdown-item" routerLink="">Documentation</a>
+                      <a class="dropdown-item" routerLink="">Tutorials</a>
+                    </div>
+                  </li>
+                  <li class="nav-item"><a class="nav-link" routerLink="/about">About</a> </li>
                 </ul>
 
-                <ul class="navbar-nav ml-auto">
-                  <li><a routerLink="'test/'"><i class="fa fa-media fa-facebook fa-2x fa-fw color-facebook"></i></a> </li>
-                  <li><a routerLink="'test/'"><i class="fa fa-media fa-linkedin fa-2x fa-fw color-facebook"></i></a> </li>
-                  <li><a routerLink="'test/'"><i class="fa fa-media fa-twitter fa-2x fa-fw color-facebook"></i></a> </li>
-                  <li><a routerLink="'test/'"><i class="fa fa-media fa-youtube fa-2x fa-fw color-facebook"></i></a> </li>
+                <ul class="navbar-nav ml-auto icon-effect icon-effect-1a">
+                  <li class="nav-item"><div class="tooltip-container" matTooltipPosition="below" matTooltip="Facebook"><a class="icon nav-link" routerLink="/about"><i class="fa fa-media fa-facebook fa-2x fa-fw color-facebook"></i></a> </div></li>
+                  <li class="nav-item"><div class="tooltip-container" matTooltipPosition="below" matTooltip="LinkedIn"><a class="icon nav-link" routerLink="/about"><i class="fa fa-media fa-linkedin fa-2x fa-fw color-linkedin"></i></a> </div></li>
+                  <li class="nav-item"><div class="tooltip-container" matTooltipPosition="below" matTooltip="Twitter"><a class="icon nav-link" routerLink="/about"><i class="fa fa-media fa-twitter fa-2x fa-fw color-twitter"></i></a> </div></li>
+                  <li class="nav-item"><div class="tooltip-container" matTooltipPosition="below" matTooltip="Youtube"><a class="icon nav-link" routerLink="/about"><i class="fa fa-media fa-youtube fa-2x fa-fw color-youtube"></i></a> </div></li>
+                  <li class="nav-item"><div class="tooltip-container" matTooltipPosition="below" matTooltip="Github"><a class="icon nav-link" routerLink="/about"><i class="fa fa-media fa-github fa-2x fa-fw color-github"></i></a> </div></li>
+
                 </ul>
               </nav>
             </div>
@@ -29,12 +42,13 @@
           <div class="row">
             <div class="col-md-12 col-xs-1">
               <h3>Classy footer text</h3>
+              <p class="footer-legal">© 2018 Phoenix. All rights reserved</p>
             </div>
           </div>
 
 
         </div>
       </div>
-    </div>
+
   </div>
 </footer>
