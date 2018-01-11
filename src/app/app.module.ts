@@ -16,6 +16,7 @@ import { StarRatingModule} from 'angular-star-rating';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { TestComponent } from './test/test.component';
@@ -41,12 +42,14 @@ import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
     HomeComponent,
+    FooterComponent,
     LoginComponent,
     AboutComponent,
     MarketplaceComponent,
