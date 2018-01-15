@@ -61,6 +61,16 @@ export class MarketplaceComponent implements OnDestroy{
       this.products;
   }
 
+  filterPaidProducts(c: string) {
+    return this.filteredProducts = (0 === 0) ?
+      this.filteredProducts.filter(p => p.price !== 0) :
+      this.products;
+  }
+
+  filterByPriceRange(){
+
+  }
+
   ngOnDestroy () {
     this.subscription.unsubscribe();
   }

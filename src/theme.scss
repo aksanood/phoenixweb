@@ -33,12 +33,23 @@ $alt-theme: mat-light-theme($alt-primary, $alt-accent);
   outline: none;
 }
 
-/*========= Background Color of Panels ========*/
+/*========= Background Color of Panels () ========*/
 .panel-color{
   background-color: #212629;
 }
 
+/*========= Tooltip Styles ========*/
 .mat-tooltip{
   background-color: #313131;
-  margin-top: -10px !important;
+}
+
+/*========= Data Table ========*/
+
+.dataTables_wrapper{
+  background-color: #c0bbb9;
+  padding: 10px;
+  border-radius: 2px;
+}
+thead{
+  background-color: #aaaaaa;
 }

@@ -1,0 +1,29 @@
+
+.header{
+  padding: 0px;
+  margin-left: 20px;
+  color: #505769;
+  font-size: 12px;
+}
+
+.list-group-item {
+  background-color: transparent;
+  color: #FEFEFE;
+  border-radius: 4px;
+  border: none;
+  padding: 10px 100px 10px 20px;
+  margin: 0;
+}
+.list-group-item:hover{
+  background-color: #24282F;
+}
+
+.list-group-item:focus{
+  background-color: #24282F;
+  border: none;
+  color: #6cbc42;
+}
+
+.list-group-item:active{
+  background-color: #2C3033;
+}

@@ -57,7 +57,7 @@
 
 .footer_content{
   background-color: #1a1a1a;
-  padding:0px 200px 0px 200px;
+  padding:10px 200px 0px 200px;
 }
 
 .footer h3{
@@ -69,9 +69,13 @@
   color: #313131;
 }
 
+.nav-link:hover{
+  cursor: pointer;
+}
+
 .icon{
 display: inline-block;
-  margin: 20px;
+  margin: 0px 20px 0px 20px;
   padding: 10px;
   vertical-align: middle;
   text-align: center;

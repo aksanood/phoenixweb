@@ -24,8 +24,8 @@
 
       <div class="row">
         <div class="col-md-6 col-xs-1">
-          <h3><strong>ASSETS &#160; / &#160;
-            <p *ngIf="!category"> All assets</p>
+          <h3><strong>Categories &#160; / &#160;
+            <p *ngIf="!category"> All categories</p>
               <p style="text-transform: capitalize"> {{category}}</p>
           </strong>
           </h3>
@@ -50,16 +50,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3 col-xs-1">
-          <app-product-filter (change)="filterFreeProducts(category)" [category]="category"></app-product-filter>
+          <app-product-filter (paid)="filterPaidProducts(category)" (free)="filterFreeProducts(category)" [category]="category"></app-product-filter>
         </div>
 
         <div class="col-md-9 col-xs-1">
           <div class="row">
             <ng-container *ngFor="let p of filteredProducts; let i = index">
-              <div class="col-md-4 col-xs-1">
+              <div class="col-md-4 card123 col-xs-1">
                 <app-product-card [product]="p" [show-description]="false"></app-product-card>
               </div>
-              <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
             </ng-container>
           </div>
         </div>

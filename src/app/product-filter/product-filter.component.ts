@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CategoryService} from '../category.service';
+import {MatRadioChange} from "@angular/material";
 
 @Component({
   selector: 'app-product-filter',
@@ -10,24 +11,33 @@ export class ProductFilterComponent implements OnInit {
 
   categories$;
   @Input('category') category;
-  @Output() change = new EventEmitter();
-  checked = false;
+  @Output() free = new EventEmitter();
+  @Output() paid = new EventEmitter();
+  array = ['Free', 'Paid'];
+
 
   constructor(categoryService: CategoryService) {
     this.categories$ = categoryService.getAll();
-
-    this.isChecked();
 
   }
 
   ngOnInit() {
   }
 
-  isChecked() {
-    if (this.checked) {
-      this.change.emit();
+  radioChange (event: MatRadioChange) {
+    if (event.value === 'Free') {
+      console.log(event);
+      this.free.emit();
+    }
+    if (event.value === 'Paid') {
+      console.log(event);
+      this.paid.emit();
     }
 
+  }
+
+  reset() {
+    console.log('Reesetttt');
   }
 
 }

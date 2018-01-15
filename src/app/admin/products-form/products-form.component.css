@@ -1,0 +1,16 @@
+.main-cont{
+  padding: 50px;
+  background-color: #000000;
+}
+
+.header{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.sub-cont{
+  background-color: #161616;
+  padding: 10px;
+  border-radius: 5px;
+  height: 700px;
+}

@@ -26,6 +26,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminTestComponent } from './admin-test/admin-test.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { ProductsFormComponent } from './admin/products-form/products-form.component';
+import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardNavigationComponent } from './dashboard/dashboard-navigation/dashboard-navigation.component';
+
 
 // Angular Material
 import { MatComponentsModule } from './mat-components.module';
@@ -38,9 +44,8 @@ import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
-import { MarketplaceComponent } from './marketplace/marketplace.component';
-import { ProductFilterComponent } from './product-filter/product-filter.component';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
+import { DashboardUserProfileComponent } from './dashboard/dashboard-user-profile/dashboard-user-profile.component';
 
 
 @NgModule({
@@ -56,6 +61,10 @@ import { ProductCardComponent } from './product-card/product-card.component';
     TestComponent,
     SignupComponent,
     UserProfileComponent,
+    DashboardComponent,
+    DashboardNavigationComponent,
+    DashboardOverviewComponent,
+    DashboardUserProfileComponent,
 
     AdminTestComponent,
     ProductsComponent,
@@ -82,20 +91,25 @@ import { ProductCardComponent } from './product-card/product-card.component';
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      {path: '', component: TestComponent}, // Change to home Component
-      // {path: '', component: HomeComponent},
+      {path: '', redirectTo: 'test', pathMatch: 'full'}, // Change to home Component
+      {path: 'test', component: TestComponent},
       {path: 'login', component: LoginComponent},
       {path: 'about', component: AboutComponent},
       {path: 'marketplace', component: MarketplaceComponent},
 
-      {path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService]},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],
+        children: [
+          {path: '', redirectTo: 'dashboard-overview', pathMatch: 'full'},
+          {path: 'dashboard-overview', component: DashboardOverviewComponent},
+          {path: 'dashboard-user-profile', component: DashboardUserProfileComponent},
 
+          {path: 'admin/products/new', component: ProductsFormComponent, canActivate: [AdminAuthGuardService]},
+          {path: 'admin/products/:id', component: ProductsFormComponent, canActivate: [AdminAuthGuardService]},
+          {path: 'admin/products', component: ProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService]}
+
+        ]
+      },
       {path: 'admin-test', component: AdminTestComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
-      {path: 'admin/products/new', component: ProductsFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
-      {path: 'admin/products/:id', component: ProductsFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
-      {path: 'admin/products', component: ProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService]}
-
-
 
     ])
   ],

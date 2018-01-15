@@ -4,11 +4,13 @@
   <div class="filter-component">
     <div class="list-group">
       <a
+        (click)="reset()"
         class="list-group-item list-group-item-action"
         [class.active]="!category"
         routerLink="/marketplace/"
       >All Categories</a>
       <a
+        (click)="reset()"
         *ngFor="let c of categories$ | async"
         routerLink="/marketplace/"
         [queryParams]="{category: c.$key}"
@@ -27,7 +29,11 @@
     <div class="sort-by-price">
       <div class="header"><h3>Price</h3></div>
       <div>
-        <mat-checkbox [(ngModel)]="checked">Free</mat-checkbox>
+
+        <mat-radio-group [(ngModel)]="change">
+          <mat-radio-button *ngFor="let a of array" (change)="radioChange($event)" [value]="a" >{{a}}</mat-radio-button>
+        </mat-radio-group>
+
         <mat-form-field class="input-text">
           <input matInput placeholder="Min price">
         </mat-form-field>

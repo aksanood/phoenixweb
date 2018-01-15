@@ -1,6 +1,6 @@
 
 <p>
-  <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+  <a routerLink="new" class="btn btn-primary">New Product</a>
 </p>
 
 <p>
@@ -26,7 +26,7 @@
     <td>{{p.category}}</td>
     <td>{{p.price | currency: 'USD': "symbol-narrow"}}</td>
     <td>
-      <a [routerLink]="['/admin/products/', p.$key]">Edit</a>
+      <a [routerLink]="[p.$key]">Edit</a>
     </td>
   </tr>
   </tbody>
