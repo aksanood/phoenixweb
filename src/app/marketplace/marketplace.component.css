@@ -13,7 +13,7 @@ hr{margin: 10px 15px 20px 15px;background-color: #2C3033;}
 
 /*========= Desktop ========*/
 @media (min-width: 768px){
-  .main-container{max-width: 1500px;  }
+  .main-container{max-width: 1500px;}
   .dropdown-menu-right{background-color: #FEFEFE;border-radius: 2px;left: -110px !important;}
 }
 

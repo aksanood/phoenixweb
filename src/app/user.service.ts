@@ -12,7 +12,8 @@ export class UserService {
     this.db.object('/users/' + user.uid).update({
       name: user.displayName,
       email: user.email,
-      picture: user.photoURL
+      picture: user.photoURL,
+      username: this.getUsername(user.email)
     });
   }
 
@@ -20,4 +21,7 @@ export class UserService {
     return this.db.object('/users/' + uid);
   }
 
+  getUsername(str: string) {
+    return str.replace(/@.*$/,'');
+  }
 }

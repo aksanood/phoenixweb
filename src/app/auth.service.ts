@@ -20,7 +20,7 @@ export class AuthService {
     this.user$ = afAuth.authState;
   }
 
-  logIn() {
+  loginWithGoogle() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
 

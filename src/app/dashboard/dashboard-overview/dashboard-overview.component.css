@@ -2,6 +2,27 @@ hr{background-color: #2C3033;}
 
 .cont{
   border: solid 1px #2C3033;
-  border-radius: 2px;
+  border-radius: 3px;
   margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.page-view{
+  background-color: #1BC98E;
+}
+.downloads{
+  background-color: #E64759;
+}
+.messages{
+  background-color: #9F86FF;
+}
+.other{
+  background-color: #E4D836;
+}
+
+.header{
+  padding: 0px;
+  margin-bottom: 0px;
+  color: #505769;
+  font-size: 12px;
 }

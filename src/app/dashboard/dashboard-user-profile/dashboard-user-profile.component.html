@@ -1,6 +1,7 @@
 <div class="container-fluid content">
   <div class="row">
-    <div class="col">
+    <div class="col col-xs-1">
+      <h3 class="header">DASHBOARDS</h3>
       <h1>Profile</h1>
       <hr>
       <p>Always make sure that your profile information is up to date.</p>
@@ -8,37 +9,133 @@
   </div>
 
   <div class="row">
-    <div class="col">
 
-      <div class="container-fluid cont">
+    <div class="col col-xs-1">
+      <div class="container-fluid cont-top">
           <h2>Profile Information</h2>
+        <br>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-1">
             <div class="profile-picture">
-              <img src="../assets/images/user-profile-icon.png">
+              <img *ngIf="!user.picture" src="../assets/images/user-profile-icon.png">
+              <img [src]="user.picture">
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-1">
                 <ul>
-                  <li>aksanood</li>
-                  <li>aksanood@gmail.com</li>
+                  <li><h3>{{user.name.toUpperCase()}}</h3></li>
+                  <li>{{'Username : ' + user.username}}</li>
+                  <li>{{'Email : ' + user.email}}</li>
                 </ul>
             <button mat-raised-button>Edit profile</button>
           </div>
         </div>
       </div>
-
-      <div class="container-fluid cont">
-        dgfgfg
-      </div>
-
     </div>
 
-    <div class="col">
-      <div class="container-fluid cont">
-        dd
+    <div class="col col-xs-1">
+      <div class="container-fluid cont-top">
+
+        <h3>Links to your Phoenix pages</h3>
+        <p>Please use these links for your personal/business use.You can include these in your resume, emails,
+        social media and other websites.</p>
+        <p>Products - <a href="">http://phoenixfcg.com/sanood/products</a></p>
+        <p>Portfolio - <a href="">http://phoenixfcg.com/sanood/portfolio</a></p>
+        <p>Blog - <a href="">http://phoenixfcg.com/sanood/blog</a></p>
+        <p>Tutorials - <a href="">http://phoenixfcg.com/sanood/tutorials</a></p>
+
+
       </div>
     </div>
 
   </div>
+
+  <div class="row">
+    <div class="col col-xs-1">
+      <div class="container-fluid cont-bottom">
+        <form>
+
+          <mat-form-field class="user-info-form">
+            <input matInput disabled type="text" placeholder="Name" [value]="user.name"/>
+          </mat-form-field>
+
+          <mat-form-field class="user-info-form">
+            <input matInput disabled type="text" placeholder="Email" [value]="user.email"/>
+          </mat-form-field>
+
+          <br><br>
+
+          <h3>Contact info</h3>
+          <p>
+            <mat-form-field class="user-info-form">
+              <textarea matInput placeholder="Telephone"></textarea>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field class="user-info-form">
+              <textarea matInput placeholder="Address line 1"></textarea>
+            </mat-form-field>
+            <mat-form-field class="user-info-form">
+              <textarea matInput placeholder="Address line 2"></textarea>
+            </mat-form-field>
+            <mat-form-field class="user-info-form">
+              <textarea matInput placeholder="City"></textarea>
+            </mat-form-field>
+            <mat-form-field class="user-info-form">
+              <textarea matInput placeholder="Country"></textarea>
+            </mat-form-field>
+            <mat-form-field class="user-info-form">
+              <textarea matInput placeholder="Postal code"></textarea>
+            </mat-form-field>
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+    <div class="col col-xs-1">
+      <div class="container-fluid cont-bottom">
+
+        <form>
+
+          <h3>Introduction and profile picture</h3>
+
+          <button mat-raised-button class="btn-upload">Upload image</button>
+
+          <br>
+
+          <mat-form-field class="user-info-form">
+            <textarea matInput placeholder="About me" matTextareaAutosize matAutosizeMinRows="1"
+                      matAutosizeMaxRows="10"></textarea>
+          </mat-form-field>
+          <br><br>
+          <h3>Links</h3>
+          <mat-form-field class="user-info-form">
+            <input matInput type="text" placeholder="Website">
+          </mat-form-field>
+          <mat-form-field class="user-info-form">
+            <input matInput type="text" placeholder="Facebook">
+          </mat-form-field>
+          <mat-form-field class="user-info-form">
+            <input matInput type="text" placeholder="LinkdIn">
+          </mat-form-field>
+          <mat-form-field class="user-info-form">
+            <input matInput type="text" placeholder="Twitter">
+          </mat-form-field>
+          <mat-form-field class="user-info-form">
+            <input matInput type="text" placeholder="Youtube">
+          </mat-form-field>
+          <mat-form-field class="user-info-form">
+            <input matInput type="text" placeholder="Github">
+          </mat-form-field>
+          <br><br><br>
+          <button mat-raised-button>Save</button>
+          <button mat-raised-button>Reset</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
 </div>

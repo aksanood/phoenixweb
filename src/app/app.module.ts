@@ -31,7 +31,9 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
 import { ProductCardComponent } from './product-card/product-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardNavigationComponent } from './dashboard/dashboard-navigation/dashboard-navigation.component';
-
+import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
+import { DashboardUserProfileComponent } from './dashboard/dashboard-user-profile/dashboard-user-profile.component';
+import { DashboardUserProductsComponent } from './dashboard/dashboard-user-products/dashboard-user-products.component';
 
 // Angular Material
 import { MatComponentsModule } from './mat-components.module';
@@ -44,9 +46,7 @@ import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
-import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
-import { DashboardUserProfileComponent } from './dashboard/dashboard-user-profile/dashboard-user-profile.component';
-
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -61,10 +61,12 @@ import { DashboardUserProfileComponent } from './dashboard/dashboard-user-profil
     TestComponent,
     SignupComponent,
     UserProfileComponent,
+
     DashboardComponent,
     DashboardNavigationComponent,
     DashboardOverviewComponent,
     DashboardUserProfileComponent,
+    DashboardUserProductsComponent,
 
     AdminTestComponent,
     ProductsComponent,
@@ -81,6 +83,7 @@ import { DashboardUserProfileComponent } from './dashboard/dashboard-user-profil
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     CustomFormsModule,
     DataTablesModule,
     StarRatingModule.forRoot(),
@@ -102,13 +105,15 @@ import { DashboardUserProfileComponent } from './dashboard/dashboard-user-profil
           {path: '', redirectTo: 'dashboard-overview', pathMatch: 'full'},
           {path: 'dashboard-overview', component: DashboardOverviewComponent},
           {path: 'dashboard-user-profile', component: DashboardUserProfileComponent},
-
-          {path: 'admin/products/new', component: ProductsFormComponent, canActivate: [AdminAuthGuardService]},
-          {path: 'admin/products/:id', component: ProductsFormComponent, canActivate: [AdminAuthGuardService]},
-          {path: 'admin/products', component: ProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService]}
+          {path: 'dashboard-user-products', component: DashboardUserProductsComponent},
 
         ]
       },
+
+      {path: 'admin/products/new', component: ProductsFormComponent, canActivate: [AdminAuthGuardService]},
+      {path: 'admin/products/:id', component: ProductsFormComponent, canActivate: [AdminAuthGuardService]},
+      {path: 'admin/products', component: ProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
+
       {path: 'admin-test', component: AdminTestComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
 
     ])

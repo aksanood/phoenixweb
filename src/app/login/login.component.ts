@@ -24,7 +24,7 @@ export class LoginComponent {
 
   loginWithGoogle() {
     this.dialog.closeAll();
-    this.auth.logIn();
+    this.auth.loginWithGoogle();
   }
 
 }

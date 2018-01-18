@@ -9,3 +9,12 @@
 .content{
   border-radius: 4px;
 }
+
+@media (min-width: 768px){
+  .main-container{max-width: 1500px;}
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+  .main-container{max-width: 100%; padding: 0;}
+}
