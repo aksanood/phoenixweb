@@ -1,11 +1,10 @@
-import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
-import { SidebarComponent} from '../sidebar/sidebar.component';
+import {Component, OnDestroy} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from '../signup/signup.component';
 import {AuthService} from '../auth.service';
 import {AppUser} from '../models/app-user';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -13,12 +12,10 @@ import {Subscription} from "rxjs/Subscription";
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnDestroy{
+export class NavbarComponent implements OnDestroy {
 
-  // Sidebar open variables
-  sidebar: SidebarComponent = new SidebarComponent();
-  @Output() navToggle = new EventEmitter<boolean>();
-
+  login = false;
+  show = false;
   appUser: AppUser;
   subscription: Subscription;
 
@@ -26,18 +23,8 @@ export class NavbarComponent implements OnDestroy{
     this.subscription = auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
-  login = false;
-  signup = false;
-  show = false;
-  showNav = false;
-  showSideNav = false;
-
   toggleCollapse() {
     this.show = !this.show;
-  }
-
-  toggleSidebar() {
-    this.navToggle.emit(true);
   }
 
   // open Login

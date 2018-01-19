@@ -40,4 +40,5 @@ export class ProductFilterComponent implements OnInit {
     console.log('Reesetttt');
   }
 
+  isChecked(){}
 }

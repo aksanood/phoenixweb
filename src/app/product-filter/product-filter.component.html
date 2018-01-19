@@ -30,7 +30,7 @@
       <div class="header"><h3>Price</h3></div>
       <div>
 
-        <mat-radio-group [(ngModel)]="change">
+        <mat-radio-group>
           <mat-radio-button *ngFor="let a of array" (change)="radioChange($event)" [value]="a" >{{a}}</mat-radio-button>
         </mat-radio-group>
 

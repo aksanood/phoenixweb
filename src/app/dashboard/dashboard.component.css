@@ -1,14 +1,8 @@
-.container{
-  padding: 0;
-}
 
-.navigation{
-  border-radius: 4px;
-}
-
-.content{
-  border-radius: 4px;
-}
+h2 {letter-spacing: 4px;margin-bottom: 20px;}
+hr{margin: 20px 15px 20px 15px;background-color: #2C3033;}
+.input-group{height: 40px;margin-bottom: 20px;border-radius: 2px;}
+.form-control{background-color: #2C3033;border-radius: 2px;border: solid 1px;border-right: none;}
 
 @media (min-width: 768px){
   .main-container{max-width: 1500px;}

@@ -1,27 +1,56 @@
 
 <div class="container main-container">
 
-  <div class="row">
+  <div class="container-fluid" >
 
-    <div class="col-md-3">
-      <div class="container-fluid navigation">
-        <div class="row">
-          <div class="col"><h1>Navigation</h1></div>
-        </div>
+    <div class="row">
+      <div class="col-md-12 col-xs-1">
+        <h2>DASHBOARD</h2>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="col">
-            <app-dashboard-navigation></app-dashboard-navigation>
+    <div class="row">
+      <div class="col-md-12 col-xs-1">
+        <div class="input-group">
+          <input
+            #query
+            (keyup)="searchDashboard(query.value)"
+            class="form-control" type="text" placeholder="Search dashboard..." aria-label="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
           </div>
         </div>
       </div>
     </div>
 
+  </div>
 
-    <div class="col-md-9">
-     <router-outlet></router-outlet>
+
+
+
+  <hr>
+
+
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <app-dashboard-navigation></app-dashboard-navigation>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+
     </div>
-
   </div>
 
 </div>

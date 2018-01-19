@@ -15,7 +15,7 @@
 .or::before,
 .or::after {
   position: absolute;
-  width: 130px;
+  width: 45%;
   height: 1px;
   top: 24px;
   background-color: #aaa;

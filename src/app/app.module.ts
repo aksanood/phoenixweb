@@ -20,7 +20,6 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { TestComponent } from './test/test.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminTestComponent } from './admin-test/admin-test.component';
@@ -46,13 +45,12 @@ import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
-import {HttpModule} from "@angular/http";
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent,
     HomeComponent,
     FooterComponent,
     LoginComponent,
@@ -94,8 +92,9 @@ import {HttpModule} from "@angular/http";
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      {path: '', redirectTo: 'test', pathMatch: 'full'}, // Change to home Component
+      {path: '', redirectTo: 'home', pathMatch: 'full'}, // Change to home Component
       {path: 'test', component: TestComponent},
+      {path: 'home', component: HomeComponent},
       {path: 'login', component: LoginComponent},
       {path: 'about', component: AboutComponent},
       {path: 'marketplace', component: MarketplaceComponent},

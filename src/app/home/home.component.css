@@ -1,0 +1,18 @@
+
+.container-fluid{padding: 0px !important;}
+.first-container{height: 400px; background-color: #0F7BFD;}
+.second-container{height: 400px; background-color: #fd2908;}
+.third-container{height: 400px; background-color: #19fd13;}
+.fourth-container{height: 400px; background-color: #ed14fd;}
+.first-container{height: 400px; background-color: #fde80b;}
+
+
+/*========= Desktop ========*/
+@media (min-width: 768px){
+
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+
+}

@@ -1,63 +1,6 @@
-
-.footer #button{
-  width:70px;
-  height:70px;
-  border: #727172 12px solid;
-  opacity: 0.3;
-  border-radius:35px;
-  margin:0 auto;
-  position:relative;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.footer #button:hover{
-  width:35px;
-  height:35px;
-  border: #3A3A3A 12px solid;
-  opacity: 0;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  transition: all 1s ease;
-  position:relative;
-}
-.footer {
-  bottom:0;
-  left:0;
-  position:fixed;
-  width: 100%;
-  height: 2em;
-  overflow:hidden;
-  margin:0 auto;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  transition: all 1s ease;
-  z-index:999;
-}
-.footer:hover {
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  transition: all 1s ease;
-  height: 25em;
-}
-.footer #container{
-  width:100%;
-  height:100%;
-  position:relative;
-  background: #3A3A3A;
-}
-
 .footer_content{
   background-color: #1a1a1a;
-  padding:10px 200px 0px 200px;
+  padding:10px 10% 0px 10%;
 }
 
 .footer h3{
@@ -74,8 +17,8 @@
 }
 
 .icon{
-display: inline-block;
-  margin: 0px 20px 0px 20px;
+  display: inline-block;
+  margin: 0px 0px 0px 0px;
   padding: 10px;
   vertical-align: middle;
   text-align: center;
@@ -94,3 +37,76 @@ display: inline-block;
   width: 1em;
 }
 
+
+/*========= Desktop ========*/
+@media (min-width: 768px){
+
+  .footer #button{
+    width:70px;
+    height:70px;
+    border: #727172 12px solid;
+    opacity: 0.3;
+    border-radius:35px;
+    margin:0 auto;
+    position:relative;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .footer #button:hover{
+    width:35px;
+    height:35px;
+    border: #3A3A3A 12px solid;
+    opacity: 0;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    position:relative;
+  }
+  .footer {
+    bottom:0;
+    left:0;
+    position:fixed;
+    width: 100%;
+    height: 2em;
+    overflow:hidden;
+    margin:0 auto;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index:999;
+  }
+  .footer:hover {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    height: 25em;
+  }
+  .footer #container{
+    width:100%;
+    height:100%;
+    position:relative;
+    background: #3A3A3A;
+  }
+
+
+
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+
+  .mr-auto{width: 100%; padding: 0px; margin: 0px;}
+  .ml-auto{flex-direction: row; padding: 0px 0% 0px 0%; margin: 20px 0px 0px 0px; width: 100%; align-items: center;}
+  .footer_content{padding: 0px;}
+
+
+}

@@ -11,9 +11,17 @@ $app-warn: mat-palette($mat-red);
 $app-background: mat-palette($mat-red);
 $app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 @include angular-material-theme($app-theme);
-.mat-app-background{
-  background-color: #151A1D;
-}
+
+body{background-color: #151A1D; color: #FEFEFE; display: flex;flex-direction: column;height: 100vh;}
+.nav-color{background-color: #070c10;}
+h1{}
+h2{}
+h3{}
+h4{}
+h5{}
+h6{}
+p{color: #FEFEFE}
+
 
 /*========= Alternative Theme ========*/
 $alt-primary: mat-palette($mat-yellow);
