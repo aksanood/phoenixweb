@@ -56,8 +56,8 @@
         <div class="col-md-9 col-xs-1">
           <div class="row">
             <ng-container *ngFor="let p of filteredProducts; let i = index">
-              <div class="col-md-4 card123 col-xs-1">
-                <app-product-card [product]="p" [show-description]="false"></app-product-card>
+              <div class="col-md-4 col-xs-1">
+                <app-product-card  [product]="p" [show-description]="false" [routerLink]="['../product-view/', p.$key]"></app-product-card>
               </div>
             </ng-container>
           </div>

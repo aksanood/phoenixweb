@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy} from '@angular/core';
 import {ProductService} from '../product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../models/products';
 import 'rxjs/add/operator/switchMap';
 import {Subscription} from 'rxjs/Subscription';
@@ -14,10 +14,9 @@ import {CategoryService} from '../category.service';
 export class MarketplaceComponent implements OnDestroy{
 
   products: Product[] = [];
-  filteredProducts: Product[] = [];
+  filteredProducts: any[];
   category: string;
   categories$;
-  catName: string;
   subscription: Subscription;
 
   constructor(
@@ -25,7 +24,7 @@ export class MarketplaceComponent implements OnDestroy{
     productService: ProductService,
     categoryService: CategoryService) {
 
-    this.categories$ = categoryService.getAll();
+    this.categories$ = categoryService.getAllProductCategories();
 
 
      this.subscription = productService
@@ -67,7 +66,7 @@ export class MarketplaceComponent implements OnDestroy{
       this.products;
   }
 
-  filterByPriceRange(){
+  filterByPriceRange() {
 
   }
 

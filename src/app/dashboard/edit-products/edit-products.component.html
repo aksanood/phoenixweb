@@ -1,0 +1,52 @@
+
+<div class="container-fluid main-container">
+
+  <div class="row">
+    <div class="col-md-12 col-xs-1">
+
+      <div class="container-fluid first-row">
+        <button (click)="openForm()" mat-raised-button>Add Product</button>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-xs-1">
+
+      <div class="container-fluid">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+          <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Edit</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let p of products">
+            <td>
+              <div class="container-fluid image-container">
+                <img [src]="p.imageUrl">
+              </div>
+            </td>
+            <td>{{p.title}}</td>
+            <td>{{p.category}}</td>
+            <td>{{p.price | currency: 'USD': "symbol-narrow"}}</td>
+            <td>
+              <a [routerLink]="['/dashboard/add-product/', p.$key]">Edit</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>

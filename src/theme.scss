@@ -12,7 +12,7 @@ $app-background: mat-palette($mat-red);
 $app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 @include angular-material-theme($app-theme);
 
-body{background-color: #151A1D; color: #FEFEFE; display: flex;flex-direction: column;height: 100vh;}
+body{background-color: #151A1D; color: #FEFEFE; display: flex;flex-direction: column;height: 100vh; overflow-x: hidden;}
 .nav-color{background-color: #070c10;}
 h1{}
 h2{}
@@ -54,9 +54,11 @@ $alt-theme: mat-light-theme($alt-primary, $alt-accent);
 /*========= Data Table ========*/
 
 .dataTables_wrapper{
-  background-color: #c0bbb9;
-  padding: 10px;
+  background-color: transparent;
+  padding: 15px;
+  border: solid 1px green;
   border-radius: 2px;
+  color: white;
 }
 thead{
   background-color: #aaaaaa;

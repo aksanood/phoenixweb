@@ -24,7 +24,7 @@ import { SignupComponent } from './signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminTestComponent } from './admin-test/admin-test.component';
 import { ProductsComponent } from './admin/products/products.component';
-import { ProductsFormComponent } from './admin/products-form/products-form.component';
+import { ProductsFormComponent } from './admin/products/products-form/products-form.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
@@ -33,6 +33,10 @@ import { DashboardNavigationComponent } from './dashboard/dashboard-navigation/d
 import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardUserProfileComponent } from './dashboard/dashboard-user-profile/dashboard-user-profile.component';
 import { DashboardUserProductsComponent } from './dashboard/dashboard-user-products/dashboard-user-products.component';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { EditProductsComponent } from './dashboard/edit-products/edit-products.component';
+import { AddProductComponent } from './dashboard/add-product/add-product.component';
+import { TutorialsComponent } from './tutorials/tutorials.component';
 
 // Angular Material
 import { MatComponentsModule } from './mat-components.module';
@@ -45,7 +49,8 @@ import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +64,7 @@ import {HttpModule} from '@angular/http';
     TestComponent,
     SignupComponent,
     UserProfileComponent,
+    TutorialsComponent,
 
     DashboardComponent,
     DashboardNavigationComponent,
@@ -71,6 +77,10 @@ import {HttpModule} from '@angular/http';
     ProductsFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
+    ProductViewComponent,
+    EditProductsComponent,
+    AddProductComponent,
+
 
   ],
   entryComponents: [
@@ -96,8 +106,11 @@ import {HttpModule} from '@angular/http';
       {path: 'test', component: TestComponent},
       {path: 'home', component: HomeComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'signup', component: SignupComponent},
       {path: 'about', component: AboutComponent},
       {path: 'marketplace', component: MarketplaceComponent},
+      {path: 'product-view/:id', component: ProductViewComponent},
+      {path: 'tutorials', component: TutorialsComponent},
 
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],
         children: [
@@ -105,6 +118,10 @@ import {HttpModule} from '@angular/http';
           {path: 'dashboard-overview', component: DashboardOverviewComponent},
           {path: 'dashboard-user-profile', component: DashboardUserProfileComponent},
           {path: 'dashboard-user-products', component: DashboardUserProductsComponent},
+          {path: 'add-product', component: AddProductComponent},
+          {path: 'add-product/:id', component: AddProductComponent},
+          {path: 'edit-products', component: EditProductsComponent},
+
 
         ]
       },

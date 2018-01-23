@@ -17,7 +17,9 @@ export class AuthService {
     private userService: UserService,
     private afAuth: AngularFireAuth,
     private route: ActivatedRoute) {
+
     this.user$ = afAuth.authState;
+
   }
 
   loginWithGoogle() {
