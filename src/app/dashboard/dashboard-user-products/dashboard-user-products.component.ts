@@ -24,6 +24,7 @@ export class DashboardUserProductsComponent implements OnInit, OnDestroy{
   dtTrigger: Subject<any> = new Subject();
 
   constructor(private auth: AuthService, private productService: ProductService, route: ActivatedRoute) {
+    this.appUser = {username: 'username', email: 'username@domain.com', isAdmin: false, picture: 'http::/jsjdj/djjs.com', name: 'John Doe'};
     this.userSubscription = auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.productSubscription =  this.productService.getAll()
       .subscribe(p => {

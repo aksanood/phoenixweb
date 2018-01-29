@@ -14,6 +14,7 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
   subscription: Subscription;
 
   constructor(private auth: AuthService) {
+    this.user = {username: 'username', email: 'username@domain.com', isAdmin: false, picture: 'http::/jsjdj/djjs.com', name: 'John Doe'};
     this.subscription = auth.appUser$.subscribe(user => this.user = user);
   }
 

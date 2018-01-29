@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
 
   // Hide password
   hide = true;
-  nav: NavbarComponent = new NavbarComponent(this.dialog, this.auth);
+  //nav: NavbarComponent = new NavbarComponent(this.dialog, this.auth);
 
   constructor(public dialog: MatDialog, private auth: AuthService) { }
 
@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
 
   openLogin() {
     this.dialog.closeAll();
-    this.nav.openLogin();
+    //this.nav.openLogin();
   }
 
 }

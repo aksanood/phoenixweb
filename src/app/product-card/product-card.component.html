@@ -9,7 +9,7 @@
       <div class="col-8">
         <star-rating-comp style="margin-left: 0" [starType]="'svg'" [rating]="2.63"></star-rating-comp>
         <h3 class="card-title"><a>{{product.title}}</a></h3>
-        <p *ngIf="product.price === 0; else display_price" class="card-text">Free</p>
+        <p *ngIf="product.price === 0; else display_price" class="card-text card-price">Free</p>
         <ng-template #display_price>
           <p class="card-text card-price">{{product.price | currency: 'USD':"symbol-narrow"}}</p>
         </ng-template>

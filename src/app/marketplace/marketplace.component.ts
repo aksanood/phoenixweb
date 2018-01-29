@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../models/products';
@@ -11,7 +11,7 @@ import {CategoryService} from '../category.service';
   templateUrl: './marketplace.component.html',
   styleUrls: ['./marketplace.component.css']
 })
-export class MarketplaceComponent implements OnDestroy{
+export class MarketplaceComponent implements OnDestroy {
 
   products: Product[] = [];
   filteredProducts: any[];
@@ -33,7 +33,6 @@ export class MarketplaceComponent implements OnDestroy{
       this.products = products;
       return route.queryParamMap;
       })
-
       .subscribe(params => {
         this.category = params.get('category');
 

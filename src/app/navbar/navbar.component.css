@@ -28,6 +28,8 @@
 
   /* Search Menu */
   .form-control{margin-right: 0px !important;}
+  .shopping-cart{margin-top: 5px; margin-right: 10px;}
+  .shopping-cart:hover{cursor: pointer;}
 }
 
 /*========= Mobile ========*/

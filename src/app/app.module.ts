@@ -50,6 +50,7 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
 import { HttpModule } from '@angular/http';
+import {ShoppingCartService} from "./shopping-cart.service";
 
 
 @NgModule({
@@ -140,7 +141,8 @@ import { HttpModule } from '@angular/http';
     UserService,
     AdminAuthGuardService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

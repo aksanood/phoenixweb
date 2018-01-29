@@ -12,14 +12,14 @@ export class LoginComponent {
 
   constructor(public dialog: MatDialog, private auth: AuthService) {
   }
-  nav: NavbarComponent = new NavbarComponent(this.dialog, this.auth);
+  //nav: NavbarComponent = new NavbarComponent(this.dialog, this.auth);
 
   // Hide password
   hide = true;
 
   openSignup() {
     this.dialog.closeAll();
-    this.nav.openSignup();
+   // this.nav.openSignup();
   }
 
   loginWithGoogle() {
