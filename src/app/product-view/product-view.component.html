@@ -79,27 +79,27 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <button *ngIf="!ifAdded(); else addedToCart "
-                          (click)="addToCart()" mat-raised-button
-                          class="mat-primary">Add to cart</button>
 
-                  <ng-template #addedToCart>
-                    <div class="row no-gutters">
+                  <ng-container *ngIf="cart$ | async as cart">
+                    <button *ngIf="!cart.itemAdded(product); else addedToCart "
+                            (click)="addToCart()" mat-raised-button
+                            class="mat-primary">Add to cart</button>
 
-                      <div class="col-4">
-                        <button (click)="addToCart()">Added to cart</button>
+                    <ng-template #addedToCart>
+                      <div class="row no-gutters">
+
+                        <div class="col-8 text-center">
+                          <h3>Added to cart</h3>
+                        </div>
+
+                        <div class="col-4">
+                          <button (click)="removeFromCart()" class="btn btn-secondary btn-block">Remove</button>
+                        </div>
+
                       </div>
-
-                      <div class="col-4 text-center">
-
-                      </div>
-
-                      <div class="col-4">
-                        <button (click)="removeFromCart()" class="btn btn-secondary btn-block">Remove</button>
-                      </div>
-
-                    </div>
-                  </ng-template>
+                    </ng-template>
+                    <div>{{cart.itemAdded(product)}}</div>
+                  </ng-container>
 
                 </div>
               </div>

@@ -1,21 +1,18 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute} from '@angular/router';
-import {Product} from "../models/products";
 import {ShoppingCartService} from "../shopping-cart.service";
-import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.css']
 })
-export class ProductViewComponent implements OnInit, OnDestroy {
+export class ProductViewComponent implements OnInit {
 
   product;
   id;
-  cart: any;
-  subscription: Subscription;
+  cart$;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
@@ -36,27 +33,7 @@ export class ProductViewComponent implements OnInit, OnDestroy {
     this.cartService.removeFromCart(this.product);
   }
 
-
-  ifAdded () {
-   // let added = this.cart.items[this.product.$key.addedToCart];
-   // if(added) return true;
-   return true;
-  }
-
-  getQuantity() {
-    if(!this.cart) return 0;
-
-    let item = this.cart.items[this.product.$key];
-    console.log(item.quantity);
-    return item ? item.quantity : 0;
-  }
-
   async ngOnInit() {
-    this.subscription = (await this.cartService.getCart()).subscribe(cart => this.cart);
-    console.log(this.cart);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.cart$ = await this.cartService.getCart();
   }
 }

@@ -38,9 +38,9 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item">
-        <a class="nav-link shopping-cart">
+        <a routerLink="/shopping-cart" class="nav-link shopping-cart">
           <i class="fa fa-media fa-opencart fa-fw"></i>
-          <span class="badge badge-warning badge-pill">{{shoppingCartItemCount}}</span>
+          <span *ngIf="cart$ | async as cart" class="badge badge-warning badge-pill">{{cart.numberOfItems}}</span>
         </a>
       </li>
 

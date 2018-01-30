@@ -6,6 +6,9 @@ import {AuthService} from '../auth.service';
 import {AppUser} from '../models/app-user';
 import {Subscription} from 'rxjs/Subscription';
 import {ShoppingCartService} from "../shopping-cart.service";
+import {ShoppingCartItem} from "../models/shopping-cart-item";
+import {Observable} from "rxjs/Observable";
+import {ShoppingCart} from "../models/shopping-cart";
 
 
 @Component({
@@ -19,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   show = false;
   appUser: AppUser;
   subscription: Subscription;
-  shoppingCartItemCount: number;
+  cart$: Observable<ShoppingCart>;
 
   constructor(public dialog: MatDialog,
               private auth: AuthService,
@@ -54,11 +57,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.subscription = this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    let cart$ =  await this.shoppingCartService.getCart();
-    cart$.subscribe(cart => {
-      this.shoppingCartItemCount = 0;
-      this.shoppingCartItemCount = cart.numberOfItems;
-    });
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 
   ngOnDestroy () {

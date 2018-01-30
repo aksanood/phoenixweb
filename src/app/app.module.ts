@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { CustomFormsModule} from 'ng2-validation';
 import { DataTablesModule} from 'angular-datatables';
 import { StarRatingModule} from 'angular-star-rating';
+import { HttpModule } from '@angular/http';
 
 // Router Components
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { EditProductsComponent } from './dashboard/edit-products/edit-products.component';
 import { AddProductComponent } from './dashboard/add-product/add-product.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 // Angular Material
 import { MatComponentsModule } from './mat-components.module';
@@ -49,8 +51,7 @@ import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
-import { HttpModule } from '@angular/http';
-import {ShoppingCartService} from "./shopping-cart.service";
+import {ShoppingCartService} from './shopping-cart.service';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import {ShoppingCartService} from "./shopping-cart.service";
     ProductViewComponent,
     EditProductsComponent,
     AddProductComponent,
+    ShoppingCartComponent,
 
 
   ],
@@ -112,6 +114,7 @@ import {ShoppingCartService} from "./shopping-cart.service";
       {path: 'marketplace', component: MarketplaceComponent},
       {path: 'product-view/:id', component: ProductViewComponent},
       {path: 'tutorials', component: TutorialsComponent},
+      {path: 'shopping-cart', component: ShoppingCartComponent},
 
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],
         children: [

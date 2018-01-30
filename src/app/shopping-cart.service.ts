@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database-deprecated';
 import {Product} from './models/products';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
+import { Observable} from 'rxjs/Observable';
 import {ShoppingCart} from './models/shopping-cart';
 
 @Injectable()
@@ -16,16 +18,11 @@ export class ShoppingCartService {
     });
   }
 
-  async getCart(): Promise<FirebaseObjectObservable<ShoppingCart>> {
-    let cartId = await this.getOrCreateCartId();
-    return this.db.object('/shopping-carts/' + cartId);
-  }
-
   private getItem(cartId: string, productId: string) {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
 
-  deleteItem(cartId: string, productId: string) {
+  private deleteItem(cartId: string, productId: string) {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId).remove();
   }
 
@@ -40,6 +37,12 @@ export class ShoppingCartService {
     let result = await this.create();
     localStorage.setItem('cartId', result.key);
     return result.key;
+  }
+
+  async getCart(): Promise<Observable<ShoppingCart>> {
+    let cartId = await this.getOrCreateCartId();
+    return this.db.object('/shopping-carts/' + cartId)
+      .map(x => new ShoppingCart(x.items, x.numberOfItems));
   }
 
   async addToCart (product: Product) {
@@ -60,7 +63,6 @@ export class ShoppingCartService {
 
   async removeFromCart (product: Product) {
     let cartId = await this.getOrCreateCartId();
-    let item$ = this.getItem(cartId, product.$key);
     let number$ = this.getNumOfItems(cartId);
     this.deleteItem(cartId, product.$key);
     number$.take(1).subscribe(number => {
