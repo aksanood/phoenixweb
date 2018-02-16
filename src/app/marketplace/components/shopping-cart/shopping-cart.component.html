@@ -1,0 +1,79 @@
+
+<div class="container main-container">
+
+  <div class="container-fluid" >
+
+    <div class="row">
+      <div class="col-md-12 col-xs-1">
+        <h2>MARKETPLACE</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-xs-1">
+        <div class="input-group">
+          <input
+            #query
+            class="form-control" type="text" placeholder="Search marketplace..." aria-label="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-xs-1">
+
+        <h2>Your shopping cart</h2>
+
+        <div class="row col-10" *ngIf="cart$ | async as cart">
+          <p>You have {{cart.numberOfItems}} items in your shopping cart.</p>
+
+          <button
+            *ngIf="cart.items.length"
+            (click)="clearAllItems()"
+            mat-raised-button class="btn-sm">Clear cart</button>
+
+          <table class="table">
+            <thead>
+            <tr>
+              <th></th>
+              <th>Product</th>
+              <th class="text-center">Discount</th>
+              <th class="text-right">Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let item of cart.items">
+              <td><div class="thumbnail" [style.backgroundImage]="'url(' + item.imageUrl + ')'"></div></td>
+              <td>{{ item.title }}</td>
+              <td class="text-center"><button mat-raised-button (click)="removeItem(item.$key)">Remove</button></td>
+              <td class="text-right">{{ item.price | currency: 'USD':code }}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Total amount</th>
+              <th class="text-right">{{ cart.totalPrice | currency: 'USD':code }}</th>
+            </tr>
+            </tfoot>
+          </table>
+
+          <a
+            routerLink="/check-out"
+            *ngIf="cart.items.length"
+            mat-raised-button>Check out</a>
+        </div>
+
+      </div>
+    </div>
+  </div>

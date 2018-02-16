@@ -1,0 +1,55 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { DataTablesModule } from 'angular-datatables/src/angular-datatables.module';
+import { AddProductComponent } from 'app/dashboard/components/add-product/add-product.component';
+import { DashboardNavigationComponent } from 'app/dashboard/components/dashboard-navigation/dashboard-navigation.component';
+import { DashboardOverviewComponent } from 'app/dashboard/components/dashboard-overview/dashboard-overview.component';
+import { DashboardUserOrdersComponent } from 'app/dashboard/components/dashboard-user-orders/dashboard-user-orders.component';
+import { DashboardUserProductsComponent } from 'app/dashboard/components/dashboard-user-products/dashboard-user-products.component';
+import { DashboardUserProfileComponent } from 'app/dashboard/components/dashboard-user-profile/dashboard-user-profile.component';
+import { DashboardComponent } from 'app/dashboard/components/dashboard/dashboard.component';
+import { EditProductsComponent } from 'app/dashboard/components/edit-products/edit-products.component';
+import { MatComponentsModule } from 'app/mat-components.module';
+import { AuthGuardService } from 'shared/services/auth-guard.service';
+import { SharedModule } from 'shared/shared.module';
+import { DashboardUserBlogComponent } from './components/dashboard-user-blog/dashboard-user-blog.component';
+import { AddPostComponent } from 'app/dashboard/components/add-post/add-post.component';
+
+@NgModule({
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],
+        children: [
+          {path: '', redirectTo: 'dashboard-overview', pathMatch: 'full'},
+          {path: 'dashboard-overview', component: DashboardOverviewComponent},
+          {path: 'dashboard-user-profile', component: DashboardUserProfileComponent},
+          {path: 'dashboard-user-products', component: DashboardUserProductsComponent},
+          {path: 'dashboard-user-orders', component: DashboardUserOrdersComponent},
+          {path: 'add-product', component: AddProductComponent},
+          {path: 'add-product/:id', component: AddProductComponent},
+          {path: 'edit-products', component: EditProductsComponent},
+          {path: 'dashboard-user-blog', component: DashboardUserBlogComponent},
+          {path: 'add-post', component: AddPostComponent},
+          {path: 'add-post/:id', component: AddPostComponent},
+          
+        ]
+      },
+    ])
+  ],
+  declarations: [
+    DashboardComponent,
+    DashboardNavigationComponent,
+    DashboardOverviewComponent,
+    DashboardUserProfileComponent,
+    DashboardUserProductsComponent,
+    DashboardUserOrdersComponent,
+    AddProductComponent,
+    EditProductsComponent,
+    DashboardUserBlogComponent,
+    AddPostComponent
+  ]
+})
+export class DashboardModule { }

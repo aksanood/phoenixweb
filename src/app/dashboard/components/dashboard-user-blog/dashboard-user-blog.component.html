@@ -1,0 +1,28 @@
+
+<button (click)="addPost()" mat-raised-button>+ New post</button>
+
+<div class="container-fluid">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Edit</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let p of userPosts">
+        <td>
+          <div class="container-fluid image-container">
+            <img [src]="p.imageUrl">
+          </div>
+        </td>
+        <td>{{p.title}}</td>
+        <td>
+          <a [routerLink]="['/dashboard/add-post/', p.$key]">Edit post</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

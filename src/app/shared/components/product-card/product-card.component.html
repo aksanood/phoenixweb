@@ -1,0 +1,25 @@
+
+<div *ngIf="product.title" class="card panel-color drop-shadow">
+  <div class="item">
+    <img class="card-img-top" [src]="product.imageUrl" alt="{{product.title}}" *ngIf="product.imageUrl" >
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-8">
+        <star-rating-comp style="margin-left: 0" [starType]="'svg'" [rating]="2.63"></star-rating-comp>
+        <h3 class="card-title">{{product.title}}</h3>
+        <p *ngIf="product.price === 0; else display_price" class="card-text card-price">Free</p>
+        <ng-template #display_price>
+          <p class="card-text card-price">{{product.price | currency: 'USD':"symbol-narrow"}}</p>
+        </ng-template>
+        <p *ngIf="showDescription" class="card-text">{{product.description}}</p>
+      </div>
+
+      <div class="col-4">
+        <div class="right"><p>{{product.user}}</p></div>
+      </div>
+    </div>
+
+  </div>
+</div>

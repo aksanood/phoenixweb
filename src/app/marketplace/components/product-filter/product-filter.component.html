@@ -1,0 +1,67 @@
+
+<div class="container-fluid">
+
+  <div class="filter-component drop-shadow">
+    <div class="list-group">
+      <a
+        (click)="reset()"
+        class="list-group-item list-group-item-action panel-color"
+        [class.active]="!category"
+        routerLink="/marketplace/"
+      >All Categories</a>
+      <a
+        (click)="reset()"
+        *ngFor="let c of categories$ | async"
+        routerLink="/marketplace/"
+        [queryParams]="{category: c.$key}"
+        class="list-group-item list-group-item-action panel-color"
+        [class.active]="category === c.$key"
+      >
+        {{c.name}}
+      </a>
+    </div>
+  </div>
+
+
+
+
+  <div class="filter-component panel-color drop-shadow">
+    <div class="sort-by-price">
+      <div class="header"><h3>Price</h3></div>
+      <div>
+
+        <mat-radio-group>
+          <mat-radio-button *ngFor="let a of array" (change)="radioChange($event)" [value]="a" >{{a}}</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field class="input-text">
+          <input matInput placeholder="Min price">
+        </mat-form-field>
+        <mat-form-field class="input-text">
+          <input matInput placeholder="Max price">
+        </mat-form-field>
+        <button mat-raised-button (click)="isChecked()">Go</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-component panel-color drop-shadow">
+    <div class="sort-by-rating">
+      <div class="header"><h3>Rating</h3></div>
+      <div>
+        <mat-radio-button>All</mat-radio-button>
+        <br>
+        <mat-radio-button><star-rating-comp [disabled]="true"  [starType]="'svg'" [rating]="1"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="2"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="3"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="4"></star-rating-comp></mat-radio-button>
+        <mat-radio-button><star-rating-comp [disabled]="true" [starType]="'svg'" [rating]="5"></star-rating-comp></mat-radio-button>
+        <mat-radio-button>Unrated</mat-radio-button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+

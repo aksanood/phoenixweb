@@ -1,0 +1,68 @@
+
+<h2>Add New Post</h2>
+
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+
+  <!--
+  Can use for tutorials need to make a defferent category list for tutorials and blog posts
+  <div class="form-group">
+    <label for="category"><h4>Category</h4></label>
+    <select id="category" class="form-control">
+      <option value=""></option>
+      <option *ngFor="let c of categories$ | async " [value]="c.$key">{{ c.name }}</option>
+    </select>
+  </div>
+  -->
+  <div class="form-group">
+    <input type="hidden" #user="ngModel" [(ngModel)]="appUser.$key" name="user" id="user" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="title"><h4>Title</h4></label>
+    <input #title="ngModel" [(ngModel)]="post.title" name="title" id="title" type="text" class="form-control" 
+    placeholder="Please enter the title of your post..." required>
+    <div class="alert" *ngIf="title.touched && title.invalid">
+      <div *ngIf="title.errors.required">*Title is required.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="imageUrl"><h4>Cover photo Url</h4></label>
+    <input #imageUrl="ngModel" [(ngModel)]="post.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" 
+    placeholder="Please enter cover photo url here..." required url>
+    <div class="alert" *ngIf="imageUrl.touched && imageUrl.invalid">
+      <div *ngIf="imageUrl.errors.required">*Image Url is required.</div>
+      <div *ngIf="imageUrl.errors.url">*Please enter a valid Url.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label for="intro"><h4>Introduction</h4></label>
+      <textarea #intro="ngModel" [(ngModel)]="post.intro" name="intro" id="intro" type="text" class="form-control" rows="10"
+      placeholder="Brief introduction to your post..." required></textarea>
+      <div class="alert" *ngIf="intro.touched && intro.invalid">
+        <div *ngIf="intro.errors.required">*Introduction is required.</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="htmlContent"><h4>Body</h4></label>
+    <app-ngx-editor
+      name="htmlContent"
+      [placeholder]="'Enter text here...'"
+      [spellcheck]="true"
+      [(ngModel)]="post.htmlContent"
+      resizer="stack"
+      minHeight="500px"
+      id="htmlContent"
+      required>
+    </app-ngx-editor>
+  </div>
+
+  <div class="button-container float-right">
+    <button color="primary" mat-raised-button type="button" (click)="openPreview()">Preview</button>
+    <button color="warn" mat-raised-button *ngIf="id" type="button" (click)="delete()">Delete</button>
+    <button color="accent" mat-raised-button type="submit" value="Submit">Submit</button>
+  </div>
+
+</form>

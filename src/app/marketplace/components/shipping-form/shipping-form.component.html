@@ -1,0 +1,108 @@
+<div class="shipping-form">
+    <form #f="ngForm">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="">First Name</label>
+                <input #firstName="ngModel" name="firstName" [(ngModel)]="shipping.firstName" type="text" class="form-control" required>
+                <div class="alert" *ngIf="firstName.touched && firstName.invalid">
+                  <div *ngIf="firstName.errors.required">*Name is required.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="">Last Name</label>
+                <input #lastName="ngModel" name="lastName" [(ngModel)]="shipping.lastName" type="text" class="form-control" required>
+                <div class="alert" *ngIf="lastName.touched && lastName.invalid">
+                  <div *ngIf="lastName.errors.required">*Last Name is required.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+        
+        <div class="form-group">
+          <label for="">Address Line 1</label>
+          <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" placeholder="Line 1" required>
+          <div class="alert" *ngIf="addressLine1.touched && addressLine1.invalid">
+            <div *ngIf="addressLine1.errors.required">*Address Line 1 is required.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Address Line 1 (Optional)</label>
+          <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="shipping.addressLine2" type="text" class="form-control" placeholder="Line 2">
+        </div>
+
+        <div class="row">
+          <div class="col-md-5">
+              <div class="form-group">
+                  <label for="">Country</label>
+                  <input #country="ngModel" name="country" [(ngModel)]="shipping.country" type="text" class="form-control" required>
+                  <div class="alert" *ngIf="country.touched && country.invalid">
+                    <div *ngIf="country.errors.required">*Country is required.</div>
+                  </div>
+                </div>
+          </div>
+
+          <div class="col-md-4">
+              <div class="form-group">
+                  <label for="">City</label>
+                  <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" required>
+                  <div class="alert" *ngIf="city.touched && city.invalid">
+                    <div *ngIf="city.errors.required">*City is required.</div>
+                  </div>
+                </div>
+          </div>
+
+          <div class="col-md-3">
+              <div class="form-group">
+                  <label for="">Postcode</label>
+                  <input #postcode="ngModel" name="postcode" [(ngModel)]="shipping.postcode" type="text" class="form-control" required>
+                  <div class="alert" *ngIf="postcode.touched && postcode.invalid">
+                    <div *ngIf="postcode.errors.required">*Postcode is required.</div>
+                  </div>
+                </div>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+
+        <h4 class="mb-3">Payment</h4>
+        
+        <div class="d-block my-3 alternative">
+            <mat-radio-group>
+                <mat-radio-button [checked]="true" class="mx-3" value="1">PayPal</mat-radio-button>
+                <mat-radio-button class="mx-3" value="2">Credit Card</mat-radio-button>
+                <mat-radio-button class="mx-3" value="3">Debit Card</mat-radio-button>
+              </mat-radio-group>
+        </div>
+        
+        <div class="paypal">
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">PayPal account email</label>
+                    <input #email="ngModel" name="email" [(ngModel)]="payment.email" type="email" class="form-control" required
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                    <div class="alert" *ngIf="email.touched && email.invalid">
+                      <div *ngIf="email.errors.required">*Please enter your PayPal account.</div>
+                      <div  *ngIf="email.errors && email.errors.pattern">*Email is invalid</div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="mb-4">
+        <button
+          [disabled]="!f.valid"
+          (click)="placeOrder()"
+          class="btn btn-primary">Place Order</button>
+      </form>
+</div>
+

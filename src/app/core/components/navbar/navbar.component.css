@@ -1,0 +1,56 @@
+.dropdown-toggle{ cursor: pointer; }
+.sm-icon{width: 100%; height: 100%; border-radius: 2px; display: inline-block; float: none;}
+.sm-icon > i {padding-top: 5px;}
+.navbar-brand{color: white; text-shadow: 0px 0px 10px #39FF14, 0px 0px 10px #39FF14;}
+
+/* User Button */
+.btn-user{background-color: transparent;background-repeat: no-repeat;background-size: cover;background-position: center center;}
+.navbar{padding: 0.7rem 1rem !important;}
+.nav-link{letter-spacing: 2px; font-size: small; padding-top: 0px; padding-bottom: 0px;}
+/*========= Desktop ========*/
+@media (min-width: 768px){
+  nav{height: 80px;}
+  .mr-auto{margin-left: 30px;}
+  /*All dropdown menus*/
+  .dropdown:active .dropdown-menu{display: block;}
+  .dropdown-menu{border-radius: 2px; width: 250px; top: 45px !important; background-color: #18323e; font-size: smaller; box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.48);}
+  .dropdown-menu:after{position: absolute;left: 5%;top: -10px;content: '';border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 10px solid #18323e;}
+  /*Right dropdown menus*/
+  .dropdown-menu-right {border-radius: 2px; right: 0; left: auto !important; top: 55px !important; background-color: #18323e; box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.48);}
+  .dropdown-menu-right:after{position: absolute;left: 88%;top: -10px;content: '';border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 10px solid #18323e;}
+  .dropdown-item{color: white; font-size: smallng serve; letter-spacing: 3px;}
+  .dropdown-item:focus, .dropdown-item:hover {text-decoration: none; background-color: #0097a7;}
+  .dropdown-header{color: #0097a7; font-size: small}
+  .dropdown-divider{border-top: 1px solid rgba(0, 151, 167, 0.52);}
+  /*Signup buttons*/
+  .btn-signup{border-radius: 2px; margin-left: 5px; margin-top: 5px; padding: 5px; cursor: pointer;}
+  /*User Button*/
+  .btn-user{margin-left: 5px; margin-top: 3px; border: 3px solid #1A2638; box-shadow: 0 0 0 3px #0097a7 !important;}
+  .show-username{display: none;}
+
+  /* Shopping cart */
+  .shopping-cart{margin-top: 10px; margin-right: 10px;}
+  .shopping-cart:hover{cursor: pointer;}
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+  .navbar{padding-left: 0px !important; padding-right: 0px !important; overflow-y: scroll;}
+  .navbar-collapse{margin-top: 10px; border-top: 1px solid #202020;}
+  .navbar-brand{margin-left: 40%;}
+  .navbar-toggler{margin-right: 15px; border: none;}
+  .navbar-toggler:focus{outline: none !important;}
+  .nav-link{padding: 15px 0px 15px 15px; }
+  .nav-link:hover{background-color: #000000;}
+  .ml-auto .btn-signup{margin-top: 10px;}
+  .dropdown-menu{border-radius: 0px; background-color: transparent;}
+  .dropdown-header{display: none;}
+  .dropdown-item{color: #bbbbbb; font-size: small; padding-top: 10px; padding-bottom: 10px;}
+  .dropdown-item:hover{background-color: #000000;}
+  .dropdown-divider{display: none;}
+  .btn{border: none !important;  text-align: left !important;}
+  .show-username{margin-left: 10px; display: inline-block !important; text-align: right !important; vertical-align: top; line-height: 40px;}
+  .btn-user::after { display:none !important; }
+}
+
+

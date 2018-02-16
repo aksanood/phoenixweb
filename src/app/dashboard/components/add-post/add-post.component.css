@@ -1,0 +1,12 @@
+
+input, textarea {
+    display:block;
+    width:100%;
+    padding:10px;
+    font-size:1.1em;
+    border-radius: 0px;
+  }
+
+button{margin-top: 20px; margin-bottom: 20px;}
+.show-html{background-color: white; color: black}
+.alert{background-color: transparent; border: none; padding: 0px; color: rgb(255, 151, 151); font-size: small;}

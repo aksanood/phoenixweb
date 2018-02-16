@@ -1,90 +1,94 @@
-<p>
-  test works!
-</p>
-<mat-checkbox>Subscribe to Newsletter</mat-checkbox>
-<hr>
 
-<mat-radio-group value="0">
-  <mat-radio-button value="0">Male</mat-radio-button>
-  <mat-radio-button value="1">Female</mat-radio-button>
-</mat-radio-group>
-<hr>
-
-<mat-form-field>
-  <mat-select [(ngModel)]="color">
-    <mat-option *ngFor="let color of colors" [value]="color.id">{{color.name}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<hr>
-
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
+<div class="container">
+  <p>
+    test works!
+  </p>
+  <mat-checkbox>Subscribe to Newsletter</mat-checkbox>
+  <hr>
+  
+  <mat-radio-group value="0">
+    <mat-radio-button value="0">Male</mat-radio-button>
+    <mat-radio-button value="1">Female</mat-radio-button>
+  </mat-radio-group>
+  <hr>
+  
+  <mat-form-field>
+    <mat-select [(ngModel)]="color">
+      <mat-option *ngFor="let color of colors" [value]="color.id">{{color.name}}</mat-option>
+    </mat-select>
   </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Leave a comment"></textarea>
+  <hr>
+  
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" value="Sushi">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <span matPrefix>admin.</span>
+      <input ngModel #username="ngModel" name="username" matInput placeholder="username" required>
+      <mat-hint align="start">Type your username</mat-hint>
+      <span matSuffix="">@phoenixfcg.com</span>
+      <mat-error *ngIf="username.invalid && username.errors.required">Enter a valid email</mat-error>
+    </mat-form-field>
+  </form>
+  <hr>
+  
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque aut commodi, consequatur consequuntur exercitationem expedita harum laboriosam natus, non omnis pariatur placeat praesentium quas repellat rerum sint ut vel?
+  </p>
+  <mat-icon>add_alert</mat-icon>
+  <hr>
+  
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker touchUi="true"></mat-datepicker>
   </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <span matPrefix>admin.</span>
-    <input ngModel #username="ngModel" name="username" matInput placeholder="username" required>
-    <mat-hint align="start">Type your username</mat-hint>
-    <span matSuffix="">@phoenixfcg.com</span>
-    <mat-error *ngIf="username.invalid && username.errors.required">Enter a valid email</mat-error>
-  </mat-form-field>
-</form>
-<hr>
-
-<h1>Heading 1</h1>
-<h2>Heading 2</h2>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque aut commodi, consequatur consequuntur exercitationem expedita harum laboriosam natus, non omnis pariatur placeat praesentium quas repellat rerum sint ut vel?
-</p>
-<mat-icon>add_alert</mat-icon>
-<hr>
-
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker touchUi="true"></mat-datepicker>
-</mat-form-field>
-<hr>
-<div class="alternative">
-  <button mat-button>Click</button>
-  <button color="primary" mat-raised-button>Primary</button>
-  <button color="accent" mat-raised-button>Accent</button>
-  <button color="warn" mat-raised-button>Warn</button>
-  <button mat-fab><mat-icon>check</mat-icon></button>
-  <button mat-mini-fab><mat-icon>add_alert</mat-icon></button>
+  <hr>
+  <div class="alternative">
+    <button mat-button>Click</button>
+    <button color="primary" mat-raised-button>Primary</button>
+    <button color="accent" mat-raised-button>Accent</button>
+    <button color="warn" mat-raised-button>Warn</button>
+    <button mat-fab><mat-icon>check</mat-icon></button>
+    <button mat-mini-fab><mat-icon>add_alert</mat-icon></button>
+  </div>
+  
+  <hr>
+  
+  <mat-chip-list class="alternative">
+    <mat-chip *ngFor="let category of categories"
+    (click)="selectCategory(category)"
+              [selected]="category.selected"
+    >{{ category.name }}</mat-chip>
+  </mat-chip-list>
+  <hr>
+  
+  <mat-progress-spinner mode="determinate" [value]="progress"></mat-progress-spinner>
+  <hr>
+  
+  <span matTooltip="Tooltip message" matTooltipPosition="right">some text</span>
+  <hr>
+  
+  <mat-tab-group>
+    <mat-tab label="Tab 1">Content 1</mat-tab>
+    <mat-tab label="Tab 2">Content 2</mat-tab>
+  </mat-tab-group>
+  <hr>
+  
+  <button mat-raised-button>Open Dialog</button>
+  <hr>
+  
+  <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
+  
 </div>
-
-<hr>
-
-<mat-chip-list class="alternative">
-  <mat-chip *ngFor="let category of categories"
-  (click)="selectCategory(category)"
-            [selected]="category.selected"
-  >{{ category.name }}</mat-chip>
-</mat-chip-list>
-<hr>
-
-<mat-progress-spinner mode="determinate" [value]="progress"></mat-progress-spinner>
-<hr>
-
-<span matTooltip="Tooltip message" matTooltipPosition="right">some text</span>
-<hr>
-
-<mat-tab-group>
-  <mat-tab label="Tab 1">Content 1</mat-tab>
-  <mat-tab label="Tab 2">Content 2</mat-tab>
-</mat-tab-group>
-<hr>
-
-<button mat-raised-button>Open Dialog</button>
-<hr>
-
-<mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
 
 
 

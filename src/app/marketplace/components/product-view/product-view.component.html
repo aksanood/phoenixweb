@@ -1,0 +1,168 @@
+
+<div class="container main-container">
+
+  <div class="container-fluid" >
+
+    <div class="row">
+      <div class="col-md-12 col-xs-1">
+        <h2>DASHBOARD</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-xs-1">
+        <div class="input-group">
+          <input
+            #query
+            class="form-control" type="text" placeholder="Search dashboard..." aria-label="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-8 col-xs-1">
+
+        <div class="row">
+          <div class="col">
+            <app-product-card [product]="product" [show-actions]="false" [show-description]="true"></app-product-card>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+
+            <mat-tab-group>
+              <mat-tab label="Description">{{product.description}}</mat-tab>
+              <mat-tab label="Ratings & reviews">Content 2</mat-tab>
+            </mat-tab-group>
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col-md-4 col-xs-1">
+
+        <div class="row">
+
+          <div class="col-md-12 col-xs-1">
+            <div class="container-fluid cont">
+              <div class="row">
+                <div class="col-md-6">
+                  <h3>{{product.title}}</h3>
+                  <span class="badge badge-secondary">Action</span>
+                  <span class="badge badge-secondary">War</span>
+                  <span class="badge badge-secondary">Keyword</span>
+                  <p *ngIf="product.price === 0; else display_price" class="price">Free</p>
+                  <ng-template #display_price>
+                    <p class="price">{{product.price | currency: 'USD':"symbol-narrow"}}</p>
+                  </ng-template>
+                </div>
+                <div class="col-md-6">
+                  <p class="user">{{product.user}}</p>
+                </div>
+              </div>
+
+              <hr class="inner-hr">
+
+              <div class="row">
+                <div class="col-md-12">
+
+                  <ng-container *ngIf="cart$ | async as cart">
+                    <button *ngIf="!cart.itemAdded(product); else addedToCart "
+                            (click)="addToCart()" mat-raised-button
+                            class="mat-primary">Add to cart</button>
+
+                    <ng-template #addedToCart>
+                      <div class="row no-gutters">
+
+                        <div class="col-8 text-center">
+                          <h3>Added to cart</h3>
+                        </div>
+
+                        <div class="col-4">
+                          <button (click)="removeFromCart()" class="btn btn-secondary btn-block">Remove</button>
+                        </div>
+
+                      </div>
+                    </ng-template>
+                    <div>{{cart.itemAdded(product)}}</div>
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-xs-1">
+            <div class="container-fluid cont">
+              <h3>Technical Information</h3>
+
+              <table class="table table-dark">
+                <tbody>
+                <tr>
+                  <td scope="row">Geometry</td>
+                  <td class="table-inf">Yes</td>
+                </tr>
+                <tr>
+                  <td scope="row">Textures</td>
+                  <td class="table-inf">Yes</td>
+                </tr>
+                <tr>
+                  <td scope="row">Materials</td>
+                  <td class="table-inf">No</td>
+                </tr>
+                <tr>
+                  <td scope="row">UV type</td>
+                  <td class="table-inf">Unknown</td>
+                </tr>
+                <tr>
+                  <td scope="row">UV mapped</td>
+                  <td class="table-inf">Unknown</td>
+                </tr>
+                <tr>
+                  <td scope="row">Poly count</td>
+                  <td class="table-inf">3600</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+
+          <div class="col-md-12 col-xs-1">
+            <div class="container-fluid cont">
+              <h3>Artist Information</h3>
+              <hr>
+              <p>{{product.user}}</p>
+              <hr>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<!--
+<div mat-dialog-content class="container-fluid" style="margin: 0px;">
+  <div class="container-fluid">
+    <h3><strong>Sign Up for Phoenix Account!</strong></h3>
+  </div>
+  <hr>
+  <div class="container-fluid">
+
+    <form class="example-form">
+      <mat-form-field class="signup-form">
+        <mat-hint align="start">Enter Your Name</mat-hint>
+        <input ngModel #fullname="ngModel" name="fullname" matInput placeholder="E.g : John Smith" required>
+        <mat-icon matSuffix><i class="fa fa-user"></i></mat-icon>
+        <mat-error *ngIf="fullname.invalid && fullname.errors.required">Enter your name here</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="signup-form">
+        <mat-hint align="start">Enter your email</mat-hint>
+        <input ngModel #username="ngModel" name="username" matInput placeholder="Email" required>
+        <mat-icon matSuffix><i class="fa fa-envelope"></i></mat-icon>
+        <mat-error *ngIf="username.invalid && username.errors.required">Enter a valid email</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="signup-form">
+        <mat-hint align="start">Enter your password</mat-hint>
+        <input ngModel #password="ngModel" name="password" matInput placeholder="Password" [type]="hide ? 'password' : 'text'" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="password.invalid && password.errors.required">Password required</mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-checkbox>Subscribe to Newsletter</mat-checkbox>
+      <br>
+      <button mat-raised-button class="btn btn-primary btn-signup">Sign Up</button>
+    </form>
+
+    <div style="text-align: center; margin-top: 5px;">
+      <p style="font-size:x-small">By signing up, you agree to our <a href="#" class="color-blue">Terms of Use</a> and <a href="#" class="color-blue">Privacy Policy</a>.</p>
+    </div>
+    <hr>
+
+    <div style="text-align: center;">
+      Already have an account ? <a style="cursor: pointer;" (click)="openLogin()"><strong class="color-blue">Log In</strong></a>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="form-container">
+  <a routerLink="/login" id="goback">Go back</a>
+
+  <h2>Join now</h2>
+
+  <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
+    
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+    <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+
+
+    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+  </form>
+</div>

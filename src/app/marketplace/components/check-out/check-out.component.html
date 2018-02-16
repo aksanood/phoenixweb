@@ -1,0 +1,22 @@
+
+<div class="container-fluid">
+  <h1>Check out</h1>
+  <div class="row" *ngIf="cart$ | async as cart">
+
+    <div class="col-md-4 order-md-2 mb-4">
+      <div class="container-fluid">
+        <h2>Order summary</h2>
+        <app-order-summary [cart]="cart"></app-order-summary>
+      </div>
+    </div>
+
+    <div class="col-md-8 order-md-1">
+      <div class="container-fluid">
+        <h2>Shipping</h2>
+        <h4><span class="text-muted">Please enter your billing and payment details.</span></h4>
+        <app-shipping-form [cart]="cart"></app-shipping-form>
+      </div>
+    </div>
+
+  </div>
+</div>
