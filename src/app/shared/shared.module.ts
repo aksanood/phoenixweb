@@ -11,17 +11,27 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { MatComponentsModule } from 'app/mat-components.module';
 import { CustomFormsModule } from 'ng2-validation';
+import { NgxEditorModule } from 'ngx-editor';
+import { BlogCardComponent } from 'shared/components/blog-card/blog-card.component';
 import { ProductCardComponent } from 'shared/components/product-card/product-card.component';
+import { SummaryPipe } from 'shared/pipes/summary.pipe';
 import { AuthGuardService } from 'shared/services/auth-guard.service';
 import { AuthService } from 'shared/services/auth.service';
+import { BlogService } from 'shared/services/blog.service';
 import { CategoryService } from 'shared/services/category.service';
 import { OrderService } from 'shared/services/order.service';
 import { ProductService } from 'shared/services/product.service';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
+import { TutorialService } from 'shared/services/tutorial.service';
 import { UserService } from 'shared/services/user.service';
-import { BlogCardComponent } from 'shared/components/blog-card/blog-card.component';
-import { NgxEditorModule } from 'ngx-editor';
-import { BlogService } from 'shared/services/blog.service';
+
+import { SubscribeToPhoenixComponent } from './components/subscribe-to-phoenix/subscribe-to-phoenix.component';
+import { TutorialCardComponent } from './components/tutorial-card/tutorial-card.component';
+import { ProfileInformationService } from './services/profile-information.service';
+import { FileService } from './services/file.service';
+import { UploadFilesComponent } from './components/upload-files/upload-files.component';
+import { ImageService } from './services/image.service';
+import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
 
 @NgModule({
   imports: [
@@ -41,11 +51,27 @@ import { BlogService } from 'shared/services/blog.service';
   ],
   declarations: [
     ProductCardComponent,
-    BlogCardComponent
+    BlogCardComponent,
+    TutorialCardComponent,
+    SubscribeToPhoenixComponent,
+    UploadFilesComponent,
+    ImageGalleryComponent,
+  
+    SummaryPipe,
+  ],
+  entryComponents: [
+    UploadFilesComponent,
+    ImageGalleryComponent
   ],
   exports: [
     ProductCardComponent,
     BlogCardComponent,
+    TutorialCardComponent,
+    SubscribeToPhoenixComponent,
+    UploadFilesComponent,
+    ImageGalleryComponent,
+   
+    SummaryPipe,
 
     CommonModule,
     FormsModule,
@@ -69,7 +95,12 @@ import { BlogService } from 'shared/services/blog.service';
     ProductService,
     ShoppingCartService,
     OrderService,
-    BlogService
+    BlogService,
+    TutorialService,
+    ProfileInformationService,
+    FileService,
+    ImageService
+
   ]
 })
 export class SharedModule { }

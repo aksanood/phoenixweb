@@ -1,0 +1,5 @@
+
+.container-fluid{padding: 30px; background-color: #fbfcfd; color: black;}
+input{border-radius: 0px;}
+.alert{background-color: transparent; border: none; padding: 0px; color: red; font-size: small;}
+button{width: 100%;}

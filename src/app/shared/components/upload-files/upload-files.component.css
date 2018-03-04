@@ -1,0 +1,25 @@
+
+.container-fluid{
+    color: black; 
+    background-color: #fbfbfb;
+    width: 100%;
+}
+
+.heading{font-size: 24px; margin-bottom: 30px;}
+button{width: 100%; margin-top: 20px;}
+ul li{display: inline;}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

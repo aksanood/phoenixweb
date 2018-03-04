@@ -19,6 +19,8 @@ export class AddPostComponent implements OnInit, OnDestroy {
   id;
   post;
   subscription: Subscription;
+  dateCreated;
+  dateModified;
 
   constructor(
     private router: Router,
@@ -29,6 +31,8 @@ export class AddPostComponent implements OnInit, OnDestroy {
 
     this.appUser = {$key: 'RS76', username: 'username', email: 'username@domain.com', isAdmin: false, picture: 'http::/jsjdj/djjs.com', name: 'John Doe'};
     this.post = [];
+    this.dateCreated = new Date().getTime();
+    this.dateModified = new Date().getTime();
 
     this.subscription = auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.categories$ = categoryService.getAllProductCategories();

@@ -38,7 +38,7 @@ export class DashboardUserBlogComponent implements OnInit, OnDestroy {
       this.posts = b;
       this.userPosts = b.filter(fb => fb.user === this.appUser.$key );
       this.dtTrigger.next();
-    })
+    });
   }
 
   ngOnDestroy () {

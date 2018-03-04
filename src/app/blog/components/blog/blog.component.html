@@ -30,11 +30,10 @@
     <div class="row">
       <ng-container *ngFor="let b of filteredPosts">
         <div class="col-md-3 col-sm-6 col-xs-1">
-          <app-blog-card [blogPost]="b"></app-blog-card>
+          <app-blog-card [blogPost]="b" [routerLink]="['/view-post/', b.$key]"></app-blog-card>
         </div>
       </ng-container>
     </div>
-
   </div>
 
 </div>

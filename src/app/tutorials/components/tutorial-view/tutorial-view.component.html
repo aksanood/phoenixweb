@@ -1,0 +1,48 @@
+
+<div class="container main-container">
+
+  <div class="row">
+    <div class="col-md-8 col-xs-1">
+      <div class="container-fluid tutorial-container">
+
+        <div class="title">
+          <h1>{{ tutorial.title }}</h1>
+          <h4>
+            {{'By '}}
+            {{user.name | titlecase }}
+            {{'.' + ' on - ' }}
+            {{tutorial.dateCreated | date}}
+          </h4>
+        </div>
+
+        <div class="cover-photo">
+          <img [src]="tutorial.imageUrl">
+        </div>
+
+        <div class="introduction">
+          <h2>Introduction</h2>
+          <p>{{ tutorial.intro }}</p>
+        </div>
+
+        <hr>
+
+        <div class="html-content"  [innerHTML]="tutorial.htmlContent">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-4 col-xs-1">
+      <div class="container-fluid advertisement-container">
+
+        <div class="row">
+          <div class="col">
+            <app-subscribe-to-phoenix></app-subscribe-to-phoenix>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

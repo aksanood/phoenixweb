@@ -1,0 +1,16 @@
+
+h2 {letter-spacing: 4px;margin-bottom: 20px;}
+.input-group{height: 40px;margin-bottom: 20px;border-radius: 2px; box-shadow: 0 5px 30px #00000085;}
+.form-control{border-radius: 2px;border: solid 1px;border-right: none;}
+
+hr{margin: 10px 15px 20px 15px;}
+app-tutorial-card:hover{cursor: pointer;}
+/*========= Desktop ========*/
+@media (min-width: 768px){
+  .main-container{max-width: 1500px;}
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+  .main-container{max-width: 100%; padding: 0;}
+}

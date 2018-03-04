@@ -1,0 +1,31 @@
+
+.card{
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 2px;
+  width: 100%;
+}
+img{object-fit: fill}
+.card-img-top {
+  max-width: 100%;
+  height: 150px;
+  -moz-border-radius-topright: 2px;
+  -moz-border-radius-topleft: 2px;
+}
+.card-img-top:hover{cursor: pointer;}
+.card-body{
+  height: auto;
+}
+a:hover{cursor: pointer; text-decoration: underline !important;}
+.card-text{margin-bottom: 20px; font-size: small;}
+.right{text-align: right; font-weight: 700; color: rgb(0, 150, 167);}
+h5{margin-bottom: 0px;}
+/*========= Desktop ========*/
+@media (min-width: 768px){
+
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+
+}

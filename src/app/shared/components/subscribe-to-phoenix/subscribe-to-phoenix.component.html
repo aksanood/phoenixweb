@@ -1,0 +1,31 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h2>Weekly email summary</h2>
+      <p>
+        Subscribe below and we’ll send you a weekly email summary of all new Code tutorials. 
+        Never miss out on learning about the next big thing.
+      </p>
+
+      <form #f="ngForm">
+
+          <div class="form-group">
+              <input #email="ngModel" name="email" [(ngModel)]="subscribe.email" 
+              placeholder="please enter your email here..." type="email" class="form-control" required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+              <div class="alert" *ngIf="email.touched && email.invalid">
+                  <div *ngIf="email.errors.required">*Please enter your email address.</div>
+                  <div  *ngIf="email.errors && email.errors.pattern">*Email is invalid</div>
+                </div>
+            </div>
+
+            <button
+              [disabled]="!f.valid"
+              class="btn btn-primary">Subscribe to phoenix</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>

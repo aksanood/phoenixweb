@@ -1,0 +1,43 @@
+
+<div *ngIf="tutorial.title" class="card panel-color drop-shadow">
+
+  <img class="card-img-top" [src]="tutorial.imageUrl" alt="{{tutorial.title}}" *ngIf="tutorial.imageUrl" >
+
+  <div class="card-header">
+    <div class="row">
+      <div class="col">
+        <h3 class="card-title">
+          <strong>
+            {{tutorial.title}}
+          </strong>
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <p class="card-text">
+          {{ tutorial.intro.slice(0, 175) + '...' }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="row">
+
+      <div class="col-7">
+        <h5>Sanood Akila</h5>
+        <h5>6 Nov 2018 </h5>
+      </div>
+
+      <div class="col-5">
+        <h5 class="right">{{tutorial.category.toUpperCase()}}</h5>
+      </div>
+
+    </div>
+  </div>
+
+</div>

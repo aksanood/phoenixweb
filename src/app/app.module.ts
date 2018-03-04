@@ -8,18 +8,17 @@ import { DashboardModule } from 'app/dashboard/dashboard.module';
 import { MarketplaceModule } from 'app/marketplace/marketplace.module';
 import { SharedModule } from 'shared/shared.module';
 import { BlogModule } from './blog/blog.module';
+import { TutorialsModule } from './tutorials/tutorials.module';
+import {MembershipModule} from './membership/membership.module';
+import { ProfilesModule } from './profiles/profiles.module';
 
 import { environment } from '../environments/environment';
-import { AdminTestComponent } from './admin-test/admin-test.component';
 import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './core/components/about/about.component';
 import { HomeComponent } from './core/components/home/home.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { TestComponent } from './test/test.component';
-import { TutorialsComponent } from './tutorials/tutorials.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import {MembershipModule} from './membership/membership.module';
 
 
 // Router Components
@@ -32,10 +31,6 @@ import {MembershipModule} from './membership/membership.module';
 
 
     TestComponent,
-
-    UserProfileComponent,
-    TutorialsComponent,
-    AdminTestComponent,
   ],
   entryComponents: [
 
@@ -49,6 +44,8 @@ import {MembershipModule} from './membership/membership.module';
     DashboardModule,
     MembershipModule,
     BlogModule,
+    TutorialsModule,
+    ProfilesModule,
 
     AngularFireModule.initializeApp(environment.firebase),
 
@@ -59,9 +56,7 @@ import {MembershipModule} from './membership/membership.module';
       {path: 'about', component: AboutComponent},
 
       {path: 'test', component: TestComponent},
-      {path: 'admin-test', component: AdminTestComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
 
-      {path: 'tutorials', component: TutorialsComponent},
     ])
   ],
   providers: [],

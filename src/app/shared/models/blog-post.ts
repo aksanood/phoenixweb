@@ -7,5 +7,6 @@ export interface BlogPost {
     htmlContent: string;
     user: string;
     createDate: string;
+    modifiedDate: string;
     category: string;
   }

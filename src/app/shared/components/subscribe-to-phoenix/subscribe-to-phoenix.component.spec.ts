@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminTestComponent } from './admin-test.component';
+import { SubscribeToPhoenixComponent } from './subscribe-to-phoenix.component';
 
-describe('AdminTestComponent', () => {
-  let component: AdminTestComponent;
-  let fixture: ComponentFixture<AdminTestComponent>;
+describe('SubscribeToPhoenixComponent', () => {
+  let component: SubscribeToPhoenixComponent;
+  let fixture: ComponentFixture<SubscribeToPhoenixComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminTestComponent ]
+      declarations: [ SubscribeToPhoenixComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminTestComponent);
+    fixture = TestBed.createComponent(SubscribeToPhoenixComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,24 @@
+.image-gallery{
+  color: black;
+  background-color: #fbfbfb;
+  width: 100%;
+}
+h2{color: black}
+/* The Close Button */
+.close {color: #aaaaaa;float: right;font-size: 28px;font-weight: bold;}
+.close:hover,
+.close:focus {color: #000;text-decoration: none;cursor: pointer;}
+
+/* gallery styles */
+
+.rowl:after {content: "";display: table;clear: both;}
+/* Six columns side by side */
+.coll {float: left !important;width: 16.66%;}
+
+/* Add a transparency effect for thumnbail images */
+.select {opacity: 0.6; width: 100%; height: 60px;}
+.active,
+.select:hover {opacity: 1; cursor: pointer;}
+.image-cont{width: 16.66%;}
+.select{background-color: transparent;background-repeat: no-repeat;background-size: cover;background-position: center center; width: 100%;}
+.col-3{padding: 1px;}

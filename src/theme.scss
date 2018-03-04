@@ -41,12 +41,12 @@ $alt-theme: mat-light-theme($alt-primary, $alt-accent);
 }
 
 /*========= Common Styles ========*/
-body{background: linear-gradient(#174251, #1A2638); background-repeat: no-repeat; background-attachment: fixed; color: #FEFEFE; display: flex;flex-direction: column;height: 100vh; overflow-x: hidden;}
+body{background: linear-gradient(#174251, #1A2638); background-repeat: no-repeat; background-attachment: fixed; color: #FEFEFE; display: flex;flex-direction: column; overflow-x: hidden;}
 .nav-color{
   background: linear-gradient(90deg,rgba(22, 25, 32, 0.4), #161920);
   box-shadow: 0 -6px 67px 0 rgba(0, 0, 0, 0.48);
 }
-p{color: #FEFEFE}
+
 .drop-shadow{box-shadow: 0 5px 10px rgba(0, 0, 0, 0.48);}
 hr{background-color: rgba(0, 151, 167, 0.52)}
 h6{margin: 0px !important;}
@@ -72,6 +72,10 @@ h6{margin: 0px !important;}
 /*========= Tooltip Styles ========*/
 .mat-tooltip{
   background-color: #313131;
+}
+
+.mat-dialog-container{
+  background: #FEFEFE;
 }
 
 /*========= Data Table ========*/

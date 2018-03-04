@@ -13,6 +13,7 @@
         <div class="input-group">
           <input
             #query
+            (keyup)="searchTutorials(query.value)"
             class="form-control" type="text" placeholder="Search tutorials..." aria-label="Search">
           <div class="input-group-btn">
             <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
@@ -23,6 +24,18 @@
 
   </div>
 
+  <hr>
+
+  <div class="container-fluid">
+    <div class="row">
+      <ng-container *ngFor="let t of filteredTutorials">
+        <div class="col-md-3 col-sm-6 col-xs-1">
+          <app-tutorial-card [tutorial]="t" [routerLink]="['/tutorial-view/', t.$key]"></app-tutorial-card>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
 </div>
 
-  <hr>
+

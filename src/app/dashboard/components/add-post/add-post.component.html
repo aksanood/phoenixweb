@@ -17,6 +17,14 @@
     <input type="hidden" #user="ngModel" [(ngModel)]="appUser.$key" name="user" id="user" class="form-control">
   </div>
 
+  <div *ngIf="!id" class="form-group">
+    <input type="hidden" #date="ngModel" [(ngModel)]="dateCreated" name="dateCreated" id="dateCreated" class="form-control">
+  </div>
+
+  <div *ngIf="id" class="form-group">
+    <input type="hidden" #date="ngModel" [(ngModel)]="dateModified" name="dateModified" id="dateModified" class="form-control">
+  </div>
+
   <div class="form-group">
     <label for="title"><h4>Title</h4></label>
     <input #title="ngModel" [(ngModel)]="post.title" name="title" id="title" type="text" class="form-control" 

@@ -1,0 +1,28 @@
+
+<button (click)="addTutorial()" mat-raised-button>+ New tutorial</button>
+
+<div class="container-fluid">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let t of userTutorials">
+      <td>
+        <div class="container-fluid image-container">
+          <img [src]="t.imageUrl">
+        </div>
+      </td>
+      <td>{{t.title}}</td>
+      <td>
+        <a [routerLink]="['/dashboard/add-tutorial/', t.$key]">Edit tutorial</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

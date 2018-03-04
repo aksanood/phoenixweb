@@ -1,0 +1,48 @@
+
+<div class="container main-container">
+
+  <div class="row">
+    <div class="col-md-8 col-xs-1">
+      <div class="container-fluid blog-post-container">
+
+        <div class="title">
+          <h1>{{ blogPost.title }}</h1>
+          <h4>
+            {{'By '}}
+            {{user.name | titlecase }}
+            {{'.' + ' on - ' }}
+            {{blogPost.dateCreated | date}}
+          </h4>
+        </div>
+
+        <div class="cover-photo">
+          <img [src]="blogPost.imageUrl">
+        </div>
+
+        <div class="introduction">
+          <h2>Introduction</h2>
+          <p>{{ blogPost.intro }}</p>
+        </div>
+
+        <hr>
+
+        <div class="html-content"  [innerHTML]="blogPost.htmlContent">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-4 col-xs-1">
+      <div class="container-fluid advertisement-container">
+
+        <div class="row">
+          <div class="col">
+            <app-subscribe-to-phoenix></app-subscribe-to-phoenix>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

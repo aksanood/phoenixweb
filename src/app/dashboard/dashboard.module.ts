@@ -16,6 +16,8 @@ import { AuthGuardService } from 'shared/services/auth-guard.service';
 import { SharedModule } from 'shared/shared.module';
 import { DashboardUserBlogComponent } from './components/dashboard-user-blog/dashboard-user-blog.component';
 import { AddPostComponent } from 'app/dashboard/components/add-post/add-post.component';
+import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
+import { DashboardUserTutorialsComponent } from './components/dashboard-user-tutorials/dashboard-user-tutorials.component';
 
 @NgModule({
   imports: [
@@ -34,6 +36,9 @@ import { AddPostComponent } from 'app/dashboard/components/add-post/add-post.com
           {path: 'dashboard-user-blog', component: DashboardUserBlogComponent},
           {path: 'add-post', component: AddPostComponent},
           {path: 'add-post/:id', component: AddPostComponent},
+          {path: 'dashboard-user-tutorials', component: DashboardUserTutorialsComponent},
+          {path: 'add-tutorial', component: AddTutorialComponent},
+          {path: 'add-tutorial/:id', component: AddTutorialComponent},
           
         ]
       },
@@ -49,7 +54,9 @@ import { AddPostComponent } from 'app/dashboard/components/add-post/add-post.com
     AddProductComponent,
     EditProductsComponent,
     DashboardUserBlogComponent,
-    AddPostComponent
+    AddPostComponent,
+    AddTutorialComponent,
+    DashboardUserTutorialsComponent
   ]
 })
 export class DashboardModule { }

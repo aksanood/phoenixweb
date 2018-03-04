@@ -1,0 +1,21 @@
+
+.advertisement-container{}
+
+.blog-post-container{padding: 20px;background-color: white;color: black;}
+.title{padding-bottom: 20px;}
+.title > h1 {margin-bottom: 0px !important;}
+.cover-photo{padding-bottom: 20px;}
+
+img{max-width: 100%;}
+p{color: black !important;}
+h4{color: #cccccc;}
+
+/*========= Desktop ========*/
+@media (min-width: 768px){
+
+}
+
+/*========= Mobile ========*/
+@media (max-width: 767px){
+
+}

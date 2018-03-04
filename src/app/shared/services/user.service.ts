@@ -17,11 +17,12 @@ export class UserService {
     });
   }
 
-  getUserID(uid: string): FirebaseObjectObservable<AppUser> {
+  getUserByID(uid: string): FirebaseObjectObservable<AppUser> {
     return this.db.object('/users/' + uid);
   }
 
   getUsername(str: string) {
     return str.replace(/@.*$/,'');
   }
+  
 }
