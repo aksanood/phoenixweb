@@ -2,7 +2,7 @@
 <div class="card">
 
   <div class="card-header"
-       [style.backgroundImage]="'url(' + profile?.picture + ')'">
+       [style.backgroundImage]="'url(' + profile.personalInfo?.picture + ')'">
     <div class="card-header-bar">
       <button href="#" class="btn-message"><span class="sr-only">Message</span></button>
       <button href="#" class="btn-menu"><span class="sr-only">Menu</span></button>
@@ -16,7 +16,7 @@
   </div>
 
   <div class="card-body">
-    <h2 class="name">{{profile?.name}}</h2>
+    <h2 class="name">{{profile.personalInfo?.name}}</h2>
     <h4 class="job-title">Game Developer</h4>
     <div class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
 

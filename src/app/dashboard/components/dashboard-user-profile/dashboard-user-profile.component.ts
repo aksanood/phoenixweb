@@ -91,49 +91,52 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
       width: '500px'
     });
     const sub = dialogRef.componentInstance.onSubmit.subscribe(work => {
-      if (!this.workExperience[0]){
-        this.workExperience[0] = work;
-        console.log(this.workExperience[0]);
-        console.log(this.workExperience[1]);
-        console.log(this.workExperience[2]);
-        let work1: any = {};
-        work1.work_1Position = work.position;
-        work1.work_1Company = work.company;
-        work1.work_1StartDate = work.startDate;
-        work1.work_1EndDate = work.endDate;
-        this.profileService.updateWorkInfo(this.user.$key, work1);
-      }
-      else if(this.workExperience[0] && !this.workExperience[1]){
-        this.workExperience[1] = work;
-        console.log(this.workExperience[0]);
-        console.log(this.workExperience[1]);
-        console.log(this.workExperience[2]);
-        let work2: any = {};
-        work2.work_2Position = work.position;
-        work2.work_2Company = work.company;
-        work2.work_2StartDate = work.startDate;
-        work2.work_2EndDate = work.endDate;
-        this.profileService.updateWorkInfo(this.user.$key, work2);
-      }
-      else if(this.workExperience[0] && this.workExperience[1] && !this.workExperience[2]){
-        this.workExperience[2] = work;
-        console.log(this.workExperience[0]);
-        console.log(this.workExperience[1]);
-        console.log(this.workExperience[2]);
-        let work3: any = {};
-        work3.work_3Position = work.position;
-        work3.work_3Company = work.company;
-        work3.work_3StartDate = work.startDate;
-        work3.work_3EndDate = work.endDate;
-        this.profileService.updateWorkInfo(this.user.$key, work3);
-      }
-      
+      this.addMoreWork(work);
     })
     dialogRef.afterClosed().subscribe(result => {
       sub.unsubscribe();
     });
   }
 
+  addMoreWork(work) {
+    if (!this.workExperience[0]){
+      this.workExperience[0] = work;
+      console.log(this.workExperience[0]);
+      console.log(this.workExperience[1]);
+      console.log(this.workExperience[2]);
+      let work1: any = {};
+      work1.work_1Position = work.position;
+      work1.work_1Company = work.company;
+      work1.work_1StartDate = work.startDate;
+      work1.work_1EndDate = work.endDate;
+      this.profileService.updateWorkInfo(this.user.$key, work1);
+    }
+    else if(this.workExperience[0] && !this.workExperience[1]){
+      this.workExperience[1] = work;
+      console.log(this.workExperience[0]);
+      console.log(this.workExperience[1]);
+      console.log(this.workExperience[2]);
+      let work2: any = {};
+      work2.work_2Position = work.position;
+      work2.work_2Company = work.company;
+      work2.work_2StartDate = work.startDate;
+      work2.work_2EndDate = work.endDate;
+      this.profileService.updateWorkInfo(this.user.$key, work2);
+    }
+    else if(this.workExperience[0] && this.workExperience[1] && !this.workExperience[2]){
+      this.workExperience[2] = work;
+      console.log(this.workExperience[0]);
+      console.log(this.workExperience[1]);
+      console.log(this.workExperience[2]);
+      let work3: any = {};
+      work3.work_3Position = work.position;
+      work3.work_3Company = work.company;
+      work3.work_3StartDate = work.startDate;
+      work3.work_3EndDate = work.endDate;
+      this.profileService.updateWorkInfo(this.user.$key, work3);
+    }
+  }
+  
   setStep(index: number) {
     this.step = index;
   }

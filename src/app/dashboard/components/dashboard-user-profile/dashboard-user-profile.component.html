@@ -202,10 +202,6 @@
                          type="date" class="form-control" [value]="profile.workInfo?.startDate">
                 </div>
 
-                <div class="form-group">
-                  <button (click)="openAddWork()">Add work experience</button>
-                </div>
-
                 <div class="work-1" *ngIf="profile.workInfo?.work_1Position">
                   <h3>Work 1</h3>
                   <div class="form-group">
@@ -213,7 +209,7 @@
                     <input #work_1Position="ngModel" name="work_1Position" [(ngModel)]="workInfo.work_1Position"
                            type="text" class="form-control" [value]="profile.workInfo?.work_1Position">
                   </div>
-  
+
                   <div class="form-group">
                     <label for="">Company name</label>
                     <input #work_1Company="ngModel" name="work_1Company" [(ngModel)]="workInfo.work_1Company"
@@ -227,10 +223,68 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="">Start date</label>
-                    <input #work_1EndtDate="ngModel" name="work_1EndtDate" [(ngModel)]="workInfo.work_1EndtDate"
-                           type="date" class="form-control" [value]="profile.workInfo?.work_1EndtDate">
+                    <label for="">End date</label>
+                    <input #work_1EndDate="ngModel" name="work_1EndDate" [(ngModel)]="workInfo.work_1EndDate"
+                           type="date" class="form-control" [value]="profile.workInfo?.work_1EndDate">
                   </div>
+                </div>
+
+                <div class="work-2" *ngIf="profile.workInfo?.work_2Position">
+                  <h3>Work 2</h3>
+                  <div class="form-group">
+                    <label for="">Position</label>
+                    <input #work_2Position="ngModel" name="work_2Position" [(ngModel)]="workInfo.work_2Position"
+                           type="text" class="form-control" [value]="profile.workInfo?.work_2Position">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Company name</label>
+                    <input #work_2Company="ngModel" name="work_2Company" [(ngModel)]="workInfo.work_2Company"
+                           type="text" class="form-control" [value]="profile.workInfo?.work_2Company">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="">Start date</label>
+                    <input #work_2StartDate="ngModel" name="work_2StartDate" [(ngModel)]="workInfo.work_2StartDate"
+                           type="date" class="form-control" [value]="profile.workInfo?.work_2StartDate">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">End date</label>
+                    <input #work_2EndDate="ngModel" name="work_2EndDate" [(ngModel)]="workInfo.work_2EndDate"
+                           type="date" class="form-control" [value]="profile.workInfo?.work_2EndDate">
+                  </div>
+                </div>
+
+                <div class="work-3" *ngIf="profile.workInfo?.work_3Position">
+                  <h3>Work 3</h3>
+                  <div class="form-group">
+                    <label for="">Position</label>
+                    <input #work_3Position="ngModel" name="work_3Position" [(ngModel)]="workInfo.work_3Position"
+                           type="text" class="form-control" [value]="profile.workInfo?.work_3Position">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Company name</label>
+                    <input #work_3Company="ngModel" name="work_3Company" [(ngModel)]="workInfo.work_3Company"
+                           type="text" class="form-control" [value]="profile.workInfo?.work_3Company">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="">Start date</label>
+                    <input #work_3StartDate="ngModel" name="work_3StartDate" [(ngModel)]="workInfo.work_3StartDate"
+                           type="date" class="form-control" [value]="profile.workInfo?.work_3StartDate">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">End date</label>
+                    <input #work_3EndDate="ngModel" name="work_3EndDate" [(ngModel)]="workInfo.work_3EndDate"
+                           type="date" class="form-control" [value]="profile.workInfo?.work_3EndDate">
+                  </div>
+                </div>
+
+                <div class="form-group" *ngIf="!profile.workInfo?.work_3Position">
+                  <button (click)="openAddWork()">Add work experience</button>
                 </div>
 
               </div>
