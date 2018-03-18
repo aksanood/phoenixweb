@@ -17,8 +17,8 @@
     <div class="row">
       <ng-container *ngFor="let image of images">
         <div class="col-3">
-          <div (click)="selectImage(image)" class="select" [style.backgroundImage]="'url(' + image.url + ')'">
-          </div>
+          <button (click)="selectImage(image)" class="select" [style.backgroundImage]="'url(' + image.url + ')'">
+          </button>
         </div>
       </ng-container>
     </div>

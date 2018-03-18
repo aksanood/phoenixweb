@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 import {SharedModule} from 'shared/shared.module';
 import {RouterModule} from "@angular/router";
+import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 
 @NgModule({
   imports: [
@@ -10,10 +11,12 @@ import {RouterModule} from "@angular/router";
     SharedModule,
     RouterModule.forChild([
       {path: 'profiles', component: ProfilesComponent},
+      {path: 'profile/:id', component: ProfileViewComponent}
     ])
   ],
   declarations: [
-    ProfilesComponent
+    ProfilesComponent,
+    ProfileViewComponent
   ]
 })
 export class ProfilesModule { }

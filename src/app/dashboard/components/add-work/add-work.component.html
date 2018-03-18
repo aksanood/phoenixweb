@@ -1,0 +1,36 @@
+
+<div class="container-fluid cont-bottom">
+
+  <h3>Work 1</h3>
+
+  <form #f="ngForm">
+    <div class="form-group">
+      <label for="">Current Position</label>
+      <input name="position" [(ngModel)]="work.position"
+             type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Company name</label>
+      <input name="company" [(ngModel)]="work.company"
+             type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Start date</label>
+      <input name="startDate" [(ngModel)]="work.startDate"
+             type="date" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">End Date</label>
+      <input name="endtDate" [(ngModel)]="work.endDate"
+             type="date" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <button (click)="submitWork()">Add work experience</button>
+    </div>
+  </form>
+
+</div>

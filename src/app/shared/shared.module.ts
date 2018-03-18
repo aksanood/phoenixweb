@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatExpansionModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables/src/angular-datatables.module';
@@ -32,6 +32,8 @@ import { FileService } from './services/file.service';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { ImageService } from './services/image.service';
 import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -39,6 +41,7 @@ import { ImageGalleryComponent } from './components/image-gallery/image-gallery.
     FormsModule,
     CustomFormsModule,
     MatComponentsModule,
+    MatExpansionModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatNativeDateModule,
@@ -46,6 +49,7 @@ import { ImageGalleryComponent } from './components/image-gallery/image-gallery.
     HttpModule,
     DataTablesModule,
     NgxEditorModule,
+    NgxPaginationModule,
     NgbModule.forRoot(),
     StarRatingModule.forRoot()
   ],
@@ -56,8 +60,10 @@ import { ImageGalleryComponent } from './components/image-gallery/image-gallery.
     SubscribeToPhoenixComponent,
     UploadFilesComponent,
     ImageGalleryComponent,
-  
+    ProfileCardComponent,
+
     SummaryPipe,
+
   ],
   entryComponents: [
     UploadFilesComponent,
@@ -70,7 +76,8 @@ import { ImageGalleryComponent } from './components/image-gallery/image-gallery.
     SubscribeToPhoenixComponent,
     UploadFilesComponent,
     ImageGalleryComponent,
-   
+    ProfileCardComponent,
+
     SummaryPipe,
 
     CommonModule,
@@ -78,7 +85,9 @@ import { ImageGalleryComponent } from './components/image-gallery/image-gallery.
     CustomFormsModule,
     DataTablesModule,
     NgxEditorModule,
+    NgxPaginationModule,
     MatComponentsModule,
+    MatExpansionModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatNativeDateModule,

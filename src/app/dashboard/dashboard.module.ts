@@ -18,6 +18,7 @@ import { DashboardUserBlogComponent } from './components/dashboard-user-blog/das
 import { AddPostComponent } from 'app/dashboard/components/add-post/add-post.component';
 import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
 import { DashboardUserTutorialsComponent } from './components/dashboard-user-tutorials/dashboard-user-tutorials.component';
+import { AddWorkComponent } from './components/add-work/add-work.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,9 @@ import { DashboardUserTutorialsComponent } from './components/dashboard-user-tut
       },
     ])
   ],
+  entryComponents: [
+    AddWorkComponent
+  ],
   declarations: [
     DashboardComponent,
     DashboardNavigationComponent,
@@ -56,7 +60,8 @@ import { DashboardUserTutorialsComponent } from './components/dashboard-user-tut
     DashboardUserBlogComponent,
     AddPostComponent,
     AddTutorialComponent,
-    DashboardUserTutorialsComponent
+    DashboardUserTutorialsComponent,
+    AddWorkComponent
   ]
 })
 export class DashboardModule { }

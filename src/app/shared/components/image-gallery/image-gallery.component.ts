@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {ImageService} from "shared/services/image.service";
 import {AuthService} from "shared/services/auth.service";
@@ -17,6 +17,7 @@ export class ImageGalleryComponent implements OnInit, OnDestroy {
   userId: string;
   images: Image [];
   selectedImage: Image;
+  onSubmit = new EventEmitter();
 
   constructor(public dialogRef: MatDialogRef<ImageGalleryComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,6 +40,7 @@ export class ImageGalleryComponent implements OnInit, OnDestroy {
         });
       console.log(this.userId);
       console.log(this.dialogRef.componentInstance.data);
+      this.dialogRef.componentInstance.data = 'asd';
     });
   }
 
@@ -48,7 +50,8 @@ export class ImageGalleryComponent implements OnInit, OnDestroy {
   }
 
   submitImage() {
-    console.log(this.selectedImage);
+    this.onSubmit.emit(this.selectedImage);
+    this.dialogRef.close();
   }
 
   ngOnDestroy () {

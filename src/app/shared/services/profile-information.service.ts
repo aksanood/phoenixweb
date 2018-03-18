@@ -12,16 +12,34 @@ export class ProfileInformationService {
    }
 
   createProfile(user: firebase.User) {
-    this.db.object('/profile/' + user.uid).update({
+    this.db.object('/profile/' + user.uid + '/personalInfo/').update({
       name: user.displayName,
       email: user.email,
-    })
-  }
-
-  updateProfile(profileID: string, info: any) {
-    this.db.object('/profile/' + profileID).update(info).catch(error => {
+    }).catch(error => {
       console.log(error);
     });
+  }
+
+  updatePersonalInfo(profileID: string, info: any) {
+    this.db.object('/profile/' + profileID + '/personalInfo/').update(info).catch(error => {
+      console.log(error);
+    });
+  }
+
+  updateExternalLinks(profileID: string, info: any) {
+    this.db.object('/profile/' + profileID + '/externalLinks/').update(info).catch(error => {
+      console.log(error);
+    });
+  }
+
+  updateWorkInfo(profileID: string, info: any) {
+    this.db.object('/profile/' + profileID + '/workInfo/').update(info).catch(error => {
+      console.log(error);
+    });
+  }
+
+  getAllProfiles() {
+    return this.db.list('/profile');
   }
 
   getProfileByID (id: string) {

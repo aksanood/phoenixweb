@@ -19,8 +19,8 @@
           <div class="col-md-4 col-xs-1">
             <div class="profile-picture">
               <img *ngIf="!user.picture" src="../assets/images/user-profile-icon.png">
-              <img *ngIf="!profile.picture" [src]="user.picture">
-              <img *ngIf="profile.picture" [src]="profile.picture">
+              <img *ngIf="!profile.personalInfo?.picture" [src]="user.picture">
+              <img *ngIf="profile.personalInfo?.picture" [src]="profile.personalInfo?.picture">
             </div>
           </div>
           <div class="col-md-8 col-xs-1">
@@ -41,7 +41,7 @@
         <h3>Links to your Phoenix pages</h3>
         <p>Please use these links for your personal/business use.You can include these in your resume, emails,
         social media and other websites.</p>
-        <p>Products - <a href="">http://phoenixfcg.com/sanood/products</a></p>
+        <p>Profile - <a [routerLink]="['/profile/', user.$key]">http://phoenixfcg.com/profile/{{user.$key}}</a></p>
         <p>Portfolio - <a href="">http://phoenixfcg.com/sanood/portfolio</a></p>
         <p>Blog - <a href="">http://phoenixfcg.com/sanood/blog</a></p>
         <p>Tutorials - <a href="">http://phoenixfcg.com/sanood/tutorials</a></p>
@@ -52,159 +52,284 @@
 
   </div>
 
-  <div class="profile-form">
-    <form #f="ngForm">
-      <div class="row">
+  <div class="row">
+    <div class="col">
 
-        <div class="col-md-6 col-xs-1">
+      <form #f="ngForm">
 
-          <div class="container-fluid cont-bottom">
+          <mat-accordion class="headers-align">
 
-            <h3>Contact Information</h3>
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>Personal Information</mat-panel-title>
+                <mat-panel-description>Type your name, Date of birth, Contact information and Profile picture</mat-panel-description>
+              </mat-expansion-panel-header>
 
-            <div class="form-group">
-              <label for="">Name</label>
-              <input #name="ngModel" name="name" [(ngModel)]="profileInfo.name"
-                     type="text" class="form-control" [value]="profile?.name">
-            </div>
+              <div class="container-fluid cont-bottom">
 
-            <div class="form-group">
-              <label for="">Email</label>
-              <input disabled #email="ngModel" name="email" [(ngModel)]="user.email"
-                     type="text" class="form-control" [value]="user.email">
-            </div>
-
-            <div class="form-group">
-              <label for="">Contact number</label>
-              <input #contactNumber="ngModel" name="contactNumber" [(ngModel)]="profileInfo.contactNumber"
-                     type="number" class="form-control" [value]="profile?.contactNumber" required>
-              <div class="alert" *ngIf="contactNumber.touched && contactNumber.invalid">
-                <div *ngIf="contactNumber.errors.required">*Contact Number is required.</div>
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <label for="">Address Line 1</label>
-              <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="profileInfo.addressLine1"
-                     type="text" class="form-control" placeholder="Line 1" [value]="profile?.addressLine1" required>
-              <div class="alert" *ngIf="addressLine1.touched && addressLine1.invalid">
-                <div *ngIf="addressLine1.errors.required">*Address Line 1 is required.</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="">Address Line 2 (Optional)</label>
-              <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="profileInfo.addressLine2"
-                     type="text" class="form-control" placeholder="Line 2" [value]="profile?.addressLine1">
-            </div>
-
-            <div class="row">
-              <div class="col-md-5">
                 <div class="form-group">
-                  <label for="">Country</label>
-                  <input #country="ngModel" name="country" [(ngModel)]="profileInfo.country"
-                         type="text" class="form-control" [value]="profile?.country" required>
-                  <div class="alert" *ngIf="country.touched && country.invalid">
-                    <div *ngIf="country.errors.required">*Country is required.</div>
+                  <label for="">Name</label>
+                  <input #name="ngModel" name="name" [(ngModel)]="personalInfo.name"
+                         type="text" class="form-control" [value]="profile.personalInfo?.name">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input disabled #email="ngModel" name="email" [(ngModel)]="user.email"
+                         type="text" class="form-control" [value]="user.email">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Date of birth</label>
+                  <input #dob="ngModel" name="dob" [(ngModel)]="personalInfo.dob"
+                         type="date" class="form-control" [value]="profile.personalInfo?.dob">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Contact number</label>
+                  <input #contactNumber="ngModel" name="contactNumber" [(ngModel)]="personalInfo.contactNumber"
+                         type="number" class="form-control" [value]="profile.personalInfo?.contactNumber" required>
+                  <div class="alert" *ngIf="contactNumber.touched && contactNumber.invalid">
+                    <div *ngIf="contactNumber.errors.required">*Contact Number is required.</div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-md-4">
+
                 <div class="form-group">
-                  <label for="">City</label>
-                  <input #city="ngModel" name="city" [(ngModel)]="profileInfo.city"
-                         type="text" class="form-control" required [value]="profile?.city">
-                  <div class="alert" *ngIf="city.touched && city.invalid">
-                    <div *ngIf="city.errors.required">*City is required.</div>
+                  <label for="">Address Line 1</label>
+                  <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="personalInfo.addressLine1"
+                         type="text" class="form-control" placeholder="Line 1" [value]="profile.personalInfo?.addressLine1" required>
+                  <div class="alert" *ngIf="addressLine1.touched && addressLine1.invalid">
+                    <div *ngIf="addressLine1.errors.required">*Address Line 1 is required.</div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-md-3">
                 <div class="form-group">
-                  <label for="">Postcode</label>
-                  <input #postcode="ngModel" name="postcode" [(ngModel)]="profileInfo.postcode"
-                         type="text" class="form-control" [value]="profile?.postcode" required>
-                  <div class="alert" *ngIf="postcode.touched && postcode.invalid">
-                    <div *ngIf="postcode.errors.required">*Postcode is required.</div>
+                  <label for="">Address Line 2 (Optional)</label>
+                  <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="personalInfo.addressLine2"
+                         type="text" class="form-control" placeholder="Line 2" [value]="profile.personalInfo?.addressLine2">
+                </div>
+
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label for="">Country</label>
+                      <input #country="ngModel" name="country" [(ngModel)]="personalInfo.country"
+                             type="text" class="form-control" [value]="profile.personalInfo?.country" required>
+                      <div class="alert" *ngIf="country.touched && country.invalid">
+                        <div *ngIf="country.errors.required">*Country is required.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">City</label>
+                      <input #city="ngModel" name="city" [(ngModel)]="personalInfo.city"
+                             type="text" class="form-control" required [value]="profile.personalInfo?.city">
+                      <div class="alert" *ngIf="city.touched && city.invalid">
+                        <div *ngIf="city.errors.required">*City is required.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="">Postcode</label>
+                      <input #postcode="ngModel" name="postcode" [(ngModel)]="personalInfo.postcode"
+                             type="text" class="form-control" [value]="profile.personalInfo?.postcode" required>
+                      <div class="alert" *ngIf="postcode.touched && postcode.invalid">
+                        <div *ngIf="postcode.errors.required">*Postcode is required.</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <button  (click)="openUploader()" class="btn btn-upload btn-secondary">Upload image</button>
+                </div>
+
+                <div class="form-group">
+                  <button  (click)="openGallery()" class="btn btn-upload btn-secondary">Choose from gallery</button>
+                </div>
+
+                <div class="form-group" *ngIf="selectedImage">
+                  <div class="selected-image" [style.backgroundImage]="'url(' + selectedImage.url + ')'"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="">About me</label>
+                  <textarea #about="ngModel" name="about" [(ngModel)]="personalInfo.about" rows="5"
+                            type="text" class="form-control" placeholder="Introduce yourself here..."
+                            [value]="profile.personalInfo?.about">
+              </textarea>
+                </div>
+
               </div>
-            </div>
 
-              <h3>Introduction and profile picture</h3>
+              <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                <button (click)="submitPersonalInfo()" class="btn btn-primary btn-submit">Save</button>
+              </mat-action-row>
 
-              <div class="form-group">
-                <button  (click)="openUploader()" class="btn btn-upload btn-secondary">Upload image</button>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>Work Experience</mat-panel-title>
+                <mat-panel-description>Work History</mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <div class="container-fluid cont-bottom">
+
+                <h3>Current Possition</h3>
+
+                <div class="form-group">
+                  <label for="">Current Position</label>
+                  <input #currentPosition="ngModel" name="currentPosition" [(ngModel)]="workInfo.currentPosition"
+                         type="text" class="form-control" [value]="profile.workInfo?.currentPosition">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Company name</label>
+                  <input #currentCompany="ngModel" name="currentCompany" [(ngModel)]="workInfo.currentCompany"
+                         type="text" class="form-control" [value]="profile.workInfo?.currentCompany">
+                </div>
+                
+                <div class="form-group">
+                  <label for="">Start date</label>
+                  <input #startDate="ngModel" name="startDate" [(ngModel)]="workInfo.startDate"
+                         type="date" class="form-control" [value]="profile.workInfo?.startDate">
+                </div>
+
+                <div class="form-group">
+                  <button (click)="openAddWork()">Add work experience</button>
+                </div>
+
+                <div class="work-1" *ngIf="profile.workInfo?.work_1Position">
+                  <h3>Work 1</h3>
+                  <div class="form-group">
+                    <label for="">Position</label>
+                    <input #work_1Position="ngModel" name="work_1Position" [(ngModel)]="workInfo.work_1Position"
+                           type="text" class="form-control" [value]="profile.workInfo?.work_1Position">
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="">Company name</label>
+                    <input #work_1Company="ngModel" name="work_1Company" [(ngModel)]="workInfo.work_1Company"
+                           type="text" class="form-control" [value]="profile.workInfo?.work_1Company">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="">Start date</label>
+                    <input #work_1StartDate="ngModel" name="work_1StartDate" [(ngModel)]="workInfo.work_1StartDate"
+                           type="date" class="form-control" [value]="profile.workInfo?.work_1StartDate">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Start date</label>
+                    <input #work_1EndtDate="ngModel" name="work_1EndtDate" [(ngModel)]="workInfo.work_1EndtDate"
+                           type="date" class="form-control" [value]="profile.workInfo?.work_1EndtDate">
+                  </div>
+                </div>
+
               </div>
 
-            <div class="form-group">
-              <button  (click)="openGallery()" class="btn btn-upload btn-secondary">Choose from gallery</button>
-            </div>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                <button (click)="submitWorkInfo()" class="btn btn-primary btn-submit">Save</button>
+              </mat-action-row>
 
-              <div class="form-group">
-                <label for="">About me</label>
-                <textarea #about="ngModel" name="about" [(ngModel)]="profileInfo.about" rows="5"
-                          type="text" class="form-control" placeholder="Introduce yourself here..."
-                          [value]="profile?.about">
-            </textarea>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>Education</mat-panel-title>
+                <mat-panel-description>Education information</mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <div class="container-fluid cont-bottom">
+
+                <h3>Certification / Diploma / Degree</h3>
+
+                <div class="form-group">
+                  <label for="">Degree</label>
+                  <input #degree="ngModel" name="degree" [(ngModel)]="profileInfo.degree"
+                         type="text" class="form-control" [value]="profile?.degree">
+                </div>
+
               </div>
 
-          </div>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                <button (click)="submitProfile()" class="btn btn-primary btn-submit">Save</button>
+              </mat-action-row>
 
-        </div>
+            </mat-expansion-panel>
 
-        <div class="col-md-6 col-xs-1">
-          <div class="container-fluid cont-bottom">
-
-            <h3>Links</h3>
-
-            <div class="form-group">
-              <label for="">Website url</label>
-              <input #website="ngModel" name="website" [(ngModel)]="profileInfo.website"
-                     type="text" class="form-control" [value]="profile?.website">
-            </div>
-
-            <div class="form-group">
-              <label for="">Facebook</label>
-              <input #facebook="ngModel" name="facebook" [(ngModel)]="profileInfo.facebook"
-                     type="text" class="form-control" [value]="profile?.facebook">
-            </div>
-
-            <div class="form-group">
-              <label for="">LinkedIn</label>
-              <input #linkedin="ngModel" name="linkedin" [(ngModel)]="profileInfo.linkedin"
-                     type="text" class="form-control" [value]="profile?.linkedin">
-            </div>
-
-            <div class="form-group">
-              <label for="">Twitter</label>
-              <input #twitter="ngModel" name="twitter" [(ngModel)]="profileInfo.twitter"
-                     type="text" class="form-control" [value]="profile?.twitter">
-            </div>
-
-            <div class="form-group">
-              <label for="">Youtube</label>
-              <input #youtube="ngModel" name="youtube" [(ngModel)]="profileInfo.youtube"
-                     type="text" class="form-control" [value]="profile?.youtube">
-            </div>
-
-            <div class="form-group">
-              <label for="">Github</label>
-              <input #github="ngModel" name="github" [(ngModel)]="profileInfo.github"
-                     type="text" class="form-control" [value]="profile?.github">
-            </div>
+            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>External Links</mat-panel-title>
+                <mat-panel-description>Provide external website links. Ex- Your website url, Facebook...</mat-panel-description>
+              </mat-expansion-panel-header>
 
 
-            <button (click)="submitProfile()" class="btn btn-primary">Save to profile</button>
+              <div class="container-fluid cont-bottom">
 
-          </div>
-        </div>
+                <div class="form-group">
+                  <label for="">Website url</label>
+                  <input #website="ngModel" name="website" [(ngModel)]="externalLinks.website"
+                         type="text" class="form-control" [value]="profile.externalLinks?.website">
+                </div>
 
-      </div>
-    </form>
+                <div class="form-group">
+                  <label for="">Facebook</label>
+                  <input #facebook="ngModel" name="facebook" [(ngModel)]="externalLinks.facebook"
+                         type="text" class="form-control" [value]="profile.externalLinks?.facebook">
+                </div>
+
+                <div class="form-group">
+                  <label for="">LinkedIn</label>
+                  <input #linkedin="ngModel" name="linkedin" [(ngModel)]="externalLinks.linkedin"
+                         type="text" class="form-control" [value]="profile.externalLinks?.linkedin">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Twitter</label>
+                  <input #twitter="ngModel" name="twitter" [(ngModel)]="externalLinks.twitter"
+                         type="text" class="form-control" [value]="profile.externalLinks?.twitter">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Youtube</label>
+                  <input #youtube="ngModel" name="youtube" [(ngModel)]="externalLinks.youtube"
+                         type="text" class="form-control" [value]="profile.externalLinks?.youtube">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Github</label>
+                  <input #github="ngModel" name="github" [(ngModel)]="externalLinks.github"
+                         type="text" class="form-control" [value]="profile.externalLinks?.github">
+                </div>
+
+
+              </div>
+
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                <button (click)="submitExternalLinks()" class="btn btn-primary btn-submit">Save</button>
+              </mat-action-row>
+
+            </mat-expansion-panel>
+
+          </mat-accordion>
+
+        </form>
+
+    </div>
   </div>
 
 </div>

@@ -16,9 +16,9 @@ h2{color: black}
 .coll {float: left !important;width: 16.66%;}
 
 /* Add a transparency effect for thumnbail images */
-.select {opacity: 0.6; width: 100%; height: 60px;}
-.active,
+.select {opacity: 0.6; width: 100%; height: 60px; border: none; outline: none;}
+.select{background-color: transparent;background-repeat: no-repeat;background-size: cover;background-position: center center; width: 100%;}
+.select:focus{opacity: 1; border: solid 2px greenyellow;}
 .select:hover {opacity: 1; cursor: pointer;}
 .image-cont{width: 16.66%;}
-.select{background-color: transparent;background-repeat: no-repeat;background-size: cover;background-position: center center; width: 100%;}
 .col-3{padding: 1px;}
