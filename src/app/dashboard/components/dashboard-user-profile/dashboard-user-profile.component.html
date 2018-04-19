@@ -159,7 +159,7 @@
 
                 <div class="form-group">
                   <label for="">About me</label>
-                  <textarea #about="ngModel" name="about" [(ngModel)]="personalInfo.about" rows="5"
+                  <textarea maxlength="250" #about="ngModel" name="about" [(ngModel)]="personalInfo.about" rows="5"
                             type="text" class="form-control" placeholder="Introduce yourself here..."
                             [value]="profile.personalInfo?.about">
               </textarea>
@@ -182,117 +182,35 @@
 
               <div class="container-fluid cont-bottom">
 
-                <h3>Current Possition</h3>
+                <h3>Add work experience to your profile</h3>
 
                 <div class="form-group">
-                  <label for="">Current Position</label>
-                  <input #currentPosition="ngModel" name="currentPosition" [(ngModel)]="workInfo.currentPosition"
-                         type="text" class="form-control" [value]="profile.workInfo?.currentPosition">
+                  <button (click)="openAddWork()">Add Work</button>
                 </div>
 
-                <div class="form-group">
-                  <label for="">Company name</label>
-                  <input #currentCompany="ngModel" name="currentCompany" [(ngModel)]="workInfo.currentCompany"
-                         type="text" class="form-control" [value]="profile.workInfo?.currentCompany">
-                </div>
-                
-                <div class="form-group">
-                  <label for="">Start date</label>
-                  <input #startDate="ngModel" name="startDate" [(ngModel)]="workInfo.startDate"
-                         type="date" class="form-control" [value]="profile.workInfo?.startDate">
-                </div>
-
-                <div class="work-1" *ngIf="profile.workInfo?.work_1Position">
-                  <h3>Work 1</h3>
-                  <div class="form-group">
-                    <label for="">Position</label>
-                    <input #work_1Position="ngModel" name="work_1Position" [(ngModel)]="workInfo.work_1Position"
-                           type="text" class="form-control" [value]="profile.workInfo?.work_1Position">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="">Company name</label>
-                    <input #work_1Company="ngModel" name="work_1Company" [(ngModel)]="workInfo.work_1Company"
-                           type="text" class="form-control" [value]="profile.workInfo?.work_1Company">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="">Start date</label>
-                    <input #work_1StartDate="ngModel" name="work_1StartDate" [(ngModel)]="workInfo.work_1StartDate"
-                           type="date" class="form-control" [value]="profile.workInfo?.work_1StartDate">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="">End date</label>
-                    <input #work_1EndDate="ngModel" name="work_1EndDate" [(ngModel)]="workInfo.work_1EndDate"
-                           type="date" class="form-control" [value]="profile.workInfo?.work_1EndDate">
-                  </div>
-                </div>
-
-                <div class="work-2" *ngIf="profile.workInfo?.work_2Position">
-                  <h3>Work 2</h3>
-                  <div class="form-group">
-                    <label for="">Position</label>
-                    <input #work_2Position="ngModel" name="work_2Position" [(ngModel)]="workInfo.work_2Position"
-                           type="text" class="form-control" [value]="profile.workInfo?.work_2Position">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="">Company name</label>
-                    <input #work_2Company="ngModel" name="work_2Company" [(ngModel)]="workInfo.work_2Company"
-                           type="text" class="form-control" [value]="profile.workInfo?.work_2Company">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="">Start date</label>
-                    <input #work_2StartDate="ngModel" name="work_2StartDate" [(ngModel)]="workInfo.work_2StartDate"
-                           type="date" class="form-control" [value]="profile.workInfo?.work_2StartDate">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="">End date</label>
-                    <input #work_2EndDate="ngModel" name="work_2EndDate" [(ngModel)]="workInfo.work_2EndDate"
-                           type="date" class="form-control" [value]="profile.workInfo?.work_2EndDate">
-                  </div>
-                </div>
-
-                <div class="work-3" *ngIf="profile.workInfo?.work_3Position">
-                  <h3>Work 3</h3>
-                  <div class="form-group">
-                    <label for="">Position</label>
-                    <input #work_3Position="ngModel" name="work_3Position" [(ngModel)]="workInfo.work_3Position"
-                           type="text" class="form-control" [value]="profile.workInfo?.work_3Position">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="">Company name</label>
-                    <input #work_3Company="ngModel" name="work_3Company" [(ngModel)]="workInfo.work_3Company"
-                           type="text" class="form-control" [value]="profile.workInfo?.work_3Company">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="">Start date</label>
-                    <input #work_3StartDate="ngModel" name="work_3StartDate" [(ngModel)]="workInfo.work_3StartDate"
-                           type="date" class="form-control" [value]="profile.workInfo?.work_3StartDate">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="">End date</label>
-                    <input #work_3EndDate="ngModel" name="work_3EndDate" [(ngModel)]="workInfo.work_3EndDate"
-                           type="date" class="form-control" [value]="profile.workInfo?.work_3EndDate">
-                  </div>
-                </div>
-
-                <div class="form-group" *ngIf="!profile.workInfo?.work_3Position">
-                  <button (click)="openAddWork()">Add work experience</button>
-                </div>
+                <ng-container class="education-lst" *ngFor="let w of work">
+                  <ul>
+                    <li>
+                      <div class="row">
+                        <div class="col-9">
+                            <h3>{{w.position}}</h3>
+                            <p>{{w.company}}</p>
+                            <p>{{w.startDate}} - {{w.endDate}}</p>
+                        </div>
+                        <div class="col-3">
+                          <button (click)="openAddWork(w.$key)">Edit</button>
+                          <button (click)="deleteWork(w.$key)">Delete</button>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </ng-container>
 
               </div>
 
               <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
-                <button (click)="submitWorkInfo()" class="btn btn-primary btn-submit">Save</button>
               </mat-action-row>
 
             </mat-expansion-panel>
@@ -305,12 +223,74 @@
 
               <div class="container-fluid cont-bottom">
 
-                <h3>Certification / Diploma / Degree</h3>
+                <h3>Add education to your profile</h3>
 
                 <div class="form-group">
-                  <label for="">Degree</label>
-                  <input #degree="ngModel" name="degree" [(ngModel)]="profileInfo.degree"
-                         type="text" class="form-control" [value]="profile?.degree">
+                  <button (click)="openAddEducation()">Add Education</button>
+                </div>
+
+                <ng-container class="education-lst" *ngFor="let e of education">
+                  <ul>
+                    <li>
+                      <div class="row">
+                        <div class="col-9">
+                            <h3>{{e.institute}}</h3>
+                            <p>{{e.degree}} , {{e.fieldOfStudy}}</p>
+                            <p>{{e.grade}}</p>
+                            <p>{{e.startDate}} - {{e.endDate}}</p>
+                            <p>{{e.activities}}</p>
+                        </div>
+                        <div class="col-3">
+                          <button (click)="openAddEducation(e.$key)">Edit</button>
+                          <button (click)="deleteEducation(e.$key)">Delete</button>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </ng-container>
+
+              </div>
+
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>Skills / Interests / Accomplishments</mat-panel-title>
+                <mat-panel-description>Add your key skills, interests and Accomplishments here</mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <div class="container-fluid cont-bottom">
+
+                <h3>Add skills to your profile</h3>
+
+                <div class="form-group" style="color: black">
+                  <input (click)="toggleDropdown()" type="text" (keydown)="searchSkill($event)" placeholder="Type skills..." class="form-control">
+
+                  <div *ngIf="showDorpdown" class="skills-dropdown-container">
+                    <div (click)="selectSkill(skill)" class="skill" *ngFor="let skill of skills">{{skill.name}}</div>
+                  </div>
+
+                  <div class="selected-skills" *ngIf="selectedSkills">
+                    <ul class="skills-list">
+                      <li *ngFor="let s of selectedSkills">
+                        <span href="">
+                          <i (click)="removeSkill(s)" class="fa fa-times"></i>
+                          {{s?.name}}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="">Interests (Ex - Music, Swimming, Football etc..)</label>
+                  <textarea name="interests" [(ngModel)]="skillsAndInterests.interests"
+                         type="text" class="form-control" [value]="profile.skillsAndInterests?.interests"></textarea>
                 </div>
 
               </div>
@@ -318,12 +298,12 @@
               <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
-                <button (click)="submitProfile()" class="btn btn-primary btn-submit">Save</button>
+                <button (click)="submitSkillsAndInterests()" class="btn btn-primary btn-submit">Save</button>
               </mat-action-row>
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+            <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)">
               <mat-expansion-panel-header>
                 <mat-panel-title>External Links</mat-panel-title>
                 <mat-panel-description>Provide external website links. Ex- Your website url, Facebook...</mat-panel-description>

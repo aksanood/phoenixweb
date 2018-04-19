@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { DataTablesModule } from 'angular-datatables/src/angular-datatables.module';
 import { AddProductComponent } from 'app/dashboard/components/add-product/add-product.component';
 import { DashboardNavigationComponent } from 'app/dashboard/components/dashboard-navigation/dashboard-navigation.component';
 import { DashboardOverviewComponent } from 'app/dashboard/components/dashboard-overview/dashboard-overview.component';
@@ -19,6 +18,9 @@ import { AddPostComponent } from 'app/dashboard/components/add-post/add-post.com
 import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
 import { DashboardUserTutorialsComponent } from './components/dashboard-user-tutorials/dashboard-user-tutorials.component';
 import { AddWorkComponent } from './components/add-work/add-work.component';
+import { AddEducationComponent } from './components/add-education/add-education.component';
+import { DashboardUserShowcaseComponent } from './components/dashboard-user-showcase/dashboard-user-showcase.component';
+import { AddShowcaseItemComponent } from './components/add-showcase-item/add-showcase-item.component';
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { AddWorkComponent } from './components/add-work/add-work.component';
           {path: '', redirectTo: 'dashboard-overview', pathMatch: 'full'},
           {path: 'dashboard-overview', component: DashboardOverviewComponent},
           {path: 'dashboard-user-profile', component: DashboardUserProfileComponent},
+          {path: 'dashboard-user-showcase', component: DashboardUserShowcaseComponent},
           {path: 'dashboard-user-products', component: DashboardUserProductsComponent},
           {path: 'dashboard-user-orders', component: DashboardUserOrdersComponent},
           {path: 'add-product', component: AddProductComponent},
@@ -40,13 +43,15 @@ import { AddWorkComponent } from './components/add-work/add-work.component';
           {path: 'dashboard-user-tutorials', component: DashboardUserTutorialsComponent},
           {path: 'add-tutorial', component: AddTutorialComponent},
           {path: 'add-tutorial/:id', component: AddTutorialComponent},
-          
+
         ]
       },
     ])
   ],
   entryComponents: [
-    AddWorkComponent
+    AddWorkComponent,
+    AddEducationComponent,
+    AddShowcaseItemComponent
   ],
   declarations: [
     DashboardComponent,
@@ -61,7 +66,10 @@ import { AddWorkComponent } from './components/add-work/add-work.component';
     AddPostComponent,
     AddTutorialComponent,
     DashboardUserTutorialsComponent,
-    AddWorkComponent
+    AddWorkComponent,
+    AddEducationComponent,
+    DashboardUserShowcaseComponent,
+    AddShowcaseItemComponent
   ]
 })
 export class DashboardModule { }

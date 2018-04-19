@@ -18,7 +18,7 @@ export class AuthService {
     private userService: UserService,
     public afAuth: AngularFireAuth,
     private route: ActivatedRoute) {
-    
+
     this.user$ = afAuth.authState;
 
   }
@@ -45,7 +45,7 @@ export class AuthService {
     }).catch(error => {
       this.error = error;
     });
-    
+
   }
 
   loginWithGoogle() {
@@ -87,7 +87,7 @@ export class AuthService {
       });
   }
 
-  getErrorMessage () {
+   getErrorMessage () {
     return this.error;
   }
 }

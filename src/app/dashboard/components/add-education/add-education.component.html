@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <span (click)="closeDialog()" class="close">&times;</span>
+</div>
+
+<div class="container-fluid">
+
+  <h3>Add Education</h3>
+
+  <form #f="ngForm">
+    <div class="form-group">
+      <label for="">School / University / Institute</label>
+      <input name="position" [(ngModel)]="education.institute"
+             type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Degree</label>
+      <input name="degree" [(ngModel)]="education.degree"
+             type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Field of study</label>
+      <input name="fieldOfStudy" [(ngModel)]="education.fieldOfStudy"
+             type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Grade</label>
+      <input name="grade" [(ngModel)]="education.grade"
+             type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Activities and societies</label>
+      <textarea name="activities" [(ngModel)]="education.activities"
+             type="text" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="">Start date</label>
+      <input name="startDate" [(ngModel)]="education.startDate"
+             type="date" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">End Date</label>
+      <input name="endtDate" [(ngModel)]="education.endDate"
+             type="date" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <button (click)="submitEducation()">Add work experience</button>
+    </div>
+  </form>
+
+</div>

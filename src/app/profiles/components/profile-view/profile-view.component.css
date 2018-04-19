@@ -1,0 +1,49 @@
+
+/* ===== Skills section ===== */
+.skills-section {padding: 20px 30px;border-top: 1px solid #eee; background-color: white;}
+.skills-section h3 {margin: 0 0 10px 0;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.skills-section ul.skills-list {font-size: 12px;line-height: 1;color: #bbb;}
+.skills-section ul{list-style: none; padding-left: 0;}
+.skills-section ul.skills-list li {display: inline-block;margin: 0 4px 8px 0; line-height: 1; color: #bbb;}
+.skills-section ul.skills-list a {display: inline-block;padding: 6px 8px;border: 1px solid #ddd;color: #444;border-radius: 4px;}
+.skills-section p {color: #444; font-size: 12px;line-height: 1;}
+/* ===== Social contacts section ===== */
+.social-contacts {padding: 20px 30px;border-top: 1px solid #eee; background-color: white;}
+.social-contacts h3 {margin: 0 0 10px 0;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.social-contacts ul {padding-left: 0;}
+.social-contacts .social-links{font-size: 15px;display: block;padding-bottom: 10px;color: #999;line-height: 22px;box-sizing: border-box;}
+.social-contacts .social-links:hover{text-decoration: none; color: #444;}
+.social-contacts .social-links i {padding-right: 5px; font-size: 22px;}
+.social-contacts .social-links span.social-label {position: relative;margin-left: 5px;line-height: 22px;}
+/* ===== work experience section ===== */
+.work-experience {padding: 20px 30px;border-top: 1px solid #eee; background-color: white;}
+.work-experience h3 {margin: 0 0 10px 0;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.work-experience ul {padding-left: 0; list-style: none;}
+.work-experience h4 {margin: 0;font-size: 12px;font-weight: 600;letter-spacing: .02em;text-transform: uppercase;color: #444}
+.work-experience ul li {font-size: 13px;font-weight: 500;letter-spacing: .02em; color: #444;}
+/* ===== Education section ===== */
+.education-history {padding: 20px 30px;border-top: 1px solid #eee; background-color: white;}
+.education-history h3 {margin: 0 0 10px 0;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.education-history ul {padding-left: 0; list-style: none;}
+.education-history h4 {margin: 0;font-size: 12px;font-weight: 600;letter-spacing: .02em;text-transform: uppercase;color: #444}
+.education-history ul li {font-size: 13px;font-weight: 500;letter-spacing: .02em; color: #444;}
+/* ===== Showcase section ===== */
+.showcase {padding: 0; margin: 0; width: 100%; height: 100%; border-top: 1px solid #eee; background-color: #F3F3F3;}
+.showcase h3 {margin: 20px;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.showcase ol {list-style: none; width: 100%; margin: 0 auto;}
+.showcase ol li {position: relative; width: 220px; float: left; padding: 0; margin: 0 15px 30px 15px;}
+/* ===== Products section ===== */
+.products {padding: 0; margin: 0; width: 100%; height: 100%; border-top: 1px solid #eee; background-color: #F3F3F3;}
+.products h3 {margin: 20px;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.products ol {list-style: none; width: 100%; margin: 0 auto;}
+.products ol li {position: relative; width: 220px; float: left; padding: 0; margin: 0 15px 0px 15px;}
+/* ===== Blog posts section ===== */
+.blog-posts {padding: 0; margin: 0; width: 100%; height: 100%; border-top: 1px solid #eee; background-color: #F3F3F3;}
+.blog-posts h3 {margin: 20px;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.blog-posts ol {list-style: none; width: 100%; margin: 0 auto;}
+.blog-posts ol li {position: relative; width: 220px; float: left; padding: 0; margin: 0 15px 0px 15px;}
+/* ===== Blog posts section ===== */
+.tutorials {padding: 0; margin: 0; width: 100%; height: 100%; border-top: 1px solid #eee; background-color: #F3F3F3;}
+.tutorials h3 {margin: 20px;font-size: 14px;font-weight: 500;letter-spacing: .02em;text-transform: uppercase;color: #999}
+.tutorials ol {list-style: none; width: 100%; margin: 0 auto;}
+.tutorials ol li {position: relative; width: 220px; float: left; padding: 0; margin: 0 15px 0px 15px;}

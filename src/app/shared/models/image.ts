@@ -5,9 +5,9 @@ export class Image {
   type: number;
   name: string;
   url: string;
-  constructor (uploadFile: Upload, type: number) {
+
+  constructor (uploadFile: Upload) {
     this.file = uploadFile;
-    this.type = type;
     this.name = this.file.name;
     this.url = this.file.url;
   }

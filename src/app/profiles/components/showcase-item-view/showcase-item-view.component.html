@@ -1,0 +1,143 @@
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col">
+      <span (click)="closeDialog()" class="close">&times;</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      <div class="profile-image" [style.backgroundImage]="'url(' + profileInfo.personalInfo?.picture + ')'"></div>
+    </div>
+    <div class="col-11">
+      <div class="title-container">
+        <h2 mat-dialog-title>{{itemInfo?.title}}</h2>
+        <strong>by <span class="created-by">{{profileInfo.personalInfo?.name | titlecase}}</span>
+           on <span class="created-by">{{itemInfo?.date | date}}</span></strong>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-content>
+
+    <div class="content">
+      <div class="row">
+        <div class="col">
+          <div class="carousel-container">
+            <ngb-carousel *ngIf="coverImage">
+              <ng-template ngbSlide>
+                <img [src]="coverImage?.url" [alt]="coverImage?.name">
+                <div class="carousel-caption">
+                  <h3>{{coverImage?.name}}</h3>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide *ngFor="let image of itemImages">
+                <img [src]="image?.url"  [alt]="image?.name">
+                <div class="carousel-caption">
+                  <h3>{{image?.name}}</h3>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-7">
+          <div class="html-content"  [innerHTML]="itemInfo?.description"></div>
+          <div class="follow-on">
+            <div class="follow">Follow</div>
+            <ul>
+              <li><a routerLink="/about">
+                <i class="fa fa-media fa-facebook"> </i></a><span class="breaker">|</span></li>
+              <li><a routerLink="/about">
+                <i class="fa fa-media fa-instagram"> </i></a><span class="breaker">|</span></li>
+              <li><a routerLink="/about">
+                <i class="fa fa-media fa-linkedin"> </i></a><span class="breaker">|</span></li>
+              <li><a routerLink="/about">
+                <i class="fa fa-media fa-youtube"> </i></a><span class="breaker">|</span></li>
+              <li><a routerLink="/about">
+                <i class="fa fa-media fa-github"></i></a></li>
+            </ul>
+          </div>
+
+          <div class="add-comment">
+            <h3>Skills</h3>
+          </div>
+        </div>
+
+        <div class="col-5">
+          <div class="user-reactions">
+            <ul class="item-stats">
+              <li>
+                <a class="stats-action like-item" title="Like this item" href="">
+                  <i class="fa fa-media fa-heart"></i>
+                  <span class="stats-label">Like?</span>
+                </a>
+                <a class="likes-count stats-num" href="">
+                  338
+                  <span class="stats-num-label">
+                    likes
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="stats-action like-item" title="Like this item" href="">
+                  <i class="fa fa-media fa-share-square"></i>
+                  <span class="stats-label">Share</span>
+                </a>
+                <a class="stats-num" href="">
+                  1756
+                  <span class="stats-num-label">
+                    views
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="stats-action like-item" title="Like this item" href="">
+                  <i class="fa fa-media fa-comment"></i>
+                  <span class="stats-label">Comment?</span>
+                </a>
+                <a class="likes-count stats-num" href="">
+                  12
+                  <span class="stats-num-label">
+                    comments
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="stats-action like-item" title="Like this item" href="">
+                  <i class="fa fa-media fa-download"></i>
+                  <span class="stats-label">Download</span>
+                </a>
+                <a class="likes-count stats-num" href="">
+                  107
+                  <span class="stats-num-label">
+                    downloads
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="more-from-user">
+            <h3 class="meta-head"><a href="">More from {{profileInfo.personalInfo?.name}}</a></h3>
+            <ol class="more-items">
+              <li *ngFor="let item of showcaseItems | paginate: {itemsPerPage:4, currentPage: pg}">
+                <div class="item-card" (click)="loadItemPage(item.$key)">
+                  <div class="item-image" [style.backgroundImage]="'url(' + item.coverImage?.url + ')'"></div>
+                </div>
+              </li>
+            </ol>
+            <pagination-controls class="pagination" (pageChange)="pg =$event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+
+</div>
+

@@ -1,0 +1,52 @@
+.container-fluid{color: black;}
+/* The Close Button */
+.close {color: #aaaaaa;float: right;font-size: 28px;font-weight: bold;}
+.close:hover,
+.close:focus {color: #000;text-decoration: none;cursor: pointer;}
+/* Title container */
+.profile-image{background-color: transparent;background-repeat: no-repeat;background-size: cover;
+  background-position: center center; width: 50px; height: 50px; border-radius: 100%;
+  border: 3px solid white; box-shadow: 0 0 0 3px #0097a7 !important;}
+.col-11{padding-left: 0;}
+h2{margin-bottom: 0;}
+strong{font-weight: 500; font-size: 14px; color: #444;}
+.created-by{font-weight: 700; color: #3a8bbb;}
+
+mat-dialog-content{display: inline;}
+
+.carousel-container{margin: 20px 0 20px 0; padding: 20px; background-color: white;box-shadow: 0 1px 2px rgba(0,0,0,0.07); border-radius: 3px}
+img {display:block;margin: auto;height: auto;max-height: 400px;width: auto; }
+ngb-carousel {background-color: black;}
+
+/* Description container */
+.html-content{padding: 10px 0 20px 20px;}
+/* social icons container */
+.follow-on{margin: auto; width: 100%; padding: 10px;}
+.follow{padding:0 0 20px 10px; font-weight: 700; font-size: medium; color: #95989A}
+.follow-on ul{list-style: none;}
+.follow-on ul li{float: left;width: auto;display: inline; font-size: larger;}
+.follow-on ul li a{color: #3a8bbb;}
+.follow-on ul li a:hover{color: #1e6189}
+.breaker{padding: 0 30px 0 30px; color: #95989A}
+
+/* User reaction container */
+.user-reactions ul {list-style: none;}
+ul.item-stats>li {position: relative;width: 100%;font-size: 13px;line-height: 1; border-bottom: 1px solid #ddd;box-sizing: border-box;}
+ul.item-stats>li .stats-action{display: block;padding-top: 10px;padding-bottom: 10px;color: #999;line-height: 22px;box-sizing: border-box;}
+ul.item-stats>li .stats-action span.stats-label {position: relative;top: -2px;margin-left: 5px;line-height: 22px;}
+ul.item-stats>li .stats-num {position: absolute;top: 0;right: 0;padding: 15px 14px;color: #999;}
+ul.item-stats>li a:hover, ul.item-stats>li a:hover span {color: #000000; text-decoration: none;}
+ul.item-stats>li a i {font-size: 20px;}
+
+/* More from this user container */
+.more-from-user{position: relative;}
+h3.meta-head{padding: 20px 0 10px 0;font-size: 15px;font-weight: 500;line-height: 1;color: #444;border-top: 1px solid #ddd;}
+h3.meta-head a {color: #444; padding-left: 40px;}
+h3.meta-head a:hover {color: #777; text-decoration: none;}
+ol.more-items {margin: 5px 0;overflow: hidden; list-style: none;}
+ol.more-items li {float: left;width: 46%;margin: 0 0 15px 0;}
+ol.more-items li a {display: inline-block;}
+.item-card{width: 130px; height: 100px; background-color: #000000; padding: 15px 10px 15px 10px;}
+.item-card:hover{opacity: 0.7;}
+.item-image{max-width: 110px; height: 70px; overflow: hidden; background-color: transparent; background-repeat: no-repeat; background-size: cover; background-position: top;}
+.pagination{margin: auto; padding: 10px; width: 100%;}

@@ -1,13 +1,26 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database-deprecated';
+import { ProfileInformationService } from 'shared/services/profile-information.service';
+import { AuthService } from 'shared/services/auth.service';
 
 @Injectable()
 export class BlogService {
 
-  constructor(private db: AngularFireDatabase) { }
+  userID: string;
+
+  constructor(private db: AngularFireDatabase, 
+              private profileService: ProfileInformationService,
+              private auth: AuthService) {
+              }
 
   createPost (post) {
-    return this.db.list('/blog-posts').push(post);
+    this.auth.appUser$.subscribe(user => {
+      this.userID = user.$key;
+    });
+    return this.db.list('/blog-posts').push(post)
+      .then( result => {
+        this.profileService.saveBlogPost(this.userID, result.key);
+      })
   }
 
   getAllPosts () {
@@ -23,6 +36,7 @@ export class BlogService {
   }
 
   delete(postID) {
-    return this.db.object('/blog-posts/' + postID).remove();
+    this.db.object('/blog-posts/' + postID).remove();
+    this.profileService.deleteBlogPost(this.userID, postID);
   }
 }

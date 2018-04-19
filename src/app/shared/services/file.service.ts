@@ -72,9 +72,30 @@ export class FileService {
       (): any => {
         upload.url = this.uploadTask.snapshot.downloadURL;
         upload.name = upload.file.name;
-            this.image = new Image (upload, imageCategory);
-            this.imageService.saveImage(this.image);
-            upload.message = 'Successfully uploaded the file and saved to the database !';
+            this.image = new Image (upload);
+            switch (imageCategory) {
+              case 0:
+                this.imageService.saveProfileImage(this.image);
+                upload.message = 'Successfully uploaded the file and saved to the profile pictures !';
+              break; 
+
+              case 1:
+                this.imageService.saveBlogImage(this.image);
+                upload.message = 'Successfully uploaded the file and saved to the blog pictures !';
+              break; 
+
+              case 2:
+                this.imageService.saveTutorialImage(this.image);
+                upload.message = 'Successfully uploaded the file and saved to the tutorial pictures !';
+              break; 
+
+              case 3:
+                this.imageService.savePortfolioImage(this.image);
+                upload.message = 'Successfully uploaded the file and saved to the portfolio pictures !';
+                upload.successfull = true;
+              break; 
+            }
+            
       });
   }
 

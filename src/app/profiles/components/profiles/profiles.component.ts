@@ -23,9 +23,9 @@ export class ProfilesComponent implements OnInit, OnDestroy {
   }
 
   searchProfiles (query: string) {
-    this.filteredProfiles = (query) ?
-      this.profiles.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) :
-      this.profiles;
+    //this.filteredProfiles = (query) ?
+      //this.profiles.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) :
+      //this.profiles;
   }
 
   ngOnInit() {

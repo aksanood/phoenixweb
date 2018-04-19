@@ -1,13 +1,27 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database-deprecated';
+import { ProfileInformationService } from 'shared/services/profile-information.service';
+import { AuthService } from 'shared/services/auth.service';
 
 @Injectable()
 export class TutorialService {
 
-  constructor(private db: AngularFireDatabase) { }
+  userID: string;
+
+  constructor(private db: AngularFireDatabase,
+              private profileService: ProfileInformationService,
+              private auth: AuthService) { 
+                
+              }
 
   createTutorial (tutorial) {
-    return this.db.list('/tutorials').push(tutorial);
+    this.auth.appUser$.subscribe(user => {
+      this.userID = user.$key;
+      });
+    return this.db.list('/tutorials').push(tutorial)
+    .then( result => {
+      this.profileService.saveTutorial(this.userID, result.key);
+     });
   }
 
   getAllTutorials () {
@@ -23,7 +37,8 @@ export class TutorialService {
   }
 
   delete(tutorialID) {
-    return this.db.object('/tutorials/' + tutorialID).remove();
+    this.db.object('/tutorials/' + tutorialID).remove();
+    this.profileService.deleteTutorial(this.userID, tutorialID);
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <div class="row">
+  <div class="row" *ngIf="!imageType">
     <div class="col">
       <span (click)="closeDialog()" class="close">&times;</span>
     </div>
@@ -12,8 +12,18 @@
     </div>
   </div>
 
-  <div class="container-fluid image-gallery">
+  <div class="container-fluid image-gallery" *ngIf="checkboxType">
+    <div class="row">
+      <ng-container *ngFor="let image of images">
+        <div class="col-3">
+          <input (change)="selectImages(image, $event.target.checked)" type="checkbox" [id]="image.name"/>
+          <label class="select"  [for]="image.name"><img [src]="image.url" alt=""></label>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 
+  <div class="container-fluid image-gallery" *ngIf="radioType">
     <div class="row">
       <ng-container *ngFor="let image of images">
         <div class="col-3">
@@ -23,12 +33,12 @@
       </ng-container>
     </div>
 
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-primary float-right" (click)="submitImage()">Select this image</button>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary float-right" (click)="submitImage()">Select this image</button>
+      </div>
     </div>
   </div>
+
 
 </div>

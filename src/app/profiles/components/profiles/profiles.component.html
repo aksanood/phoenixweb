@@ -30,7 +30,7 @@
     <div class="row">
       <ng-container *ngFor="let p of filteredProfiles">
         <div class="col-md-3 col-sm-6 col-xs-1">
-          <app-profile-card [profile]="p" [routerLink]="['/profile/', p.$key]"></app-profile-card>
+          <app-profile-card [profileID]="p.$key" [routerLink]="['/profile/', p.$key]"></app-profile-card>
         </div>
       </ng-container>
     </div>

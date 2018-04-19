@@ -34,7 +34,7 @@ body {
 
 /*========= Desktop ========*/
 @media (min-width: 768px){
-  .main-container{max-width: 1500px; padding-bottom: 100px;}
+  .main-container{max-width: 100%; padding-bottom: 100px;}
 }
 
 /*========= Mobile ========*/

@@ -22,3 +22,57 @@ h2{color: black}
 .select:hover {opacity: 1; cursor: pointer;}
 .image-cont{width: 16.66%;}
 .col-3{padding: 1px;}
+
+
+
+input[type="checkbox"]{
+  display: none;
+}
+
+label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border: 1px solid dodgerblue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  line-height: 14px;
+  text-align: center;
+  transition-duration: 0.4s;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  z-index: 1;
+}
+
+label img {
+  height: 60px;
+  width: 100%;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + label {
+  border-color: #ddd;
+}
+
+:checked + label:before {
+  content: "✓";
+  background-color: dodgerblue;
+  transform: scale(1);
+}
+
+:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+}

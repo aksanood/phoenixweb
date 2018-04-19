@@ -9,6 +9,7 @@ export class Upload {
     progress: number;
     uploadedOn: Date;
     userId: string;
+    successfull: boolean;
 
     constructor (file: File, userId: string) {
         this.file = file;

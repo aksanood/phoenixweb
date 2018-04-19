@@ -1,0 +1,20 @@
+
+<div class="showcase-item-card">
+  <div class="showcase-item">
+    <div class="item-image" [style.backgroundImage]="'url(' + showcaseItem.coverImage?.url + ')'">
+      <a (click)="openShowcaseItemView()" class="card-over">
+        <strong>{{showcaseItem.title}}</strong>
+        <span class="overview">
+          {{showcaseItem.description | stripHtml | summary: 150}}
+        </span>
+        <em class="timestamp">{{showcaseItem.date | date}}</em>
+      </a>
+    </div>
+
+    <ul>
+      <li>2500</li>
+      <li>12</li>
+      <li>500</li>
+    </ul>
+  </div>
+</div>

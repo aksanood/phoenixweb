@@ -20,6 +20,7 @@ export class MarketplaceComponent implements OnDestroy {
   subscription: Subscription;
   // Pagination 
   page = 1;
+  pg;
 
   constructor(
     route: ActivatedRoute,

@@ -2,6 +2,7 @@ label{color: black;}
 hr{background-color: #2C3033;}
 .cont-top{ border: solid 1px #117be1; border-radius: 2px; margin-bottom: 30px; padding-top: 20px; padding-bottom: 20px; min-height: 265px; }
 .cont-bottom{margin-bottom: 30px; padding-top: 20px; padding-bottom: 20px;}
+.form-group{position: relative;}
 img{ width: 150px; height: 150px; object-fit: contain; max-width: 100%; max-height: 100%; }
 ul{padding: 0;}
 li{ display: flex; }
@@ -22,3 +23,25 @@ h3{ color: #0F7BFD;}
   justify-content: space-between;
   align-items: center;
 }
+p{color: black; margin-bottom: 0px;}
+.row{width: 100%;}
+
+/* ====== Skills dropdown ====== */
+.dropdown-skills{margin: 0;padding: 0;list-style-type: none;max-height: 280px;overflow-y: auto;position: relative;}
+.skills-list{
+  padding: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.skill-select:hover{background-color: #95989A; cursor: pointer; border: 1px solid gainsboro;}
+
+/* ====== Skills dropdown ====== */
+.skills-dropdown-container{position: absolute;z-index: 1;width: 100%;max-height: 300px;background: #F6F6F6;overflow-y: auto;}
+.skill{padding: 10px;font-family: sans-serif;color: #1BC98E;}
+.skill:hover{background: #C2C2C2;}
+.selected-skills ul.skills-list {font-size: 12px;line-height: 1;color: #bbb;}
+.selected-skills ul{list-style: none; padding-left: 0;}
+.selected-skills ul.skills-list li {display: inline-block;margin: 0 4px 8px 0; line-height: 1; color: #bbb;}
+.selected-skills ul.skills-list span {display: inline-block;padding: 6px 8px;border: 1px solid #ddd;color: #444;border-radius: 4px;}

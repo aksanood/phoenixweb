@@ -1,0 +1,88 @@
+
+.showcase-item-card{
+  position: relative;
+  clear: left;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  width: 220px;
+  height: 190px;
+}
+
+.showcase-item{
+  padding: 10px;
+
+}
+.item-image{
+  max-width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+strong{
+  display: block;
+  margin: 0 25px 4px 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #444;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card-over {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 0;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  font-size: 13px;
+  line-height: 2;
+  text-decoration: none;
+  color: #888;
+  background: #fff;
+  background: rgba(255,255,255,0.96);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.card-over:hover{opacity: 1; cursor: pointer;}
+.overview{
+  display: block;
+  margin: 0 0 10px 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #777;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 90px;
+}
+
+em{
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  margin: 10px 0 -3px 0;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1;
+  color: #777;
+}
+ul{list-style: none;}
+li{
+float: right;
+width: auto;
+margin: 10px 0 0 12px;
+display: inline;
+font-size: 12px;
+line-height: 1;
+color: #aaa;
+}

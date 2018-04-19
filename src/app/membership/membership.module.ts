@@ -20,11 +20,6 @@ import { EmailLoginComponent } from 'app/membership/components/email-login/email
     LoginComponent,
     SignupComponent,
     EmailLoginComponent
-  ],
-  entryComponents: [
-    LoginComponent,
-    SignupComponent,
-    EmailLoginComponent
   ]
 })
 export class MembershipModule { }

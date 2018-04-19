@@ -1,10 +1,9 @@
-import {Component, EventEmitter, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {ImageService} from "shared/services/image.service";
 import {AuthService} from "shared/services/auth.service";
 import {Subscription} from "rxjs/Subscription";
 import {Image} from "shared/models/image";
-import {NgbCarouselConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-image-gallery',
@@ -17,7 +16,15 @@ export class ImageGalleryComponent implements OnInit, OnDestroy {
   userId: string;
   images: Image [];
   selectedImage: Image;
+
   onSubmit = new EventEmitter();
+  @Input('imageType') imageType;
+  @Input('selectType') selectType;
+  @Output('imageSelected') imageSelected = new EventEmitter();
+  @Output('imageDeSelected') imageDeSelected = new EventEmitter();
+  radioType = false;
+  checkboxType = false;
+  slcType;
 
   constructor(public dialogRef: MatDialogRef<ImageGalleryComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -31,21 +38,72 @@ export class ImageGalleryComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    console.log(this.data.selectType);
+    if (this.data.selectType === 'radio') {this.radioType = true;}
+    if (this.data.selectType === 'check') {this.checkboxType = true;}
+    if (!this.data.selectType) {
+      console.log(this.selectType);
+      if (this.selectType === 'radio') {this.radioType = true;}
+      if (this.selectType === 'check') {this.checkboxType = true;}
+    }
+
+    if (!this.imageType) {
+      this.imageType = this.data.imageType;
+    }
+    console.log(this.imageType);
+
     this.authService.appUser$.take(1).subscribe(user => {
       this.userId = user.$key;
-      this.imageSubscription = this.imageService.getProfileImagesByUser(this.userId)
-        .subscribe(images => {
-          this.images = images
-          console.log(this.images);
-        });
+
+      switch (this.imageType) {
+        case 0:
+          this.imageSubscription = this.imageService.getProfileImagesByUser(this.userId)
+            .subscribe(images => {
+              this.images = images;
+              console.log(this.images);
+            });
+          break;
+
+        case 1:
+          this.imageSubscription = this.imageService.getProfileImagesByUser(this.userId)
+            .subscribe(images => {
+              this.images = images;
+              console.log(this.images);
+            });
+          break;
+
+        case 2:
+          this.imageSubscription = this.imageService.getProfileImagesByUser(this.userId)
+            .subscribe(images => {
+              this.images = images;
+              console.log(this.images);
+            });
+          break;
+
+        case 3:
+          this.imageSubscription = this.imageService.getShowcaseImagesByUser(this.userId)
+            .subscribe(images => {
+              this.images = images;
+              console.log(this.images);
+            });
+          break;
+      }
+
       console.log(this.userId);
       console.log(this.dialogRef.componentInstance.data);
       this.dialogRef.componentInstance.data = 'asd';
     });
   }
 
-  selectImage (image: Image) {
-    console.log(image);
+  selectImages (image: Image, isChecked: boolean) {
+    if (isChecked) {
+      this.imageSelected.emit(image);
+    } else {
+      this.imageDeSelected.emit(image);
+    }
+  }
+
+  selectImage(image: Image) {
     this.selectedImage = image;
   }
 

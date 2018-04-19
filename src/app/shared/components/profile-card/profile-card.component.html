@@ -2,7 +2,7 @@
 <div class="card">
 
   <div class="card-header"
-       [style.backgroundImage]="'url(' + profile.personalInfo?.picture + ')'">
+       [style.backgroundImage]="'url(' + profileInfo?.picture + ')'">
     <div class="card-header-bar">
       <button href="#" class="btn-message"><span class="sr-only">Message</span></button>
       <button href="#" class="btn-menu"><span class="sr-only">Menu</span></button>
@@ -16,19 +16,9 @@
   </div>
 
   <div class="card-body">
-    <h2 class="name">{{profile.personalInfo?.name}}</h2>
+    <h2 class="name">{{profileInfo?.name}}</h2>
     <h4 class="job-title">Game Developer</h4>
     <div class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-
-    <div class="social-accounts">
-      <a *ngIf="profile?.facebook" [href]="profile?.facebook" target="_blank"><i class="fa fa-media fa-fw fa-facebook"></i></a>
-      <a *ngIf="profile?.twitter" [href]="profile?.twitter" target="_blank"><i class="fa fa-media fa-fw fa-twitter"></i></a>
-      <a *ngIf="profile?.instagram" [href]="profile?.instagram" target="_blank"><i class="fa fa-media fa-fw fa-instagram"></i></a>
-      <a *ngIf="profile?.linkedin" [href]="profile?.linkedin" target="_blank"><i class="fa fa-media fa-fw fa-linkedin"></i></a>
-      <a *ngIf="profile?.youtube" [href]="profile?.youtube" target="_blank"><i class="fa fa-media fa-fw fa-youtube"></i></a>
-      <a *ngIf="profile?.github" [href]="profile?.github" target="_blank"><i class="fa fa-media fa-fw fa-github"></i></a>
-    </div>
-  </div>
 
   <div class="card-footer">
     <div class="stats">

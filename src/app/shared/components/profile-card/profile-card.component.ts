@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Profile } from 'shared/models/profile';
+import { ProfileInformationService } from 'shared/services/profile-information.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -8,11 +9,16 @@ import { Profile } from 'shared/models/profile';
 })
 export class ProfileCardComponent implements OnInit {
 
-  @Input('profile') profile: Profile;
+  @Input('profileID') profileID: string;
 
-  constructor() { }
+  profileInfo;
+  constructor(private profileService: ProfileInformationService) { }
 
   ngOnInit() {
+    this.profileService.getPersonalInfoById(this.profileID).subscribe(info => {
+      this.profileInfo = info;
+      console.log(this.profileInfo);
+    })
   }
 
 }

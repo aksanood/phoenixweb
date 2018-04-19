@@ -1,0 +1,71 @@
+
+<div class="container-fluid">
+  <span (click)="closeDialog()" class="close">&times;</span>
+</div>
+
+<div class="container-fluid">
+  
+  <mat-horizontal-stepper [linear]="true">
+    <mat-step label="Step 1">
+
+        <form #f="ngForm">
+
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input name="title" [(ngModel)]="item.title"
+                     type="text" class="form-control">
+            </div>
+        
+            <div class="form-group">
+              <label for="description"><h4>Description</h4></label>
+              <app-ngx-editor
+                [config]="editorConfig"
+                name="description"
+                [placeholder]="'Overview about your portfolio item...'"
+                [spellcheck]="true"
+                [(ngModel)]="item.description"
+                resizer="stack"
+                minHeight="300"
+                id="description"
+                >
+              </app-ngx-editor>
+            </div>
+        
+        </form>
+      
+        <div>
+           <button (click)="saveFirstPage(f.value)" mat-button matStepperNext>Proceed to next step</button>
+        </div>
+    </mat-step>
+
+    <mat-step label="Step 2">
+      
+          <button (click)="openImageUploader()">Upload Image</button>
+
+          <button (click)="openChooseCoverImage()">Select a cover photo</button>
+          
+
+          <h3>Choose images for your showcase item</h3>
+          <app-image-gallery (imageDeSelected)="removeSelectedImages($event)" (imageSelected)="addSelectedImage($event)" 
+                              [imageType]="3" [selectType]="'check'"></app-image-gallery>
+
+            <table>
+              <tr *ngFor="let image of imagesSelected">
+                <td><h5>{{image?.name}}</h5></td>
+                <td *ngIf="itemID"><button (click)="deleteImage(image)">X</button></td>
+              </tr>
+            </table>
+
+          <div>
+            <button (click)="submitItem()" mat-button matStepperNext>Submit item</button>
+          </div>
+
+    </mat-step>
+
+    <mat-step label="Done">
+      <h2>Item Added.. You can close now..!</h2>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+</div>

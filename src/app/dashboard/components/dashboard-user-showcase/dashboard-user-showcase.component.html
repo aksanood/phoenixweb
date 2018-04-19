@@ -1,0 +1,31 @@
+
+<h3>Add Portfolio Items here</h3>
+
+<button mat-mini-fab (click)="openAddItem()">+</button>
+
+<div class="container-fluid">
+
+
+  <ol>
+    <li *ngFor="let item of showcaseItems">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <app-showcase-item [profileId]="user.$key" [showcaseItem]="item"></app-showcase-item>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <button mat-button (click)="openAddItem(item.$key)">Edit</button>
+          </div>
+          <div class="col-6">
+            <button mat-button  (click)="deleteShowcaseItem(item.$key)">Delete</button>
+          </div>
+        </div>
+      </div>
+
+
+    </li>
+  </ol>
+</div>

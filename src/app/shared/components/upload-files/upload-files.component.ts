@@ -16,11 +16,15 @@ export class UploadFilesComponent implements OnInit {
   files: FileList;
   upload: Upload;
   userId: string;
+  imageType: number;
 
   constructor(private fileService: FileService,
               public dialogRef: MatDialogRef<UploadFilesComponent>,
               private authService: AuthService,
-              @Inject(MAT_DIALOG_DATA) public data: any) { }
+              @Inject(MAT_DIALOG_DATA) public data: any) { 
+                this.imageType = data.imageType;
+                console.log(this.imageType);
+              }
 
   handleFiles (event) {
     this.files = event.target.files;
@@ -31,7 +35,7 @@ export class UploadFilesComponent implements OnInit {
     const filesIdx = _.range(filesToUpload.length);
     _.each(filesIdx, (idx => {
       this.upload = new Upload(filesToUpload[idx], this.userId);
-      this.fileService.uploadImageFiles(this.upload, 0);
+      this.fileService.uploadImageFiles(this.upload, this.imageType);
     }))
   }
 

@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MatNativeDateModule, MatExpansionModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DataTablesModule } from 'angular-datatables/src/angular-datatables.module';
+import { MatNativeDateModule, MatExpansionModule, MatStepperModule, MatDialogModule,  MatAutocompleteModule } from '@angular/material';
+
+import {NgbCarouselConfig, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { StarRatingModule } from 'angular-star-rating';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
@@ -34,14 +34,25 @@ import { ImageService } from './services/image.service';
 import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ShowcaseService } from './services/showcase.service';
+import { ShowcaseItemComponent } from './components/showcase-item/showcase-item.component';
+import {StripHtmlPipe} from 'shared/pipes/strip-html';
+import { RouterModule } from '@angular/router';
+import { SkillsService } from './services/skills.service';
+import {DataTablesModule} from "angular-datatables";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     CustomFormsModule,
     MatComponentsModule,
+    MatAutocompleteModule,
     MatExpansionModule,
+    MatStepperModule,
+    MatDialogModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatNativeDateModule,
@@ -50,6 +61,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     DataTablesModule,
     NgxEditorModule,
     NgxPaginationModule,
+    RouterModule,
     NgbModule.forRoot(),
     StarRatingModule.forRoot()
   ],
@@ -61,9 +73,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     UploadFilesComponent,
     ImageGalleryComponent,
     ProfileCardComponent,
+    ShowcaseItemComponent,
 
     SummaryPipe,
-
+    StripHtmlPipe,
   ],
   entryComponents: [
     UploadFilesComponent,
@@ -77,22 +90,29 @@ import {NgxPaginationModule} from 'ngx-pagination';
     UploadFilesComponent,
     ImageGalleryComponent,
     ProfileCardComponent,
+    ShowcaseItemComponent,
 
     SummaryPipe,
+    StripHtmlPipe,
 
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     CustomFormsModule,
     DataTablesModule,
     NgxEditorModule,
     NgxPaginationModule,
     MatComponentsModule,
     MatExpansionModule,
+    MatDialogModule,
+    MatAutocompleteModule,
+    MatStepperModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
     HttpModule,
+    RouterModule,
     NgbModule.forRoot().ngModule,
     StarRatingModule.forRoot().ngModule
   ],
@@ -108,7 +128,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     TutorialService,
     ProfileInformationService,
     FileService,
-    ImageService
+    ImageService,
+    ShowcaseService,
+    NgbCarouselConfig,
+    SkillsService
+
 
   ]
 })

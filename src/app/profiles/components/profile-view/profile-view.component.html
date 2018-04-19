@@ -3,11 +3,135 @@
 
   <div class="row">
 
-    <div class="col-md-3">
-      <app-profile-card [profile]="profile"></app-profile-card>
+    <div class="col-md-2">
+      <div class="profile-card">
+        <app-profile-card [profileID]="id"></app-profile-card>
+      </div>
+      <div class="skills-section" *ngIf="skills || interests">
+        <div *ngIf="skills">
+          <h3>Skills</h3>
+          <ul class="skills-list">
+            <li *ngFor="let skill of skills"><a href="">{{skill?.name}}</a></li>
+          </ul>
+        </div>
+        <div *ngIf="interests">
+          <h3>Interests</h3>
+          <p>{{interests | titlecase}}</p>
+        </div>
+      </div>
+      <div class="social-contacts" *ngIf="socialLinks">
+        <h3>Links</h3>
+        <ul>
+          <li *ngIf="socialLinks?.website">
+            <a class="social-links" title="Website" [href]="socialLinks?.website">
+              <i class="fa fa-media fa-globe"></i>
+              <span class="social-label">Website</span>
+            </a>
+          </li>
+          <li *ngIf="socialLinks?.facebook">
+            <a class="social-links" title="Facebook" [href]="socialLinks?.facebook">
+              <i class="fa fa-media fa-facebook"></i>
+              <span class="social-label">Facebook</span>
+            </a>
+          </li>
+          <li *ngIf="socialLinks?.twitter">
+            <a class="social-links" title="Twitter" [href]="socialLinks?.twitter">
+              <i class="fa fa-media fa-twitter"></i>
+              <span class="social-label">Twitter</span>
+            </a>
+          </li>
+          <li *ngIf="socialLinks?.linkedin">
+            <a class="social-links" title="LinkedIn" [href]="socialLinks?.linkedin">
+              <i class="fa fa-media fa-linkedin"></i>
+              <span class="social-label">LinkedIn</span>
+            </a>
+          </li>
+          <li *ngIf="socialLinks?.youtube">
+            <a class="social-links" title="Youtube" [href]="socialLinks?.youtube">
+              <i class="fa fa-media fa-youtube"></i>
+              <span class="social-label">Youtube</span>
+            </a>
+          </li>
+          <li *ngIf="socialLinks?.instagram">
+            <a class="social-links" title="Instagram" [href]="socialLinks?.instagram">
+              <i class="fa fa-media fa-instagram"></i>
+              <span class="social-label">Instagram</span>
+            </a>
+          </li>
+          <li *ngIf="socialLinks?.github">
+            <a class="social-links" title="Github" [href]="socialLinks?.github">
+              <i class="fa fa-media fa-github"></i>
+              <span class="social-label">Github</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+      <div class="work-experience" *ngIf="workInfo.length > 0">
+        <h3>Work</h3>
+        <ul *ngFor="let work of workInfo">
+          <li><h4>{{work?.position}}</h4></li>
+          <li>{{work?.company}}</li>
+          <li>{{work?.startDate | date:'MMMM-y'}} - {{work?.endDate | date:'MMMM-y'}}</li>
+        </ul>
+      </div>
+      <div class="education-history" *ngIf="education.length > 0">
+        <h3>Education</h3>
+        <ul *ngFor="let edu of education">
+          <li><h4>{{edu?.degree | titlecase}}</h4></li>
+          <li>{{edu?.fieldOfStudy | titlecase}}</li>
+          <li>{{edu?.institute | titlecase}} ({{edu?.startDate | date:'y'}} - {{edu?.endDate | date:'y'}})</li>
+          <li>{{edu?.grade}}</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-8">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="showcase">
+            <h3>Showcase</h3>
+            <ol>
+              <li *ngFor="let item of showcaseItems">
+                <app-showcase-item [profileId]="id" [showcaseItem]="item"></app-showcase-item>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="products">
+            <h3>Products</h3>
+            <ol>
+              <li *ngFor="let p of products">
+                <app-product-card [product]="p" [show-description]="false" [routerLink]="['/product-view/', p.$key]"></app-product-card>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="blog-posts">
+            <h3>Blog posts</h3>
+            <ol>
+              <li *ngFor="let post of blogPosts">
+                <app-blog-card [blogPost]="post" [routerLink]="['/view-post/', post.$key]"></app-blog-card>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="tutorials">
+            <h3>Tutorials</h3>
+            <ol>
+              <li *ngFor="let tutorial of tutorials">
+                <app-tutorial-card [tutorial]="tutorial" [routerLink]="['/tutorial-view/', tutorial.$key]"></app-tutorial-card>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+
 
     </div>
 

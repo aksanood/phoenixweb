@@ -34,6 +34,8 @@ export class ProductsFormComponent implements OnInit, OnDestroy {
 
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) this.productService.get(this.id).take(1).subscribe(p => this.product = p);
+    
+    console.log(this.product);
   }
 
   save (product) {

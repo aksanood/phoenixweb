@@ -9,6 +9,12 @@ import {UploadFilesComponent} from "shared/components/upload-files/upload-files.
 import {ImageGalleryComponent} from "shared/components/image-gallery/image-gallery.component";
 import { Image } from 'shared/models/image';
 import { AddWorkComponent } from '../add-work/add-work.component';
+import { AddEducationComponent } from '../add-education/add-education.component';
+import {SkillsService} from "shared/services/skills.service";
+import {FormControl} from "@angular/forms";
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-dashboard-user-profile',
@@ -19,21 +25,29 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
 
   user: AppUser;
   subscription: Subscription;
-  
-  profileInfo: any = {};
+
   personalInfo: any = {};
   externalLinks: any = {};
-  workInfo: any = {};
-  educationInfo: any = {};
+  skillsAndInterests: any = {};
 
   profile;
+  education: any[];
+  work: any[];
+
   testProfile: Profile;
   selectedImage: Image;
   step = 0;
-  workExperience: any[3] = [];
+
+  skills;
+  startAt = new Subject();
+  endAt = new Subject();
+  lastKeypress = 0;
+  selectedSkills: any[] = [];
+  showDorpdown = false;
 
   constructor(private auth: AuthService,
               private profileService: ProfileInformationService,
+              private skillsService: SkillsService,
               public dialog: MatDialog) {
     this.profile = {};
 
@@ -42,11 +56,59 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
       this.user = user;
       profileService.getProfileByID(user.$key).subscribe(p => {
         this.profile = p;
-        this.testProfile = new Profile(p);
+        this.testProfile = new Profile();
+      });
+
+      profileService.getEducationById(user.$key).subscribe(e => {
+        this.education = e;
+        //console.log(this.education);
+      });
+
+      profileService.getWorkInfoById(user.$key).subscribe(w => {
+        this.work = w;
+        //console.log(this.work);
+      });
+
+      profileService.getSkills(user.$key).subscribe(skills => {
+        console.log(skills);
+        if(skills.$value !== null) this.selectedSkills = skills;
+      });
+
+      skillsService.searchSkills(this.startAt, this.endAt).subscribe(skills => {
+        this.skills = skills;
+        console.log(this.skills);
       });
     });
   }
 
+  //================ Searching / adding / deleting skills ====================//
+  searchSkill($event) {
+    if ($event.timeStamp - this.lastKeypress > 200) {
+      let q = $event.target.value;
+      this.startAt.next(q);
+      this.endAt.next(q+"\uf8ff");
+    }
+    this.lastKeypress = $event.timeStamp;
+  }
+
+  selectSkill(skill) {
+    this.selectedSkills.push(skill);
+    console.log(this.selectedSkills);
+    this.showDorpdown = false;
+  }
+
+  removeSkill(skill) {
+    var index = this.selectedSkills.indexOf(skill, 0);
+    if (index > -1) {
+      this.selectedSkills.splice(index, 1);
+    }
+  }
+
+  toggleDropdown() {
+    this.showDorpdown = !this.showDorpdown;
+  }
+
+  //================ Submit information on this componment ====================//
   submitPersonalInfo() {
     console.log(this.personalInfo);
     if(this.selectedImage) this.personalInfo.picture = this.selectedImage.url;
@@ -54,19 +116,27 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
     this.profileService.updatePersonalInfo(this.user.$key, this.personalInfo);
   }
 
-  submitWorkInfo() {
-    console.log(this.workInfo);
-    this.profileService.updateWorkInfo(this.user.$key, this.workInfo);
-  }
-
   submitExternalLinks() {
     console.log(this.externalLinks);
     this.profileService.updateExternalLinks(this.user.$key, this.externalLinks);
   }
 
+  submitSkillsAndInterests() {
+    console.log(this.skillsAndInterests);
+    if (this.selectedSkills.length > 0) {
+      console.log(this.selectedSkills.length);
+      //this.profileService.addSkills(this.user.$key, this.selectedSkills);
+      this.skillsAndInterests.skills = this.selectedSkills;
+    }
+
+    this.profileService.updateSkillsAndInterests(this.user.$key, this.skillsAndInterests);
+  }
+
+  //================ Open Dialogs for image uploading and gallery ====================//
   openUploader() {
     let dialogRef = this.dialog.open(UploadFilesComponent, {
-      width: '500px'
+      width: '500px',
+      data: {imageType: 0}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -76,7 +146,8 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
 
   openGallery() {
     let dialogRef = this.dialog.open(ImageGalleryComponent, {
-      width: '500px'
+      width: '500px',
+      data: {imageType: 0, selectType: 'radio'}
     });
     const sub = dialogRef.componentInstance.onSubmit.subscribe(image => {
       this.selectedImage = image;
@@ -86,57 +157,71 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
     });
   }
 
-  openAddWork() {
+  //================ Education ====================//
+  openAddEducation(id?: string) {
+    let dialogRef = this.dialog.open(AddEducationComponent, {
+      width: '500px',
+      data: {eid : id, uid: this.user.$key}
+    });
+    const sub = dialogRef.componentInstance.onSubmit.subscribe(education => {
+      if(id) {
+        console.log('545454854');
+        this.updateEducation(id, education);
+      }else {
+        console.log('sdsdsdsdsd');
+        this.addEducation(education);
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      sub.unsubscribe();
+    });
+  }
+
+  addEducation(education) {
+    this.profileService.addEducation(this.user.$key, education);
+  }
+
+  updateEducation (id: string, education) {
+    this.profileService.updateEducationItem(this.user.$key, id, education);
+  }
+
+  deleteEducation(id: string) {
+    this.profileService.deleteEducationItem(this.user.$key, id);
+  }
+
+  //================ work ====================//
+  openAddWork(id?: string) {
     let dialogRef = this.dialog.open(AddWorkComponent, {
-      width: '500px'
+      width: '500px',
+      data: {wid : id, uid: this.user.$key}
     });
     const sub = dialogRef.componentInstance.onSubmit.subscribe(work => {
-      this.addMoreWork(work);
+      if(id) {
+        console.log('has ID');
+        this.updateWork(id, work);
+      }else {
+        console.log('has ID');
+        this.addWork(work);
+      }
     })
     dialogRef.afterClosed().subscribe(result => {
       sub.unsubscribe();
     });
   }
 
-  addMoreWork(work) {
-    if (!this.workExperience[0]){
-      this.workExperience[0] = work;
-      console.log(this.workExperience[0]);
-      console.log(this.workExperience[1]);
-      console.log(this.workExperience[2]);
-      let work1: any = {};
-      work1.work_1Position = work.position;
-      work1.work_1Company = work.company;
-      work1.work_1StartDate = work.startDate;
-      work1.work_1EndDate = work.endDate;
-      this.profileService.updateWorkInfo(this.user.$key, work1);
-    }
-    else if(this.workExperience[0] && !this.workExperience[1]){
-      this.workExperience[1] = work;
-      console.log(this.workExperience[0]);
-      console.log(this.workExperience[1]);
-      console.log(this.workExperience[2]);
-      let work2: any = {};
-      work2.work_2Position = work.position;
-      work2.work_2Company = work.company;
-      work2.work_2StartDate = work.startDate;
-      work2.work_2EndDate = work.endDate;
-      this.profileService.updateWorkInfo(this.user.$key, work2);
-    }
-    else if(this.workExperience[0] && this.workExperience[1] && !this.workExperience[2]){
-      this.workExperience[2] = work;
-      console.log(this.workExperience[0]);
-      console.log(this.workExperience[1]);
-      console.log(this.workExperience[2]);
-      let work3: any = {};
-      work3.work_3Position = work.position;
-      work3.work_3Company = work.company;
-      work3.work_3StartDate = work.startDate;
-      work3.work_3EndDate = work.endDate;
-      this.profileService.updateWorkInfo(this.user.$key, work3);
-    }
+  addWork(work) {
+    this.profileService.addWork(this.user.$key, work);
   }
-  
+
+  updateWork (id: string, work) {
+    this.profileService.updateWorkItem(this.user.$key, id, work);
+  }
+
+  deleteWork(id: string) {
+    this.profileService.deleteWorkItem(this.user.$key, id);
+  }
+
+  //================ Accoordian functions ====================//
   setStep(index: number) {
     this.step = index;
   }
@@ -149,6 +234,7 @@ export class DashboardUserProfileComponent implements OnInit , OnDestroy {
     this.step--;
   }
 
+  //================ Init, Destroy ====================//
   ngOnInit() {
   }
 
